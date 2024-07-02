@@ -1,303 +1,358 @@
-# [Week 2] Prompting and Prompt Engineering
+﻿# [Week 2] 提示和提示工程
 
-## ETMI5: Explain to Me in 5
+## ETMI5: 用五分鐘解釋給我聽
 
-In this section, we delve into the limitations of general AI models in specialized domains, underscoring the significance of domain-adapted LLMs. We explore the advantages of these models, including depth, precision, improved user experiences, and addressing privacy concerns.
+在本節中，我們深入探討一般 AI 模型在專業領域中的限制，強調適應領域的 LLMs 的重要性。我們探討這些模型的優勢，包括深度、精確度、改進的使用者體驗，以及解決隱私問題。
 
-We introduce three types of domain adaptation methods: Domain-Specific Pre-Training, Domain-Specific Fine-Tuning, and Retrieval Augmented Generation (RAG). Each method is outlined, providing details on types, training durations, and quick summaries. We then explain each of these methods in further detail with real-world examples. In the end, we provide an overview of when RAG should be used as opposed to model updating methods.
+我們介紹了三種類型的領域適應方法: 領域特定的預訓練、領域特定的微調和檢索增強生成 (RAG)。每種方法都有概述，提供了類型、訓練時間和快速摘要的詳細資訊。然後我們用實際範例進一步解釋了這些方法。最後，我們概述了何時應使用 RAG 而不是模型更新方法。
 
-## Introduction
+## 簡介
 
-### Prompting
+### 提示
 
-In the realm of language models, "**prompting**" refers to the art and science of formulating precise instructions or queries provided to the model to generate desired outputs. It's the input—typically in the form of text—that users present to the language model to elicit specific responses. The effectiveness of a prompt lies in its ability to guide the model's understanding and generate outputs aligned with user expectations.
+在語言模型的領域中，"**prompting**" 是指制定精確指令或查詢以提供給模型以生成所需輸出的藝術和科學。它是用戶向語言模型提供的輸入——通常是文本形式——以引出特定的回應。提示的有效性在於其能夠引導模型的理解並生成與用戶期望一致的輸出。
 
-### Prompt Engineering
+### 提示工程
 
-- Prompt engineering, a rapidly growing field, revolves around refining prompts to unleash the full potential of Language Models in various applications.
-- In research, prompt engineering is a powerful tool, enhancing LLMs' performance across tasks like question answering and arithmetic reasoning. Users need to leverage these skills to create effective prompting techniques that seamlessly interact with LLMs and other tools.
-- Beyond crafting prompts, prompt engineering is a rich set of skills essential for interacting and developing with LLMs. It's not just about design; it's a crucial skill for understanding and exploiting LLM capabilities, ensuring safety, and introducing novel features like domain knowledge integration.
-- This proficiency is vital in aligning AI behavior with human intent. While professional prompt engineers delve into the complexities of AI, the skill isn't exclusive to specialists. Anyone refining prompts for models like ChatGPT is engaging in prompt engineering, making it accessible to users exploring language model potentials.
+- 提示工程是一個快速增長的領域，圍繞著完善提示，以釋放語言模型在各種應用中的全部潛力。
+- 在研究中，提示工程是一個強大的工具，提升LLM在問答和算術推理等任務中的表現。用戶需要利用這些技能來創建有效的提示技術，與LLM和其他工具無縫互動。
+- 除了製作提示外，提示工程還是一套豐富的技能，對與LLM互動和開發至關重要。這不僅僅是設計；這是一項理解和利用LLM能力、確保安全並引入新功能（如領域知識整合）的關鍵技能。
+- 這種熟練程度對於使AI行為與人類意圖一致至關重要。雖然專業的提示工程師深入研究AI的複雜性，但這項技能並不僅限於專家。任何為像ChatGPT這樣的模型完善提示的人都在從事提示工程，使其對探索語言模型潛力的用戶來說變得可及。
 
-![prompting.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting.png)
+![prompting.png](img/prompting.png)
 
-                    Image Source: [https://zapier.com/blog/prompt-engineering/](https://zapier.com/blog/prompt-engineering/)
+圖片來源: [https://zapier.com/blog/prompt-engineering](https://zapier.com/blog/prompt-engineering/)。
 
-## Why Prompting?
+## 為什麼要提示？
 
-Large language models are trained through a process called unsupervised learning on vast amounts of diverse text data. During training, the model learns to predict the next word in a sentence based on the context provided by the preceding words. This process allows the model to capture grammar, facts, reasoning abilities, and even some aspects of common sense.
+大型語言模型是通過一個稱為無監督學習的過程，在大量多樣化的文本數據上進行訓練的。在訓練過程中，模型學會根據前面的詞提供的上下文來預測句子中的下一個詞。這個過程使模型能夠捕捉語法、事實、推理能力，甚至一些常識方面的內容。
 
-Prompting is a crucial aspect of using these models effectively. Here's why prompting LLMs the right way is essential:
+提示是有效使用這些模型的一個關鍵方面。以下是為什麼正確提示LLM是必不可少的原因:
 
-1. **Contextual Understanding:** LLMs are trained to understand context and generate responses based on the patterns learned from diverse text data. When you provide a prompt, it's crucial to structure it in a way that aligns with the context the model is familiar with. This helps the model make relevant associations and produce coherent responses.
-2. **Training Data Patterns:** During training, the model learns from a wide range of text, capturing the linguistic nuances and patterns present in the data. Effective prompts leverage this training by incorporating similar language and structures that the model has encountered in its training data. This enables the model to generate responses that are consistent with its learned patterns.
-3. **Transfer Learning:** LLMs utilize transfer learning. The knowledge gained during training on diverse datasets is transferred to the task at hand when prompted. A well-crafted prompt acts as a bridge, connecting the general knowledge acquired during training to the specific information or action desired by the user.
-4. **Contextual Prompts for Contextual Responses:** By using prompts that resemble the language and context the model was trained on, users tap into the model's ability to understand and generate content within similar contexts. This leads to more accurate and contextually appropriate responses.
-5. **Mitigating Bias:** The model may inherit biases present in its training data. Thoughtful prompts can help mitigate bias by providing additional context or framing questions in a way that encourages unbiased responses. This is crucial for aligning model outputs with ethical standards.
+1. **情境理解:** LLMs 被訓練來理解情境並根據從多樣化文本數據中學到的模式生成回應。當你提供提示時，結構必須與模型熟悉的情境對齊。這有助於模型建立相關聯想並產生連貫的回應。
+2. **訓練數據模式:** 在訓練期間，模型從廣泛的文本中學習，捕捉數據中存在的語言細微差別和模式。有效的提示通過包含模型在訓練數據中遇到的類似語言和結構來利用這種訓練。這使得模型能夠生成與其學到的模式一致的回應。
+3. **遷移學習:** LLMs 利用遷移學習。在多樣化數據集上訓練期間獲得的知識在提示時轉移到當前任務。一個精心設計的提示充當橋樑，將訓練期間獲得的一般知識與用戶所需的特定資訊或行動連接起來。
+4. **情境提示以獲得情境回應:** 通過使用類似於模型訓練時的語言和情境的提示，用戶可以利用模型在相似情境中理解和生成內容的能力。這導致更準確且情境適當的回應。
+5. **減少偏見:** 模型可能會繼承其訓練數據中存在的偏見。深思熟慮的提示可以通過提供額外的情境或以鼓勵無偏見回應的方式框定問題來幫助減少偏見。這對於使模型輸出符合道德標準至關重要。
 
-To summarize, the training of LLMs involves learning from massive datasets, and prompting is the means by which users guide these models to produce useful, relevant, and policy-compliant responses. It's a collaborative process where users and models work together to achieve the desired outcome. There’s also a growing field called adversarial prompting which involves intentionally crafting prompts to exploit weaknesses or biases in a language model, with the goal of generating responses that may be misleading, inappropriate, or showcase the model's limitations. Safeguarding models from providing harmful responses is a challenge that needs to be solved and is an active research area.
+總結來說，LLM 的訓練涉及從大量數據集中學習，而提示是用戶引導這些模型產生有用、相關且符合政策的回應的手段。這是一個用戶和模型共同努力以達成期望結果的協作過程。還有一個不斷發展的領域叫做對抗性提示，涉及故意設計提示以利用語言模型中的弱點或偏見，目的是生成可能具有誤導性、不恰當或展示模型局限性的回應。保護模型不提供有害回應是一個需要解決的挑戰，也是當前活躍的研究領域。
 
-## Prompting Basics
+## 提示基礎
 
-The basic principles of prompting involve the inclusion of specific elements tailored to the task at hand. These elements include:
+引導的基本原則涉及包含針對手頭任務量身定制的特定元素。這些元素包括:
 
-1. **Instruction:** Clearly specify the task or action you want the model to perform. This sets the context for the model's response and guides its behavior.
-2. **Context:** Provide external information or additional context that helps the model better understand the task and generate more accurate responses. Context can be crucial in steering the model towards the desired outcome.
-3. **Input Data:** Include the input or question for which you seek a response. This is the information on which you want the model to act or provide insights.
-4. **Output Indicator:** Define the type or format of the desired output. This guides the model in presenting the information in a way that aligns with your expectations.
+1. **指示:** 明確指定您希望模型執行的任務或行動。這為模型的回應設置了上下文並引導其行為。
+2. **上下文:** 提供外部資訊或額外的上下文，幫助模型更好地理解任務並生成更準確的回應。上下文在引導模型朝向期望結果方面至關重要。
+3. **輸入資料:** 包括您尋求回應的輸入或問題。這是您希望模型行動或提供見解的資訊。
+4. **輸出指標:** 定義期望輸出的類型或格式。這引導模型以符合您期望的方式呈現資訊。
 
-Here's an example prompt for a text classification task:
+以下是一個文本分類任務的範例提示:
 
-**Prompt:**
+**提示:**
+
+**Phi-3: 7B Gemma**
+
+Gemma 是一個 7B 參數的模型，專為高效能和高品質的推論而設計。它是開放原始碼的，並且可以在 Hugging Face 上找到。
+
+**主要特性:**
+
+- **高效能推論**: Gemma 經過最佳化，可以在多種硬體上高效執行。
+- **高品質生成**: 它能產生高品質的文本，適用於多種應用場景。
+- **開放原始碼**: Gemma 是開放原始碼的，您可以自由地查看、修改和分發它的程式碼。
+
+**使用範例:**
 
 ```python
-Classify the text into neutral, negative, or positive
-Text: I think the food was okay.
-Sentiment:
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Phi-3/Gemma")
+tokenizer = AutoTokenizer.from_pretrained("Phi-3/Gemma")
+
+inputs = tokenizer("Hello, world!", return_tensors="pt")
+outputs = model.generate(**inputs)
+
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
-In this example:
+**快速開始指南:**
 
-- **Instruction:** "Classify the text into neutral, negative, or positive."
-- **Input Data:** "I think the food was okay."
-- **Output Indicator:** "Sentiment."
+1. **設定環境**: 安裝所需的相依套件。
 
-Note that this example doesn't explicitly use context, but context can also be incorporated into the prompt to provide additional information that aids the model in understanding the task better.
+    ```bash
+    pip install transformers
+    ```
 
-It's important to highlight that **not** all four elements are always necessary for a prompt, and the format can vary based on the specific task. The key is to structure prompts in a way that effectively communicates the user's intent and guides the model to produce relevant and accurate responses.
+2. **載入模型**: 使用 Hugging Face 函式庫載入 Gemma 模型。
 
-OpenAI has recently provided guidelines on best practices for prompt engineering using the OpenAI API. For a detailed understanding, you can explore the guidelines [here](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api), the below points gives a brief summary:
+    ```python
+    from transformers import AutoModelForCausalLM, AutoTokenizer
 
-1. **Use the Latest Model:** For optimal results, it is recommended to use the latest and most capable models.
-2. **Structure Instructions:** Place instructions at the beginning of the prompt and use ### or """ to separate the instruction and context for clarity and effectiveness.
-3. **Be Specific and Descriptive:** Clearly articulate the desired context, outcome, length, format, style, etc., in a specific and detailed manner.
-4. **Specify Output Format with Examples:** Clearly express the desired output format through examples, making it easier for the model to understand and respond accurately.
-5. **Use Zero-shot, Few-shot, and Fine-tune Approach:** Begin with a zero-shot approach, followed by a few-shot approach (providing examples). If neither works, consider fine-tuning the model.
-6. **Avoid Fluffy Descriptions:** Reduce vague and imprecise descriptions. Instead, use clear instructions and avoid unnecessary verbosity.
-7. **Provide Positive Guidance:** Instead of stating what not to do, clearly state what actions should be taken in a given situation, offering positive guidance.
-8. **Code Generation Specific - Use "Leading Words":** When generating code, utilize "leading words" to guide the model toward a specific pattern or language, improving the accuracy of code generation.
+    model = AutoModelForCausalLM.from_pretrained("Phi-3/Gemma")
+    tokenizer = AutoTokenizer.from_pretrained("Phi-3/Gemma")
+    ```
 
-💡It’s also important to note that crafting effective prompts is an iterative process, and you may need to experiment to find the most suitable approach for your specific use case. Prompt patterns may be specific to models and how they were trained (architecture, datasets used etc.)
+3. **生成文本**: 使用模型生成文本。
 
-Explore these [examples](https://www.promptingguide.ai/introduction/examples) of prompts to gain a better understanding of how to craft effective prompts in different use-cases.
+    ```python
+    inputs = tokenizer("Hello, world!", return_tensors="pt")
+    outputs = model.generate(**inputs)
 
-## Advanced Prompting Techniques
+    print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+    ```
 
-Prompting techniques constitute a rapidly evolving area of research, with researchers continually exploring novel methods to effectively prompt models for optimal performance. The simplest forms of prompting include zero-shot, where only instructions are provided, and few-shot, where examples are given, and the language model (LLM) is tasked with replication. More intricate techniques are elucidated in various research papers. While the provided list is not exhaustive, existing prompting methods can be tentatively classified into high-level categories. It's crucial to note that these classes are derived from current techniques and are not exhaustive or definitive; they are subject to evolution and modification, reflecting the dynamic nature of advancements in this field. It's important to highlight that numerous methods may fall into one or more of these classes, exhibiting overlapping characteristics to get the benefits offered by multiple categories.
+**行為準則:**
 
-![prompting_11.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_11.png)
+我們致力於提供一個友好和安全的社群。請閱讀並遵守我們的[行為準則](https://example.com/code-of-conduct)。
+
+```python
+將文本分類為中立、負面或正面
+文本: 我覺得食物還可以。
+情感:
+```
+
+在這個範例中:
+
+- **指示:** "將文本分類為中立、負面或正面。"
+- **輸入資料:** "我覺得食物還不錯。"
+- **輸出指標:** "情感。"
+
+請注意，此範例並未明確使用上下文，但上下文也可以納入提示中，以提供更多資訊，幫助模型更好地理解任務。
+
+重要的是要強調，**不**是所有四個元素對於一個提示來說都是必需的，格式可以根據具體任務有所不同。關鍵是要以能夠有效傳達使用者意圖並引導模型產生相關且準確的回應的方式來結構化提示。
+
+OpenAI 最近提供了使用 OpenAI API 進行提示工程的最佳實踐指南。要詳細了解，您可以探索[指南](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api)，以下幾點是簡要摘要：
+
+1. **使用最新模型:** 為了獲得最佳結果，建議使用最新且最強大的模型。
+2. **結構化指令:** 將指令放在提示的開頭，並使用 ### 或 """ 來分隔指令和上下文，以提高清晰度和效果。
+3. **具體且描述性:** 明確表達所需的上下文、結果、長度、格式、風格等，以具體和詳細的方式進行描述。
+4. **用範例指定輸出格式:** 通過範例清楚地表達所需的輸出格式，使模型更容易理解並準確回應。
+5. **使用零樣本、少樣本和微調方法:** 從零樣本方法開始，然後使用少樣本方法（提供範例）。如果都不起作用，考慮對模型進行微調。
+6. **避免模糊描述:** 減少模糊和不精確的描述。相反，使用清晰的指令並避免不必要的冗長。
+7. **提供正面指導:** 與其說明不應該做什麼，不如明確說明在特定情況下應該採取的行動，提供正面的指導。
+8. **程式碼產生器專用 - 使用 "引導詞":** 在生成程式碼時，使用 "引導詞" 來引導模型朝向特定的模式或語言，提高程式碼產生的準確性。
+
+💡同時也要注意，製作有效的提示是一個反覆的過程，你可能需要嘗試以找到最適合你特定使用案例的方法。提示模式可能特定於模型及其訓練方式（架構、使用的數據集等）。
+
+探索這些[範例](https://www.promptingguide.ai/introduction/examples)，以更好地了解如何在不同的使用情境中撰寫有效的提示。
+
+## 進階提示技術
+
+提示技術構成了一個快速發展的研究領域，研究人員不斷探索新的方法來有效地提示模型以獲得最佳性能。最簡單的提示形式包括零樣本提示（僅提供指令）和少樣本提示（提供範例，並要求語言模型（LLM）進行複製）。更複雜的技術在各種研究論文中有詳細闡述。雖然提供的列表並不詳盡，但現有的提示方法可以暫時分類為高層次類別。需要注意的是，這些類別是從當前技術中衍生出來的，並不是詳盡或確定的；它們會隨著該領域的動態發展而演變和修改。需要強調的是，許多方法可能會落入一個或多個這些類別中，展現出重疊的特徵，以獲得多個類別所提供的好處。
+
+![prompting_11.png](img/prompting_11.png)
 
 ### A. Step**-by-Step Modular Decomposition**
 
-These methods involve breaking down complex problems into smaller, manageable steps, facilitating a structured approach to problem-solving. These methods guide the LLM through a sequence of intermediate steps, allowing it to focus on solving one step at a time rather than tackling the entire problem in a single step. This approach enhances the reasoning abilities of LLMs and is particularly useful for tasks requiring multi-step thinking.
+這些方法涉及將複雜問題分解為較小的、可管理的步驟，促進解決問題的結構化方法。這些方法通過一系列中間步驟引導LLM，使其能夠專注於一次解決一個步驟，而不是在單一步驟中解決整個問題。這種方法增強了LLM的推理能力，特別適用於需要多步思考的任務。
 
-Examples of methods falling under this category include:
+範例包括以下方法:
 
 1. **Chain-of-Thought (CoT) Prompting:**
 
-Chain-of-Thought (CoT) Prompting is a technique to enhance complex reasoning capabilities through intermediate reasoning steps. This method involves providing a sequence of reasoning steps that guide a large language model (LLM) through a problem, allowing it to focus on solving one step at a time.
+Chain-of-Thought (CoT) 提示是一種通過中間推理步驟來增強複雜推理能力的技術。此方法涉及提供一系列推理步驟，引導大型語言模型（LLM）解決問題，使其能夠專注於一次解決一個步驟。
 
-In the provided example below, the prompt involves evaluating whether the sum of odd numbers in a given group is an even number. The LLM is guided to reason through each example step by step, providing intermediate reasoning before arriving at the final answer. The output shows that the model successfully solves the problem by considering the odd numbers and their sums.
+在下面提供的範例中，提示涉及評估給定組中的奇數之和是否為偶數。LLM 被引導逐步推理每個範例，在得出最終答案之前提供中間推理。輸出顯示模型通過考慮奇數及其和成功解決了這個問題。
 
-![prompting_1.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_1.png)
+![prompting_1.png](img/prompting_1.png)
 
-                                          Image Source: [Wei et al. (2022)](https://arxiv.org/abs/2201.11903)
+                                          圖片來源: [Wei et al. (2022)](https://arxiv.org/abs/2201.11903)
 
-1a. **Zero-shot/Few-Shot CoT Prompting:**
+1a. **零樣本/少樣本 CoT 提示:**
 
-Zero-shot involves adding the prompt "Let's think step by step" to the original question to guide the LLM through a systematic reasoning process. Few-shot prompting provides the model with a few examples of similar problems to enhance reasoning abilities. These CoT methods prompt significantly improves the model's performance by explicitly instructing it to think through the problem step by step. In contrast, without the special prompt, the model fails to provide the correct answer.
+零樣本涉及在原始問題中添加提示 "讓我們一步一步地思考" 來引導 LLM 通過系統的推理過程。少樣本提示為模型提供一些類似問題的範例，以增強推理能力。這些 CoT 方法提示通過明確指示模型一步一步地思考問題，顯著提高了模型的性能。相比之下，沒有特殊提示時，模型無法提供正確答案。
 
-![prompting_2.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_2.png)
+![prompting_2.png](img/prompting_2.png)
 
-                                        Image Source: [Kojima et al. (2022)](https://arxiv.org/abs/2205.11916)
+圖片來源: [Kojima et al. (2022)](https://arxiv.org/abs/2205.11916)
 
-1b. **Automatic Chain-of-Thought (Auto-CoT):**
+1b. **自動思維鏈 (Auto-CoT):**
 
-Automatic Chain-of-Thought (Auto-CoT) was designed to automate the generation of reasoning chains for demonstrations. Instead of manually crafting examples, Auto-CoT leverages LLMs with a "Let's think step by step" prompt to automatically generate reasoning chains one by one.
+自動思維鏈（Auto-CoT）旨在自動生成展示的推理鏈。Auto-CoT 不再需要手動製作範例，而是利用 LLMs 和「讓我們一步一步思考」的提示來自動逐一生成推理鏈。
 
-![prompting_3.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_3.png)
+![prompting_3.png](img/prompting_3.png)
 
-Image Source: [Zhang et al. (2022)](https://arxiv.org/abs/2210.03493)
+圖片來源: [Zhang et al. (2022)](https://arxiv.org/abs/2210.03493)
 
-The Auto-CoT process involves two main stages:
+Auto-CoT 過程涉及兩個主要階段:
 
-1. **Question Clustering:** Partition questions into clusters based on similarity.
-2. **Demonstration Sampling:** Select a representative question from each cluster and generate its reasoning chain using Zero-Shot-CoT with simple heuristics.
+1. **問題分群:** 根據相似性將問題分成群組。
+2. **示範抽樣:** 從每個群組中選擇一個代表性問題，並使用 Zero-Shot-CoT 和簡單的啟發式方法生成其推理鏈。
 
-The goal is to eliminate manual efforts in creating diverse and effective examples. Auto-CoT ensures diversity in demonstrations, and the heuristic-based approach encourages the model to generate simple yet accurate reasoning chains.
+目標是消除在建立多樣且有效範例中的手動努力。Auto-CoT 確保展示的多樣性，並且基於啟發式的方法鼓勵模型生成簡單但準確的推理鏈。
 
-Overall, these CoT prompting techniques showcase the effectiveness of guiding LLMs through step-by-step reasoning for improved problem-solving and demonstration generation.
+總體而言，這些CoT提示技術展示了通過逐步推理來引導LLM，以改進問題解決和展示生成的效果。
 
-1. **Tree-of-Thoughts (ToT) Prompting**
+1. **Tree-of-Thoughts (ToT) 提示**
 
-Tree-of-Thoughts (ToT) Prompting is a technique that extends the Chain-of-Thought approach. It allows language models to explore coherent units of text ("thoughts") as intermediate steps towards problem-solving. ToT enables models to make deliberate decisions, consider multiple reasoning paths, and self-evaluate choices. It introduces a structured framework where models can look ahead or backtrack as needed during the reasoning process. ToT Prompting provides a more structured and dynamic approach to reasoning, allowing language models to navigate complex problems with greater flexibility and strategic decision-making. It is particularly beneficial for tasks that require comprehensive and adaptive reasoning capabilities.
+Tree-of-Thoughts (ToT) 提示是一種擴展 Chain-of-Thought 方法的技術。它允許語言模型將連貫的文本單元（「思維」）作為解決問題的中間步驟來探索。ToT 使模型能夠做出深思熟慮的決策，考慮多種推理路徑，並自我評估選擇。它引入了一個結構化框架，使模型在推理過程中可以根據需要前瞻或回溯。ToT 提示提供了一種更結構化和動態的推理方法，使語言模型能夠以更大的靈活性和戰略決策來應對複雜問題。它對於需要全面和適應性推理能力的任務特別有益。
 
-**Key Characteristics:**
+**主要特點:**
 
-- **Coherent Units ("Thoughts"):** ToT prompts LLMs to consider coherent units of text as intermediate reasoning steps.
-- **Deliberate Decision-Making:** Enables models to make decisions intentionally and evaluate different reasoning paths.
-- **Backtracking and Looking Ahead:** Allows models to backtrack or look ahead during the reasoning process, providing flexibility in problem-solving.
+- **連貫單位（"Thoughts"）:** ToT 提示 LLMs 將連貫的文字單位視為中間推理步驟。
+- **深思熟慮的決策:** 使模型能夠有意識地做出決策並評估不同的推理路徑。
+- **回溯和前瞻:** 允許模型在推理過程中回溯或前瞻，提供解決問題的靈活性。
 
-![prompting_4.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_4.png)
+![prompting_4.png](img/prompting_4.png)
 
-Image Source: [Yao et el. (2023)](https://arxiv.org/abs/2305.10601)
+圖像來源: [Yao et el. (2023)](https://arxiv.org/abs/2305.10601)
 
-1. **Graph of Thought Prompting**
+1. **思維圖提示**
 
-This work arises from the fact that human thought processes often follow non-linear patterns, deviating from simple sequential chains. In response, the authors propose Graph-of-Thought (GoT) reasoning, a novel approach that models thoughts not just as chains but as graphs, capturing the intricacies of non-sequential thinking.
+這項工作源於人類思維過程經常遵循非線性模式，偏離簡單的順序鏈。為此，作者提出了Graph-of-Thought (GoT)推理，一種將思維不僅建模為鏈而且建模為圖的新方法，捕捉非順序思維的複雜性。
 
-This extension introduces a paradigm shift in representing thought units. Nodes in the graph symbolize these thought units, and edges depict connections, presenting a more realistic portrayal of the complexities inherent in human cognition. Unlike traditional trees, GoT employs Directed Acyclic Graphs (DAGs), allowing the modeling of paths that fork and converge. This divergence provides GoT with a significant advantage over conventional linear approaches.
+這個擴充功能引入了表示思維單元的範式轉變。圖中的節點象徵這些思維單元，邊緣描繪了連接，呈現了人類認知中固有複雜性的更現實的寫照。與傳統樹不同，GoT 採用有向無環圖 (DAG)，允許建模分叉和匯聚的路徑。這種分歧使 GoT 相較於傳統線性方法具有顯著優勢。
 
-The GoT reasoning model operates in a two-stage framework. Initially, it generates rationales, and subsequently, it produces the final answer. To facilitate this, the model leverages a Graph-of-Thoughts encoder for representation learning. The integration of GoT representations with the original input occurs through a gated fusion mechanism, enabling the model to combine both linear and non-linear aspects of thought processes.
+GoT 推理模型在兩階段框架中運作。最初，它生成推理，隨後產生最終答案。為了促進這一過程，模型利用 Graph-of-Thoughts 編碼器進行表示學習。GoT 表示與原始輸入的整合通過門控融合機制進行，從而使模型能夠結合思維過程中的線性和非線性方面。
 
-![prompting_5.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_5.png)
+![prompting_5.png](img/prompting_5.png)
 
-                                   Image Source: [Yao et el. (2023)](https://arxiv.org/abs/2305.16582)
+圖片來源: [Yao et el. (2023)](https://arxiv.org/abs/2305.16582)
 
-### B. Comprehensive **Reasoning and Verification**
+### B. 全面性的**推理與驗證**
 
-Comprehensive Reasoning and Verification methods in prompting entail a more sophisticated approach where reasoning is not just confined to providing a final answer but involves generating detailed intermediate steps. The distinctive aspect of these techniques is the integration of a self-verification mechanism within the framework. As the LLM generates intermediate answers or reasoning traces, it autonomously verifies their consistency and correctness. If the internal verification yields a false result, the model iteratively refines its responses, ensuring that the generated reasoning aligns with the expected logical coherence. These checks contributes to a more robust and reliable reasoning process, allowing the model to adapt and refine its outputs based on internal validation
+全面的推理和驗證方法在提示中涉及更複雜的方法，其中推理不僅僅限於提供最終答案，而是涉及生成詳細的中間步驟。這些技術的獨特之處在於在框架內整合了自我驗證機制。當LLM生成中間答案或推理痕跡時，它會自動驗證其一致性和正確性。如果內部驗證得出錯誤結果，模型會反覆改進其回應，確保生成的推理與預期的邏輯一致性相符。這些檢查有助於更健全和可靠的推理過程，使模型能夠根據內部驗證調整和改進其輸出。
 
-1. **Automatic Prompt Engineer**
+1. **自動提示工程師**
 
-Automatic Prompt Engineer (APE) is a technique that treats instructions as programmable elements and seeks to optimize them by conducting a search across a pool of instruction candidates proposed by an LLM. Drawing inspiration from classical program synthesis and human prompt engineering, APE employs a scoring function to evaluate the effectiveness of candidate instructions. The selected instruction, determined by the highest score, is then utilized as the prompt for the LLM. This automated approach aims to enhance the efficiency of prompt generation, aligning with classical program synthesis principles and leveraging the knowledge embedded in large language models to improve overall performance in producing desired outputs.
+自動提示工程師（APE）是一種將指令視為可編程元素並通過在LLM提出的指令候選池中進行搜索來優化它們的技術。APE 從經典的程式碼合成和人類提示工程中汲取靈感，使用評分函式來評估候選指令的有效性。由最高分數確定的選定指令隨後用作LLM的提示。這種自動化方法旨在提高提示生成的效率，符合經典程式碼合成原則，並利用大型語言模型中嵌入的知識來改進生成所需輸出的整體性能。
 
-![prompting_6.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_6.png)
+![prompting_6.png](img/prompting_6.png)
 
-                                               Image Source: [Zhou et al., (2022)](https://arxiv.org/abs/2211.01910)
+                                               圖片來源: [Zhou et al., (2022)](https://arxiv.org/abs/2211.01910)
 
-1. **Chain of Verification (CoVe)**
+1. **驗證鏈 (CoVe)**
 
-The Chain-of-Verification (CoVe) method  addresses the challenge of hallucination in large language models by introducing a systematic verification process. It begins with the model drafting an initial response to a user query, potentially containing inaccuracies. CoVe then plans and poses independent verification questions, aiming to fact-check the initial response without bias. The model answers these questions, and based on the verification outcomes, generates a final response, incorporating corrections and improvements identified through the verification process. CoVe ensures unbiased verification, leading to enhanced factual accuracy in the final response, and contributes to improved overall model performance by mitigating the generation of inaccurate information.
+Chain-of-Verification (CoVe) 方法通過引入系統化的驗證過程，解決大型語言模型中的幻覺挑戰。它首先讓模型起草對用戶查詢的初步回應，該回應可能包含不準確的資訊。然後，CoVe 計劃並提出獨立的驗證問題，旨在無偏見地事實核查初步回應。模型回答這些問題，並根據驗證結果生成最終回應，納入通過驗證過程識別的更正和改進。CoVe 確保無偏見的驗證，從而提高最終回應的事實準確性，並通過減少生成不準確資訊來提升整體模型性能。
 
-![prompting_7.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_7.png)
+![prompting_7.png](img/prompting_7.png)
 
-                                      Image Source: [Dhuliawala et al.2023](https://arxiv.org/abs/2309.11495)
+圖片來源: [Dhuliawala et al.2023](https://arxiv.org/abs/2309.11495)
 
-1. **Self Consistency**
+1. **自我一致性**
 
-Self Consistency represents a refinement in prompt engineering, specifically targeting the limitations of naive greedy decoding in chain-of-thought prompting. The core concept involves sampling multiple diverse reasoning paths using few-shot CoT and leveraging the generated responses to identify the most consistent answer. This method aims to enhance the performance of CoT prompting, particularly in tasks that demand arithmetic and commonsense reasoning. By introducing diversity in reasoning paths and prioritizing consistency, Self Consistency contributes to more robust and accurate language model responses within the CoT framework.
+自我一致性代表了提示工程的一種改進，專門針對鏈式思維提示中天真貪婪解碼的限制。其核心概念涉及使用少量示例的鏈式思維提示來抽樣多條不同的推理路徑，並利用生成的回應來識別最一致的答案。此方法旨在提升鏈式思維提示的性能，特別是在需要算術和常識推理的任務中。通過在推理路徑中引入多樣性並優先考慮一致性，自我一致性有助於在鏈式思維框架內提供更強大且準確的語言模型回應。
 
-![Screenshot 2024-01-14 at 3.50.46 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-01-14_at_3.50.46_PM.png)
+![Screenshot 2024-01-14 at 3.50.46 PM.png](img/Screenshot_2024-01-14_at_3.50.46_PM.png)
 
-                                            Image Source: [Wang et al. (2022)](https://arxiv.org/pdf/2203.11171.pdf)
+圖片來源: [Wang et al. (2022)](https://arxiv.org/pdf/2203.11171.pdf)
 
 1. **ReACT**
 
-The ReAct framework combines reasoning and action in LLMs to enhance their capabilities in dynamic tasks. The framework involves generating both verbal reasoning traces and task-specific actions in an interleaved manner. ReAct aims to address the limitations of models, like chain-of-thought , that lack access to the external world and can encounter issues such as fact hallucination and error propagation. Inspired by the synergy between "acting" and "reasoning" in human learning and decision-making, ReAct prompts LLMs to create, maintain, and adjust plans for acting dynamically. The model can interact with external environments, such as knowledge bases, to retrieve additional information, leading to more reliable and factual responses.
+ReAct 框架結合理性和行動於 LLMs 中，以提升其在動態任務中的能力。該框架涉及以交錯方式生成語言推理痕跡和特定任務的行動。ReAct 旨在解決模型的限制，例如缺乏外部世界訪問的 chain-of-thought，並可能遇到事實幻覺和錯誤傳播等問題。受人類學習和決策中「行動」和「理性」之間協同作用的啟發，ReAct 促使 LLMs 建立、維持和調整動態行動計劃。該模型可以與外部環境（如知識庫）互動，以檢索額外的資訊，從而導致更可靠和事實性的回應。
 
-![Screenshot 2024-01-14 at 3.53.32 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-01-14_at_3.53.32_PM.png)
+![Screenshot 2024-01-14 at 3.53.32 PM.png](img/Screenshot_2024-01-14_at_3.53.32_PM.png)
 
-                                              Image Source: [Yao et al., 2022](https://arxiv.org/abs/2210.03629)
+                                              圖片來源: [Yao et al., 2022](https://arxiv.org/abs/2210.03629)
 
-**How ReAct Works:**
+**ReAct 如何運作:**
 
-1. **Dynamic Reasoning and Acting:** ReAct generates both verbal reasoning traces and actions, allowing for dynamic reasoning in response to complex tasks.
-2. **Interaction with External Environments: T**he action step enables interaction with external sources, like search engines or knowledge bases, to gather information and refine reasoning.
-3. **Improved Task Performance:** The framework's integration of reasoning and action contributes to outperforming state-of-the-art baselines on language and decision-making tasks.
-4. **Enhanced Human Interpretability:** ReAct leads to improved human interpretability and trustworthiness of LLMs, making their responses more understandable and reliable.
+1. **動態推理和行動:** ReAct 生成語言推理痕跡和行動，允許在回應複雜任務時進行動態推理。
+2. **與外部環境互動:** 行動步驟使得能與外部來源互動，如搜尋引擎或知識庫，以收集資訊和精煉推理。
+3. **改進任務表現:** 該框架的推理和行動整合有助於在語言和決策任務上超越最先進的基線。
+4. **增強人類可解釋性:** ReAct 提高了 LLMs 的人類可解釋性和可信度，使其回應更易理解和可靠。
 
-### C. Usage of External Tools/Knowledge or Aggregation
+### C. 外部工具/知識或聚合的使用
 
-This category of prompting methods encompasses techniques that leverage external sources, tools, or aggregated information to enhance the performance of LLMs. These methods recognize the importance of accessing external knowledge or tools for more informed and contextually rich responses. Aggregation techniques involve harnessing the power of multiple responses to enhance the robustness. This approach recognizes that diverse perspectives and reasoning paths can contribute to more reliable and comprehensive answers. Here's an overview:
+這類提示方法包含利用外部來源、工具或聚合資訊來提升LLM的效能。這些方法認識到訪問外部知識或工具對於更具資訊性和上下文豐富的回應的重要性。聚合技術涉及利用多個回應的力量來增強穩健性。這種方法認識到多樣的觀點和推理路徑可以貢獻於更可靠和全面的答案。以下是概述:
 
-1. **Active Prompting (Aggregation)**
+1. **主動提示（聚合）**
 
-Active Prompting was designed to enhance the adaptability LLMs to various tasks by dynamically selecting task-specific example prompts. Chain-of-Thought methods typically rely on a fixed set of human-annotated exemplars, which may not always be the most effective for diverse tasks. Here's how Active Prompting addresses this challenge:
+主動提示旨在透過動態選擇特定任務的範例提示來增強LLM對各種任務的適應性。Chain-of-Thought方法通常依賴一組固定的人類註釋範例，這些範例可能並不總是對各種任務最有效。以下是主動提示如何解決這一挑戰的方式:
 
-1. **Dynamic Querying:**
-    - The process begins by querying the LLM with or without a few CoT examples for a set of training questions.
-    - The model generates k possible answers, introducing an element of uncertainty in its responses.
-2. **Uncertainty Metric:**
-    - An uncertainty metric is calculated based on the disagreement among the k generated answers. This metric reflects the model's uncertainty about the most appropriate response.
-3. **Selective Annotation:**
-    - The questions with the highest uncertainty, indicating a lack of consensus in the model's responses, are selected for annotation by humans.
-    - Humans provide new annotated exemplars specifically tailored to address the uncertainties identified by the LLM.
-4. **Adaptive Learning:**
-    - The newly annotated exemplars are incorporated into the training data, enriching the model's understanding and adaptability for those specific questions.
-    - The model learns from the newly annotated examples, adjusting its responses based on the task-specific guidance provided.
+1. **動態查詢:**
+    - 該過程開始於查詢 LLM，無論是否有一些 CoT 範例，用於一組訓練問題。
+    - 模型生成 k 個可能的答案，在其回應中引入了不確定性元素。
+2. **不確定性指標:**
+    - 根據 k 個生成答案之間的分歧計算不確定性指標。該指標反映了模型對最合適回應的不確定性。
+3. **選擇性註釋:**
+    - 對於不確定性最高的問題，表明模型回應中缺乏共識，選擇由人類進行註釋。
+    - 人類提供新的註釋範例，專門針對 LLM 確定的不確定性進行處理。
+4. **自適應學習:**
+    - 新註釋的範例被納入訓練數據中，豐富了模型對這些特定問題的理解和適應性。
+    - 模型從新註釋的範例中學習，根據提供的任務特定指導調整其回應。
 
-Active Prompting's dynamic adaptation mechanism enables LLMs to actively seek and incorporate task-specific examples that align with the challenges posed by different tasks. By leveraging human-annotated exemplars for uncertain cases, this approach contributes to a more contextually aware and effective performance across diverse tasks.
+Active Prompting 的動態適應機制使 LLM 能夠主動尋找並納入與不同任務所提出挑戰相符的特定範例。通過利用人工標註的不確定案例範例，這種方法有助於在不同任務中實現更具上下文意識和更有效的表現。
 
-![prompting_8.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_8.png)
+![prompting_8.png](img/prompting_8.png)
 
-                                        Image Source: [Diao et al., (2023)](https://arxiv.org/pdf/2302.12246.pdf)
+圖片來源: [Diao et al., (2023)](https://arxiv.org/pdf/2302.12246.pdf)
 
-1. **Automatic Multi-step Reasoning and Tool-use (ART) (External Tools)**
+1. **自動多步推理和工具使用 (ART) (外部工具)**
 
-ART emphasizes on task handling with LLMs. This framework integrates Chain-of-Thought prompting and tool usage by employing a frozen LLM. Instead of manually crafting demonstrations, ART selects task-specific examples from a library and enables the model to automatically generate intermediate reasoning steps. During test time, it  integrates external tools into the reasoning process, fostering zero-shot generalization for new tasks. ART is not only extensible, allowing for human updates to task and tool libraries, but also promotes adaptability and versatility in addressing a variety of tasks with LLMs.
+ART 強調使用 LLMs 進行任務處理。這個框架通過使用凍結的 LLM 整合了 Chain-of-Thought 提示和工具使用。ART 不需要手動製作展示，而是從函式庫中選擇特定任務的範例，並使模型能夠自動生成中間推理步驟。在測試時，它將外部工具整合到推理過程中，促進新任務的零樣本泛化。ART 不僅具有可擴展性，允許人類更新任務和工具函式庫，還促進了在使用 LLMs 處理各種任務時的適應性和多功能性。
 
-![prompting_9.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_9.png)
+![prompting_9.png](img/prompting_9.png)
 
-                                     Image Source: [Paranjape et al., (2023)](https://arxiv.org/abs/2303.09014)
+圖像來源: [Paranjape et al., (2023)](https://arxiv.org/abs/2303.09014)
 
-1. **Chain-of-Knowledge (CoK)**
+1. **知識鏈 (CoK)**
 
-This  framework aims to bolster LLMs by dynamically integrating grounding information from diverse sources, fostering more factual rationales and mitigating the risk of hallucination during generation. CoK operates through three key stages: reasoning preparation, dynamic knowledge adapting, and answer consolidation. It starts by formulating initial rationales and answers while identifying relevant knowledge domains. Subsequently, it refines these rationales incrementally by adapting knowledge from the identified domains, ultimately providing a robust foundation for the final answer. The figure below illustrates a comparison with other methods, highlighting CoK's incorporation of heterogeneous sources for knowledge retrieval and dynamic knowledge adapting.
+這個框架旨在通過動態整合來自不同來源的基礎資訊來增強LLM，促進更具事實依據的推理，並減少生成過程中的幻覺風險。CoK通過三個關鍵階段運作: 推理準備、動態知識適應和答案整合。它首先制定初步的推理和答案，同時識別相關的知識領域。隨後，它通過從已識別的領域中適應知識來逐步完善這些推理，最終為最終答案提供堅實的基礎。下圖展示了與其他方法的比較，突出了CoK在知識檢索和動態知識適應方面整合異構來源的特點。
 
-![prompting_10.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/prompting_10.png)
+![prompting_10.png](img/prompting_10.png)
 
-                                            Image Source: [Li et al. 2024](https://arxiv.org/abs/2401.04398)
+                                            圖片來源: [Li et al. 2024](https://arxiv.org/abs/2401.04398)
 
-## Risks
+## 風險
 
-Prompting comes with various risks, and prompt hacking is a notable concern that exploits vulnerabilities in LLMs. The risks associated with prompting include:
+提示帶來各種風險，而提示駭客是一個顯著的問題，它利用了LLM中的漏洞。與提示相關的風險包括:
 
-1. **Prompt Injection:**
-    - *Risk:* Malicious actors can inject harmful or misleading content into prompts, leading LLMs to generate inappropriate, biased, or false outputs.
-    - *Context:* Untrusted text used in prompts can be manipulated to make the model say anything the attacker desires, compromising the integrity of generated content.
-2. **Prompt Leaking:**
-    - *Risk:* Attackers may extract sensitive information from LLM responses, posing privacy and security concerns.
-    - *Context:* Changing the user_input to attempt to leak the prompt itself is a form of prompt leaking, potentially revealing internal information.
-3. **Jailbreaking:**
-    - *Risk:* Jailbreaking allows users to bypass safety and moderation features, leading to the generation of controversial, harmful, or inappropriate responses.
-    - *Context:* Prompt hacking methodologies, such as pretending, can exploit the model's difficulty in rejecting harmful prompts, enabling users to ask any question they desire.
-4. **Bias and Misinformation:**
-    - *Risk:* Prompts that introduce biased or misleading information can result in outputs that perpetuate or amplify existing biases and spread misinformation.
-    - *Context:* Crafted prompts can manipulate LLMs into producing biased or inaccurate responses, contributing to the reinforcement of societal biases.
-5. **Security Concerns:**
-    - *Risk:* Prompt hacking poses a broader security threat, allowing attackers to compromise the integrity of LLM-generated content and potentially exploit models for malicious purposes.
-    - *Context:* Defensive measures, including prompt-based defenses and continuous monitoring, are essential to mitigate security risks associated with prompt hacking.
+1. **提示注入:**
+    - *風險:* 惡意行為者可以將有害或誤導性的內容注入提示中，導致 LLM 生成不適當、有偏見或虛假的輸出。
+    - *背景:* 在提示中使用的不受信任文本可以被操縱，使模型說出攻擊者想要的任何內容，損害生成內容的完整性。
+2. **提示洩漏:**
+    - *風險:* 攻擊者可能從 LLM 的回應中提取敏感資訊，造成隱私和安全問題。
+    - *背景:* 更改 user_input 以嘗試洩漏提示本身是一種提示洩漏，可能會揭示內部資訊。
+3. **越獄:**
+    - *風險:* 越獄允許用戶繞過安全和審核功能，導致生成有爭議、有害或不適當的回應。
+    - *背景:* 提示駭客方法，如假裝，可以利用模型拒絕有害提示的困難，使用戶能夠提出任何他們想要的問題。
+4. **偏見和錯誤資訊:**
+    - *風險:* 引入有偏見或誤導性資訊的提示可能導致輸出延續或放大現有的偏見並傳播錯誤資訊。
+    - *背景:* 精心設計的提示可以操縱 LLM 生成有偏見或不準確的回應，助長社會偏見的加劇。
+5. **安全問題:**
+    - *風險:* 提示駭客構成更廣泛的安全威脅，允許攻擊者損害 LLM 生成內容的完整性，並可能利用模型進行惡意用途。
+    - *背景:* 防禦措施，包括基於提示的防禦和持續監控，對於減輕與提示駭客相關的安全風險至關重要。
 
-To address these risks, it is crucial to implement robust defensive strategies, conduct regular audits of model behavior, and stay vigilant against potential vulnerabilities introduced through prompts. Additionally, ongoing research and development are necessary to enhance the resilience of LLMs against prompt-based attacks and mitigate biases in generated content.
+為了應對這些風險，實施強大的防禦策略、定期審計模型行為以及保持對通過提示引入的潛在漏洞的警惕是至關重要的。此外，持續的研究和開發是必要的，以增強LLM對基於提示的攻擊的抵抗力並減少生成內容中的偏見。
 
-## Popular Tools
+## 熱門工具
 
-Here is a collection of well-known tools for prompt engineering. While some function as end-to-end app development frameworks, others are tailored for prompt generation and maintenance or evaluation purposes. The listed tools are predominantly open source or free to use and have demonstrated good adaptability. It's important to note that there are additional tools available, although they might be less widely recognized or require payment.
+這裡收集了一些知名的提示工程工具。雖然有些工具作為端到端應用程式開發框架運行，其他工具則專為提示生成和維護或評估目的而設計。所列工具主要是開放原始碼或免費使用，並且展示了良好的適應性。需要注意的是，還有其他工具可用，儘管它們可能不那麼廣為人知或需要付費。
 
 1. **[PromptAppGPT](https://github.com/mleoking/PromptAppGPT):**
-    - *Description:* A low-code prompt-based rapid app development framework.
-    - *Features:* Low-code prompt-based development, GPT text and DALLE image generation, online prompt editor/compiler/runner, automatic UI generation, support for plug-in extensions.
-    - *Objective:* Enables natural language app development based on GPT, lowering the barrier to GPT application development.
+    - *Description:* 一個低程式碼、基於提示的快速應用程式開發框架。
+    - *Features:* 低程式碼提示式開發，GPT文本和DALLE圖像生成，線上提示編輯器/編譯器/執行器，自動UI生成，支援外掛擴展。
+    - *Objective:* 基於GPT的自然語言應用程式開發，降低GPT應用程式開發的門檻。
 2. **[PromptBench](https://github.com/microsoft/promptbench):**
-    - *Description:* A PyTorch-based Python package for the evaluation of LLMs.
-    - *Features:* User-friendly APIs for quick model performance assessment, prompt engineering methods (Few-shot Chain-of-Thought, Emotion Prompt, Expert Prompting), evaluation of adversarial prompts, dynamic evaluation to mitigate potential test data contamination.
-    - *Objective:* Facilitates the evaluation and assessment of LLMs with various capabilities, including prompt engineering and adversarial prompt evaluation.
+    - *Description:* 一個基於PyTorch的Python套件，用於評估LLM。
+    - *Features:* 用戶友好的API，用於快速評估模型性能，提示工程方法（少樣本鏈式思維，情感提示，專家提示），對抗性提示的評估，動態評估以減少潛在的測試數據污染。
+    - *Objective:* 促進對LLM的評估和測試，包括提示工程和對抗性提示評估的各種能力。
 3. **[Prompt Engine](https://github.com/microsoft/prompt-engine):**
-    - *Description:* An NPM utility library for creating and maintaining prompts for LLMs.
-    - *Background:* Aims to simplify prompt engineering for LLMs like GPT-3 and Codex, providing utilities for crafting inputs that coax specific outputs from the models.
-    - *Objective:* Facilitates the creation and maintenance of prompts, codifying patterns and practices around prompt engineering.
+    - *Description:* 一個NPM實用函式庫，用於創建和維護LLM的提示。
+    - *Background:* 旨在簡化GPT-3和Codex等LLM的提示工程，提供實用工具來設計輸入以誘導模型生成特定輸出。
+    - *Objective:* 促進提示的創建和維護，編纂提示工程的模式和實踐。
 4. **[Prompts AI](https://github.com/sevazhidkov/prompts-ai):**
-    - *Description:* An advanced GPT-3 playground with a focus on helping users discover GPT-3 capabilities and assisting developers in prompt engineering for specific use cases.
-    - *Goals:* Aid first-time GPT-3 users, experiment with prompt engineering, optimize the product for use cases like creative writing, classification, and chat bots.
+    - *Description:* 一個先進的GPT-3遊樂場，專注於幫助用戶發現GPT-3的能力，並協助開發者進行特定用例的提示工程。
+    - *Goals:* 幫助首次使用GPT-3的用戶，實驗提示工程，優化產品以適應創意寫作、分類和聊天機器人等用例。
 5. **[OpenPrompt](https://github.com/thunlp/OpenPrompt):**
-    - *Description:* A library built upon PyTorch for prompt-learning, adapting LLMs to downstream NLP tasks.
-    - *Features:* Standard, flexible, and extensible framework for deploying prompt-learning pipelines, supporting loading PLMs from huggingface transformers.
-    - *Objective:* Provides a standardized approach to prompt-learning, making it easier to adapt PLMs for specific NLP tasks.
+    - *Description:* 一個基於PyTorch的提示學習函式庫，將LLM適應下游NLP任務。
+    - *Features:* 標準、靈活且可擴展的框架，用於部署提示學習管道，支援從huggingface transformers加載PLM。
+    - *Objective:* 提供標準化的提示學習方法，使PLM更容易適應特定的NLP任務。
 6. **[Promptify](https://github.com/promptslab/Promptify):**
-    - *Features:* Test suite for LLM prompts, perform NLP tasks in a few lines of code, handle out-of-bounds predictions, output provided as Python objects for easy parsing, support for custom examples and samples, run inference on models from the Huggingface Hub.
-    - *Objective:* Aims to facilitate prompt testing for LLMs, simplify NLP tasks, and optimize prompts to reduce OpenAI token costs.
+    - *Features:* LLM提示的測試套件，用幾行程式碼執行NLP任務，處理越界預測，輸出以Python物件提供以便於解析，支援自定義範例和樣本，對Huggingface Hub的模型進行推論。
+    - *Objective:* 旨在促進LLM的提示測試，簡化NLP任務，並優化提示以減少OpenAI的token成本。
 
-## Read/Watch These Resources (Optional)
+## 閱讀/觀看這些資源 (選擇性)
 
 1. [https://www.promptingguide.ai/](https://www.promptingguide.ai/)
 2. [https://aman.ai/primers/ai/prompt-engineering/](https://aman.ai/primers/ai/prompt-engineering/)
 3. [https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
 4. [https://learnprompting.org/courses](https://learnprompting.org/courses)
 
-## Read These Papers (Optional)
+## 閱讀這些論文（可選）
 
 1. [https://arxiv.org/abs/2304.05970](https://arxiv.org/abs/2304.05970)
 2. [https://arxiv.org/abs/2309.11495](https://arxiv.org/abs/2309.11495)
 3. [https://arxiv.org/abs/2310.08123](https://arxiv.org/abs/2310.08123)
 4. [https://arxiv.org/abs/2305.13626](https://arxiv.org/abs/2305.13626)
+

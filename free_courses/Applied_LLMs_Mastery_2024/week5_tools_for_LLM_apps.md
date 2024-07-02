@@ -1,188 +1,189 @@
-# [Week 5] Tools for Building LLM Applications
+﻿# [第五週] 建構 LLM 應用程式的工具
 
-## ETMI5: Explain to Me in 5
+## ETMI5: 用五分鐘解釋給我聽
 
-In this section of our course, we explore the essential technologies and tools that facilitate the creation and enhancement of LLM applications. This includes Custom Model Adaptation for bespoke solutions, RAG-based Applications for contextually rich responses, and an extensive range of tools for input processing, development, application management, and output analysis. Through this comprehensive overview, we aim to equip you with the knowledge to leverage both proprietary and open-source models, alongside advanced development, hosting, and monitoring tools. 
+在本課程的這一部分中，我們探討了促進 LLM 應用程式創建和增強的基本技術和工具。這包括針對定制解決方案的自定義模型適應、基於 RAG 的應用程式以獲得上下文豐富的回應，以及用於輸入處理、開發、應用程式管理和輸出分析的廣泛工具。通過這個全面的概述，我們旨在使您具備利用專有和開放原始碼模型的知識，以及先進的開發、託管和監控工具。
 
-## Types of LLM Applications
+## 各類 LLM 應用
 
-LLM applications are gaining momentum, with an increasing number of startups and companies integrating them into their operations for various purposes. These applications can be categorized into three main types, based on how LLMs are utilized
+LLM 應用程式正在獲得動力，越來越多的初創公司和企業將它們整合到其運營中，用於各種目的。這些應用程式可以根據 LLM 的使用方式分為三種類型。
 
-1. **Custom Model Adaptation**: This encompasses both the development of custom models from scratch and fine-tuning pre-existing models. While custom model development demands skilled ML scientists and substantial resources, fine-tuning involves updating pre-trained models with additional data. Though fine-tuning is increasingly accessible due to open-source innovations, it still requires a sophisticated team and may result in unintended consequences. Despite its challenges, both approaches are witnessing rapid adoption across industries.
-2. **RAG based Applications**: The Retrieval Augmented Generation (RAG) method, likely the simplest and most widely adopted approach currently, utilizes a foundational model supplemented with contextual information. This involves retrieving embeddings, which represent words or phrases in a multidimensional vector space, from dedicated vector databases. Through the conversion of unstructured data into embeddings and their storage in these databases, RAG enables efficient retrieval of pertinent context during queries. This facilitates natural language comprehension and timely insights extraction without the need for extensive model customization or training. A notable advantage of RAG is its ability to bypass traditional model limitations like context window constraints. Moreover, it offers cost-effectiveness and scalability, catering to diverse developers and organizations. Furthermore, by harnessing embeddings retrieval, RAG effectively addresses concerns regarding data currency and seamlessly integrates into various applications and systems.
+1. **自訂模型調適**: 這涵蓋了從頭開始開發自訂模型和微調現有模型。雖然自訂模型開發需要熟練的機器學習科學家和大量資源，但微調則涉及使用額外的資料來更新預訓練模型。儘管由於開放原始碼創新使微調越來越容易接近，但它仍然需要一個高級團隊並可能導致意外後果。儘管有挑戰，這兩種方法在各行業中正迅速被採用。
+2. **基於RAG的應用**: 檢索增強生成（RAG）方法，可能是目前最簡單且最廣泛採用的方法，利用一個基礎模型輔以上下文資訊。這涉及從專用向量資料庫中檢索嵌入，這些嵌入在多維向量空間中表示單詞或短語。通過將非結構化資料轉換為嵌入並將其存儲在這些資料庫中，RAG在查詢期間實現了高效的相關上下文檢索。這有助於自然語言理解和及時洞察提取，而無需廣泛的模型自訂或訓練。RAG的一個顯著優勢是它能夠避開傳統模型的限制，如上下文窗口限制。此外，它提供了成本效益和延展性，滿足不同開發者和組織的需求。此外，通過利用嵌入檢索，RAG有效地解決了資料時效性問題，並無縫整合到各種應用和系統中。
 
-In the previous weeks’ [content](https://www.notion.so/Week-1-Part-2-Domain-and-Task-Adaptation-Methods-6ad3284a96a241f3bd2318f4f502a1da?pvs=21), we covered the distinctions between these methodologies and discussed the criteria for selecting the most appropriate one based on your specific needs. Please review the materials for further details.
+在前幾週的[內容](https://www.notion.so/Week-1-Part-2-Domain-and-Task-Adaptation-Methods-6ad3284a96a241f3bd2318f4f502a1da?pvs=21)，我們涵蓋了這些方法之間的區別，並討論了根據您的具體需求選擇最合適方法的標準。請查看資料以獲取更多詳細資訊。
 
-In the upcoming sections, we'll explore the tool options available for both of these methodologies. There's certainly some overlap between them, which we'll address.
+在接下來的部分中，我們將探討這兩種方法可用的工具選項。它們之間肯定有一些重疊，我們將會處理這些重疊。
 
-## Types of Tools
+## 工具類型
 
-We can broadly categorize tools into four major groups:
+我們可以將工具大致分為四大類:
 
-1. **Input Processing Tools**: These are tools designed to ingest data and various inputs for the application.
-2. **LLM Development Tools**: These tools facilitate interaction with the Large Language Model, including calling, fine-tuning, conducting experiments, and orchestration.
-3. **Output Tools**: These tools are utilized for managing the output from the LLM application, essentially focusing on post-output processes.
-4. **Application Tools**: These tools oversee the comprehensive management of the aforementioned three components, including application hosting, monitoring, and more.
+1. **輸入處理工具**: 這些是為應用程式設計用來攝取資料和各種輸入的工具。
+2. **LLM 開發工具**: 這些工具促進與大型語言模型的互動，包括呼叫、微調、進行實驗和協調。
+3. **輸出工具**: 這些工具用於管理來自 LLM 應用程式的輸出，主要專注於輸出後的處理過程。
+4. **應用程式工具**: 這些工具監管上述三個組件的全面管理，包括應用程式託管、監控等。
 
-![tools_1.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/tools_1.png)
+![tools_1.png](img/tools_1.png)
 
-If you're remember from the previous content  how RAG operates, an application typically follows these steps:
+如果你記得之前的內容，RAG 是如何運作的，一個應用程式通常會遵循以下步驟:
 
-1. Receives a query from the user (user's input to the application).
-2. Utilizes an embedding search to find pertinent data (this involves an embedding LLM, data sources and a vector database for storing data embeddings).
-3. Forwards the retrieved documents along with the query to the LLM for processing.
-4. Delivers the LLM's output back to the user.
+1. 接收來自使用者的查詢（使用者對應用程式的輸入）.
+2. 利用嵌入搜尋來找到相關的資料（這涉及嵌入LLM、資料來源和用於儲存資料嵌入的向量資料庫）.
+3. 將檢索到的文件連同查詢轉發給LLM進行處理.
+4. 將LLM的輸出回傳給使用者.
 
-Hosting and monitoring LLM responses are integrated into the overall application architecture, as depicted in the image below. For fine-tuning applications, much of this workflow is maintained. However, there's a need for a framework and computing resources dedicated to model fine-tuning. Additionally, the application may or may not utilize external data, in which case the vector database component might not be necessary. In the figure below, each of these components and their category association is depicted. Now that we know how each of the tools are utilized, let’s dig deeper into each of these tool types.
+託管和監控 LLM 回應已整合到整體應用程式架構中，如下圖所示。對於微調應用程式，此工作流程的大部分內容保持不變。然而，仍需要一個專門用於模型微調的框架和計算資源。此外，應用程式可能會或不會使用外部數據，在這種情況下，向量資料庫組件可能不是必需的。在下圖中，這些組件及其類別關聯已被描繪出來。現在我們知道了如何使用每個工具，讓我們深入探討這些工具類型。
 
-💡If you’re still unsure why each of these tool categories are required, please review the previous weeks’ content to understand how RAG and Fine-Tuning applications work
+💡如果您仍然不確定為什麼需要這些工具類別，請查看前幾週的內容以了解 RAG 和微調應用程式如何運作。
 
-![tools_3.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/tools_3.png)
+![tools_3.png](img/tools_3.png)
 
-Summary of tools available to build LLM Apps
+建構 LLM 應用程式可用工具摘要
 
-## Input Processing Tools
+## 輸入處理工具
 
-### 1. Data Pipelines/Sources
+### 1. 資料管道/來源
 
-In LLM applications, the effective management and processing of data are key to boosting performance and functionality. The types of data these applications work with are diverse, encompassing text documents, PDFs, and structured formats like CSV files or SQL tables. To navigate this variety, a range of data pipelines and source tools are chosen for loading and transforming data.
+在 LLM 應用中，有效的資料管理和處理是提升效能和功能的關鍵。這些應用處理的資料類型多種多樣，包括文字文件、PDF 和像 CSV 檔案或 SQL 表格等結構化格式。為了應對這種多樣性，選擇了一系列的資料管道和來源工具來載入和轉換資料。
 
-**A. Data Loading and ETL (Extract, Transform, Load) Tools**
+**A. 資料加載和ETL (Extract, Transform, Load) 工具**
 
-- **Traditional ETL Tools**: Established ETL solutions are widely used to manage data workflows. **[Databricks](http://databricks.com)** is chosen for its robust data processing capabilities, emphasizing machine learning and analytics, while **[Apache Airflow](https://airflow.apache.org/)** is preferred for its ability to programmatically author, schedule, and monitor workflows.
-- **Document Loaders and Orchestration Frameworks**: Applications that predominantly deal with unstructured data often utilize document loaders integrated within orchestration frameworks. Notable examples include:
-    - **[LangChain](https://www.langchain.com/)**, powered by Unstructured, aids in processing unstructured data for LLM applications.
-    - **[LlamaIndex](https://www.llamaindex.ai/)**, a component of the Llama Hub ecosystem, offers indexing and retrieval functions for efficient data management.
+- **傳統 ETL 工具**: 已建立的 ETL 解決方案廣泛用於管理資料工作流程。選擇 **[Databricks](http://databricks.com)** 是因為其強大的資料處理能力，強調機器學習和分析，而 **[Apache Airflow](https://airflow.apache.org/)** 則因其能夠以程式方式編寫、排程和監控工作流程而受到青睞。
+- **文件載入器和編排框架**: 主要處理非結構化資料的應用程式通常使用集成在編排框架內的文件載入器。值得注意的範例包括:
+    - **[LangChain](https://www.langchain.com/)**，由 Unstructured 提供支持，有助於處理 LLM 應用程式的非結構化資料。
+    - **[LlamaIndex](https://www.llamaindex.ai/)**，作為 Llama Hub 生態系統的一部分，提供索引和檢索功能以提高資料管理效率。
 
-Further details on LlamaIndex and LangChain will be provided in the orchestration section.
+進一步的詳細資訊將在協作部分提供有關 LlamaIndex 和 LangChain 的內容。
 
-**B. Specialized Data-Replication Solutions**
+**B. 專門的資料複製解決方案**
 
-Although the existing stack for data management in LLM applications is operational, there is potential for enhancement, especially in developing data-replication solutions specifically tailored for LLM apps. Such innovations could make the integration and operationalization of data more streamlined, improving both efficiency and the scope of possible applications.
+雖然現有的堆疊在 LLM 應用中的資料管理是可操作的，但仍有提升的潛力，特別是在開發專門針對 LLM 應用的資料複製解決方案方面。這樣的創新可以使資料的整合和操作更加簡化，提高效率和可能應用的範圍。
 
-**Data Loaders for Structured and Unstructured Data**
+**結構化和非結構化資料的資料加載器**
 
-The capability to integrate data from a variety of sources is enabled by data loaders that can handle both structured and unstructured inputs. For instance:
+能夠整合來自各種來源的數據的能力是由能夠處理結構化和非結構化輸入的數據加載器啟用的。例如:
 
-- **Unstructured Data**: Solutions provided by **Unstructured.io** allow for the creation of complex ETL pipelines. These are vital for applications aimed at generating personalized content or conducting semantic searches with data stored in formats like PDFs, documents, and presentations.
-- **Structured Data Sources**: Loaders that directly connect to databases and other structured data repositories are used, facilitating seamless data integration and manipulation.
+- **非結構化資料**: **Unstructured.io** 提供的解決方案允許建構複雜的 ETL 管道。這些對於生成個性化內容或進行語義搜索的應用程式至關重要，特別是處理儲存在 PDF、文件和簡報等格式中的資料。
+- **結構化資料來源**: 使用直接連接到資料庫和其他結構化資料庫的加載器，促進無縫的資料整合和操作。
 
-### 2. Vector Databases
+### 2. 向量資料庫
 
-Referring back to the content on RAG, we explored how the most relevant documents are identified through embedding similarity. This is the role where vector databases come into play.
+回到有關RAG的內容，我們探討了如何通過嵌入相似性來識別最相關的文件。這就是向量資料庫發揮作用的地方。
 
-The primary role of a vector database is to store, compare, and retrieve embeddings (i.e., vectors) efficiently, often scaling up to billions. Among the various options available, **[Pinecone](https://www.pinecone.io/)** stands out as a prevalent choice due to its cloud-hosted nature, making it readily accessible and equipped with features that cater to the demands of large enterprises, such as scalability, Single Sign-On, and Service Level Agreements on uptime.
+向量資料庫的主要角色是有效地儲存、比較和檢索嵌入（即向量），通常可以擴展到數十億。在各種可用選項中，**[Pinecone](https://www.pinecone.io/)** 因其雲端託管的特性而脫穎而出，使其易於訪問，並配備了滿足大型企業需求的功能，如延展性、單一登入和正常運行時間的服務級別協議。
 
-The spectrum of vector databases is broad, encompassing:
+向量資料庫的範圍很廣，涵蓋：
 
-- **Open Source Systems** like [Weaviate](https://weaviate.io/), [Vespa](https://vespa.ai/), and [Qdrant](https://qdrant.tech/): These platforms offer exceptional performance on a single-node basis and can be customized for particular applications, making them favored choices among AI teams with the expertise to develop tailored platforms.
-- **Local Vector Management Libraries** such as [Chroma](https://www.trychroma.com/) and [Faiss](https://github.com/facebookresearch/faiss): Known for their excellent developer experience, these libraries are straightforward to implement for small-scale applications and development experiments. However, they may not serve as complete substitutes for a full-fledged database at scale.
-- **OLTP Extensions like [pgvector](https://supabase.com/docs/guides/database/extensions/pgvector)**: This option is suited for those who tend to use Postgres for various database requirements or enterprises that procure most of their data infrastructure from a single cloud provider, offering a viable solution for vector support. The long-term viability of closely integrating vector and scalar workloads remains to be seen.
+- **開放原始碼系統**如[Weaviate](https://weaviate.io/)、[Vespa](https://vespa.ai/)和[Qdrant](https://qdrant.tech/): 這些平台在單節點基礎上提供了卓越的性能，並且可以針對特定應用進行自訂，使其成為具備開發定製平台專業知識的AI團隊的首選。
+- **本地向量管理函式庫**如[Chroma](https://www.trychroma.com/)和[Faiss](https://github.com/facebookresearch/faiss): 這些函式庫以其出色的開發者體驗而聞名，對於小規模應用和開發實驗來說實施起來相當簡單。然而，它們可能無法作為大規模完整資料庫的完全替代品。
+- **OLTP擴展如[pgvector](https://supabase.com/docs/guides/database/extensions/pgvector)**: 這個選項適合那些傾向於使用Postgres來滿足各種資料庫需求或從單一雲端供應商處獲取大部分資料基礎設施的企業，提供了一個可行的向量支持解決方案。長期來看，緊密整合向量和標量工作負載的可行性仍有待觀察。
 
-With the evolution of technology, many open-source vector database providers are venturing into cloud services. Achieving high performance in the cloud, catering to a wide array of use cases, presents a significant challenge. While the immediate future may not witness drastic changes in the offerings available, the long-term landscape is expected to evolve. 
+隨著科技的演進，許多開放原始碼向量資料庫提供者正在進軍雲端服務。在雲端中實現高效能，以滿足廣泛的使用案例，這是一個重大的挑戰。雖然近期內可能不會見證可用產品的劇變，但長期來看，預期會有演變。
 
-## LLM Development Tools
+## LLM 開發工具
 
-### 1. Models
+### 1. 模型
 
-Developers have a variety of model options to choose from, each with its own set of advantages depending on the project's requirements. The starting point for many is the OpenAI API, with GPT-4 or GPT-4-32k models being popular choices due to their wide-ranging compatibility and minimal need for fine-tuning.
+開發人員有多種模型選擇，每種都有其優勢，具體取決於專案的需求。許多人的起點是 OpenAI API，GPT-4 或 GPT-4-32k 模型因其廣泛的相容性和對微調的最小需求而成為流行選擇。
 
-As applications move from development to production, the focus often shifts towards balancing cost and performance. 
+隨著應用程式從開發階段轉移到生產階段，重點通常會轉向平衡成本和效能。
 
-Beyond proprietary models, there's a growing interest in open-source alternatives, most of which are available on **[Huggingface](https://huggingface.co/).** Open-source models provide a flexible and cost-effective solution, especially useful in high-volume, consumer-facing applications like search or chat functions. While traditionally seen as lagging behind their proprietary counterparts in terms of accuracy and performance, the gap is closing. Initiatives like Meta's LLaMa models have showcased the potential for open-source models to reach high levels of accuracy, spurring the development of various alternatives aimed at matching or even surpassing proprietary model performance.
+除了專有模型之外，對開放原始碼替代方案的興趣日益增長，其中大多數可在 **[Huggingface](https://huggingface.co/)** 上獲得。開放原始碼模型提供了一種靈活且具成本效益的解決方案，特別適用於高流量、面向消費者的應用程式，如搜尋或聊天功能。雖然傳統上被認為在準確性和性能方面落後於專有模型，但這種差距正在縮小。像 Meta 的 LLaMa 模型這樣的計劃展示了開放原始碼模型達到高準確性的潛力，促使各種替代方案的發展，旨在匹敵甚至超越專有模型的性能。
 
-The choice between proprietary and open-source models doesn't just hinge on cost. Considerations include the specific needs of the application, such as accuracy, inference speed, customization options, and the potential need for fine-tuning to meet particular requirements. Users may also weigh the benefits of hosting models themselves against using cloud-based solutions, which can simplify deployment but may involve different cost structures and scalability considerations. 
+在專有模型和開放原始碼模型之間的選擇不僅僅取決於成本。考量因素包括應用程式的具體需求，例如準確性、推論速度、客製化選項，以及為滿足特定需求可能需要的微調。使用者還可能會權衡自行託管模型的好處與使用基於雲端的解決方案之間的差異，後者可以簡化部署，但可能涉及不同的成本結構和延展性考量。
 
-💡Note that many proprietary models cannot be fine-tuned by the application developers. 
+💡請注意，許多專有模型無法由應用程式開發人員進行微調。
 
-### 2. Orchestration
+### 2. 編排
 
-Orchestration tools in the context of LLM applications are software frameworks designed to streamline and manage complex processes involving multiple components and interactions with LLMs. Here's a breakdown of what these tools do:
+LLM 應用程式背景下的協作工具是設計用來簡化和管理涉及多個元件和與 LLM 互動的複雜過程的軟體框架。以下是這些工具的功能分解:
 
-1. **Automate Prompt Engineering**: Orchestration tools automate the creation and management of prompts, which are queries or instructions sent to LLMs. These tools use advanced strategies to construct prompts that effectively communicate the task at hand to the model, improving the relevance and accuracy of the model's responses.
-2. **Integrate External Data**: They facilitate the incorporation of external data into prompts, enhancing the model's responses with context that it wasn't originally trained on. This could involve pulling information from databases, web services, or other data sources to provide the LLM with the most current or relevant data for generating its responses.
-3. **Manage API Interactions**: Orchestration tools handle the complexities of interfacing with LLM APIs, including making calls to the model, managing API keys, and handling the data returned by the model. This allows developers to focus on higher-level application logic rather than the intricacies of API communication.
-4. **Prompt Chaining and Memory Management**: They enable prompt chaining, where the output of one LLM interaction is used as input for another, allowing for more sophisticated dialogues or data processing sequences. Additionally, they can maintain a "memory" of previous interactions, helping the model build on past responses for more coherent and contextually relevant outputs.
-5. **Simplify Application Development**: By abstracting away the complexity of working directly with LLMs, orchestration tools make it easier for developers to build applications. They provide templates and frameworks for common use cases like chatbots, content generation, and information retrieval, speeding up the development process.
-6. **Avoid Vendor Lock-in**: These tools often design their systems to be model-agnostic, meaning they can work with different LLMs from various providers. This flexibility allows developers to switch between models as needed without rewriting large portions of their application code.
+1. **自動化提示工程**: 協作工具自動化建立和管理提示，這些提示是發送給LLM的查詢或指令。這些工具使用先進的策略來構建提示，有效地將任務傳達給模型，從而提高模型回應的相關性和準確性。
+2. **整合外部數據**: 它們促進將外部數據納入提示，通過提供模型原本未訓練的上下文來增強模型的回應。這可能涉及從資料庫、網絡服務或其他數據來源提取資訊，以提供LLM最當前或最相關的數據來生成回應。
+3. **管理API互動**: 協作工具處理與LLM API接口的複雜性，包括呼叫模型、管理API密鑰以及處理模型返回的數據。這使開發人員能專注於更高層次的應用邏輯，而不是API通信的細節。
+4. **提示鏈接和記憶體管理**: 它們啟用提示鏈接，將一個LLM互動的輸出用作另一個互動的輸入，允許進行更複雜的對話或數據處理序列。此外，它們還可以維持先前互動的「記憶體」，幫助模型基於過去的回應構建更連貫和上下文相關的輸出。
+5. **簡化應用開發**: 通過抽象化直接與LLM工作的複雜性，協作工具使開發人員更容易構建應用。它們提供模板和框架，用於常見的使用案例，如聊天機器人、內容生成和資訊檢索，加快開發過程。
+6. **避免供應商鎖定**: 這些工具通常設計為模型不可知，意味著它們可以與來自不同供應商的不同LLM一起工作。這種靈活性使開發人員能夠根據需要在模型之間切換，而無需重寫大量的應用程式碼。
 
-Frameworks like **LangChain** and **LlamaIndex** work by simplifying complex processes such as prompt chaining, interfacing with external APIs, integrating contextual data from vector databases, and maintaining consistency across multiple LLM interactions. They offer templates for a wide range of applications, making them particularly popular among hobbyists and startups eager to launch their applications quickly, with LangChain leading in usage.
+像 **LangChain** 和 **LlamaIndex** 這樣的框架通過簡化複雜的流程來工作，例如提示鏈接、與外部 API 的接口、整合來自向量資料庫的上下文資料，以及在多個 LLM 互動中保持一致性。它們為廣泛的應用提供模板，使其在業餘愛好者和渴望快速推出應用的初創公司中特別受歡迎，其中 LangChain 在使用上領先。
 
-![tools_2.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/tools_2.png)
+![tools_2.png](img/tools_2.png)
 
-Image Source: [https://stackoverflow.com/questions/76990736/differences-between-langchain-llamaindex](https://stackoverflow.com/questions/76990736/differences-between-langchain-llamaindex)
+圖片來源: [https://stackoverflow.com/questions/76990736/differences-between-langchain-llamaindex](https://stackoverflow.com/questions/76990736/differences-between-langchain-llamaindex)
 
-Retrieval-augmented generation techniques, which personalize model outputs by embedding specific data within prompts, demonstrate how personalization can be achieved without altering the model's weights through fine-tuning. Tools like LangChain and LlamaIndex offer structures for weaving data into the model's context, facilitating this process.
+增強檢索生成技術，通過將特定數據嵌入提示中來個性化模型輸出，展示了如何在不通過微調改變模型權重的情況下實現個性化。像 LangChain 和 LlamaIndex 這樣的工具提供了將數據編織到模型上下文中的結構，促進了這一過程。
 
-The availability of language model APIs democratizes access to powerful models, extending their use beyond specialized machine learning teams to the broader developer community. This expansion is likely to spur the development of more developer-oriented tools. LangChain, for instance, assists developers in overcoming common challenges by abstracting complexities such as model integration, data connection, and avoiding vendor lock-in. Its utility ranges from prototyping to full-scale production use, indicating a significant shift towards more accessible and versatile tooling in the LLM application development ecosystem.
+語言模型 API 的可用性使得強大的模型能夠被更廣泛的開發者社群使用，而不僅僅是專門的機器學習團隊。這種擴展可能會促進更多面向開發者的工具的發展。例如，LangChain 幫助開發者克服常見的挑戰，通過抽象化複雜性，如模型整合、資料連接和避免供應商鎖定。其效用範圍從原型設計到全規模生產使用，顯示出 LLM 應用程式開發生態系統向更易於使用和多功能工具的重大轉變。
 
-### 3. Compute/Training Frameworks
+### 3. 計算/訓練框架
 
-Compute and training frameworks play essential roles in the development and deployment of LLM applications, particularly when it comes to fine-tuning models to suit specific needs or developing entirely new models. These frameworks and services provide the necessary infrastructure and tools required for handling the substantial computational demands of working with LLMs.
+計算和訓練框架在LLM應用的開發和部署中扮演著至關重要的角色，特別是在微調模型以滿足特定需求或開發全新模型時。這些框架和服務提供了處理LLM工作所需的大量計算需求的必要基礎設施和工具。
 
-**Compute Frameworks**
+**計算框架**
 
-Compute frameworks and cloud services offer scalable resources needed to run LLM applications efficiently. Examples include:
+計算框架和雲端服務提供了執行 LLM 應用程式所需的延展性資源。範例包括:
 
-- **Cloud Providers**: Services like **[AWS](https://aws.amazon.com/) (Amazon Web Services)** provide a wide range of computing resources, including GPU and CPU instances, which are critical for both training and inference phases of LLM applications. These platforms offer flexibility and scalability, allowing developers to adjust resources according to their project's requirements.
-- **LLM Infrastructure Companies**: Companies like **[Fireworks.ai](https://fireworks.ai/)** and **[Anyscale](https://www.anyscale.com/)** specialize in providing infrastructure solutions tailored for LLMs. These services are designed to optimize the performance of LLM applications, offering specialized hardware and software configurations that can significantly reduce training and inference times.
+- **雲端供應商**: 像 **[AWS](https://aws.amazon.com/) (Amazon Web Services)** 這樣的服務提供了廣泛的計算資源，包括 GPU 和 CPU 實例，這對於 LLM 應用的訓練和推論階段至關重要。這些平台提供靈活性和延展性，使開發人員能夠根據項目的需求調整資源。
+- **LLM 基礎設施公司**: 像 **[Fireworks.ai](https://fireworks.ai/)** 和 **[Anyscale](https://www.anyscale.com/)** 這樣的公司專門提供針對 LLM 的基礎設施解決方案。這些服務旨在優化 LLM 應用的性能，提供專門的硬體和軟體配置，可以顯著減少訓練和推論時間。
 
-**Training Frameworks**
+**訓練框架**
 
-For the development and fine-tuning of LLMs, deep learning frameworks are used. These include:
+為了開發和微調 LLMs，使用了深度學習框架。這些包括:
 
-- **PyTorch**: A popular choice among researchers and developers for training LLMs due to its flexibility, ease of use, and dynamic computational graph. PyTorch supports a wide range of LLM architectures and provides tools for efficient model training and fine-tuning.
-- **TensorFlow**: Another widely used framework that offers robust support for LLM training and deployment. TensorFlow is known for its scalability and is suited for both research prototypes and production deployments.
+- **PyTorch**: 由於其靈活性、易用性和動態計算圖，是研究人員和開發人員訓練 LLM 的熱門選擇。PyTorch 支援多種 LLM 架構，並提供高效的模型訓練和微調工具。
+- **TensorFlow**: 另一個廣泛使用的框架，提供對 LLM 訓練和部署的強大支援。TensorFlow 以其延展性著稱，適用於研究原型和生產部署。
 
-💡Note that LLM API applications, such as those leveraging RAG, typically do not require direct access to computational resources for training since they use pre-trained models provided via an API. In these cases, the focus is more on integrating the API into the application and possibly using orchestration tools to manage interactions with the model.
+💡請注意，LLM API 應用程式（例如利用 RAG 的應用程式）通常不需要直接訪問計算資源來進行訓練，因為它們使用的是通過 API 提供的預訓練模型。在這些情況下，更重要的是將 API 整合到應用程式中，並可能使用協調工具來管理與模型的互動。
 
-### 4. Experimentation Tools
+### 4. 實驗工具
 
-Experimentation tools are pivotal for LLM applications, as they facilitate the exploration and optimization of hyperparameters, fine-tuning techniques, and the models themselves. These tools help track and manage the multitude of experiments that are part of developing and refining LLM applications, enabling more systematic and data-driven approaches to model improvement. 
+實驗工具對於 LLM 應用至關重要，因為它們促進了超參數的探索和最佳化、微調技術以及模型本身的改進。這些工具有助於跟蹤和管理開發和改進 LLM 應用的一系列實驗，使模型改進的方式更加系統化和數據驅動。
 
-💡 It's important to note that the mentioned tools are primarily beneficial for scenarios involving the fine-tuning or training of models, where experimentation is key. If you're working on applications, these tools might not hold the same level of utility since the LLM operates as a black box. In such cases, the LLM's inner workings and training processes are managed externally, and the focus shifts towards optimizing the use of the model through APIs rather than directly manipulating its training or fine-tuning parameters.
+💡 重要的是要注意，所提到的工具主要對於涉及模型微調或訓練的情境有益，其中實驗是關鍵。如果你正在開發應用程式，這些工具可能不會有同樣的效用，因為LLM運作如同一個黑箱。在這種情況下，LLM的內部運作和訓練過程是由外部管理的，重點轉向通過API優化模型的使用，而不是直接操作其訓練或微調參數。
 
-The below are some experimentation tools
+以下是一些實驗工具
 
-- **Experiment Tracking**: Tools like **[Weights & Biases](https://wandb.ai/site)** provide platforms for tracking experiments, including changes in hyperparameters, model architectures, and performance metrics over time. This facilitates a more organized approach to experimentation, helping developers to identify the most effective configurations.
-- **Model Development and Hosting**: Platforms like **Hugging Face** and **[MLFlow](https://mlflow.org/)** offer ecosystems for developing, sharing, and deploying ML models, including custom LLMs. These services simplify access to model repositories (model hubs), computing resources, and deployment capabilities, streamlining the development cycle.
-- **Performance Evaluation**: Tools like **[Statsig](https://www.statsig.com/)** offer capabilities for evaluating model performance in a live production environment, allowing developers to conduct A/B tests and gather real-world feedback on model behavior.
+- **實驗追蹤**: 像 **[Weights & Biases](https://wandb.ai/site)** 這樣的工具提供了追蹤實驗的平台，包括超參數的變更、模型架構和性能指標隨時間的變化。這有助於更有組織地進行實驗，幫助開發者識別最有效的配置。
+- **模型開發和託管**: 像 **Hugging Face** 和 **[MLFlow](https://mlflow.org/)** 這樣的平台提供了開發、分享和部署機器學習模型的生態系統，包括自定義 LLMs。這些服務簡化了對模型庫（model hubs）、計算資源和部署能力的訪問，精簡了開發週期。
+- **性能評估**: 像 **[Statsig](https://www.statsig.com/)** 這樣的工具提供了在實時生產環境中評估模型性能的能力，使開發者能夠進行 A/B 測試並收集模型行為的真實反饋。
 
-## Application Tools
+## 應用工具
 
-### 1. Hosting
+### 1. 主機代管
 
-Developers leveraging open-source models have a range of hosting services at their disposal. Innovations from companies like [OctoML](https://octo.ai/) have expanded hosting capabilities beyond traditional server setups, enabling deployment on edge devices and directly within browsers. This shift not only enhances privacy and security but also serves to reduce latency and costs. Hosting platforms like [Replicate](https://replicate.com/) are incorporating tools designed to simplify the integration and utilization of these models for software developers, reflecting a belief in the potential of smaller, finely tuned models to achieve top-tier accuracy within specific domains.
+開發者利用開放原始碼模型擁有多種託管服務可供選擇。像 [OctoML](https://octo.ai/) 這樣的公司創新，擴展了託管能力，超越了傳統的伺服器設置，實現了在邊緣設備和瀏覽器內部直接部署。這種轉變不僅增強了隱私和安全性，還有助於降低延遲和成本。像 [Replicate](https://replicate.com/) 這樣的託管平台正在整合設計用於簡化這些模型對軟體開發者的整合和使用的工具，反映了對小型、精細調整模型在特定領域內實現頂級準確性的潛力的信念。
 
-Beyond the LLM components, the static elements of LLM applications—essentially, everything excluding the model itself—also require hosting solutions. Common choices include platforms like [Vercel](https://vercel.com/) and services provided by major cloud providers. Yet, the landscape is evolving with the emergence of startups like [Steamship](https://www.steamship.com/) and [Streamlit](https://streamlit.io/), which offer end-to-end hosting solutions tailored for LLM applications, indicating a broadening of hosting options to support the diverse needs of developers. 
+除了 LLM 元件之外，LLM 應用程式的靜態元素——基本上，除了模型本身之外的所有東西——也需要託管解決方案。常見的選擇包括像 [Vercel](https://vercel.com/) 這樣的平台和主要雲端供應商提供的服務。然而，隨著像 [Steamship](https://www.steamship.com/) 和 [Streamlit](https://streamlit.io/) 這樣的新創公司出現，提供針對 LLM 應用程式量身定制的端到端託管解決方案，託管選項的範圍正在擴大，以支持開發人員的多樣化需求。
 
-### 2. Monitoring
+### 2. 監控
 
-Monitoring and observability tools are essential for maintaining and improving applications, especially after deployment in production. These tools enable developers to track key metrics such as the model's performance, cost, latency, and overall behavior. Insights gained from these metrics are invaluable for guiding the iteration of prompts and further experimentation with models, ensuring that the application remains efficient, cost-effective, and aligned with user needs.
+監控和可觀察性工具對於維護和改進應用程式至關重要，特別是在生產環境中部署後。這些工具使開發者能夠追蹤關鍵指標，如模型的性能、成本、延遲和整體行為。從這些指標中獲得的見解對於指導提示的迭代和進一步的模型實驗非常寶貴，確保應用程式保持高效、具成本效益並符合使用者需求。
 
-One notable development in this area is the launch of **[LangKit](https://github.com/whylabs/langkit) by WhyLabs**. LangKit is specifically designed to offer developers enhanced visibility into the quality of model outputs.  
+在這個領域的一個顯著發展是 **[WhyLabs 推出的 LangKit](https://github.com/whylabs/langkit)**。LangKit 專門設計用來為開發者提供更高的模型輸出品質可見性。
 
-Some other examples:
+一些其他範例:
 
-**[Gantry](https://www.gantry.io/)** offers a holistic approach to understanding model performance by tracking inputs and outputs alongside relevant metadata and user feedback. It assists in uncovering how models function in real-world scenarios, identifying errors, and spotting underperforming cohorts or use cases.
+**[Gantry](https://www.gantry.io/)** 提供了一種全面的方法來理解模型性能，通過追蹤輸入和輸出以及相關的 Metadata 和用戶反饋。它有助於揭示模型在現實場景中的運作方式，識別錯誤，並發現表現不佳的群體或使用案例。
 
-**[Helicone](https://www.helicone.ai/)** is designed to offer actionable insights into application performance with minimal setup. It enables real-time monitoring of model interactions, helping developers understand how their models are performing across different metrics. By logging inputs, outputs, and enriching them with metadata and user feedback, Helicone provides a comprehensive view of model behavior. 
+**[Helicone](https://www.helicone.ai/)** 的設計目的是提供可行的應用程式效能見解，且設定簡便。它能夠即時監控模型互動，幫助開發者了解他們的模型在不同指標上的表現。通過記錄輸入、輸出，並用 Metadata 和使用者反饋來豐富這些資料，Helicone 提供了模型行為的全面視圖。
 
-## Output Tools
+## 輸出工具
 
-### 1. Evaluation
+### 1. 評估
 
-When developing applications with LLMs, developers often navigate a complex balance among model performance, inference cost, and latency. Strategies to enhance one aspect, such as iterating on prompts, fine-tuning the model, or switching model providers, can impact the others. Given the probabilistic nature of LLMs and the variability in tasks they perform, assessing performance becomes a critical challenge. To aid in this process, a range of evaluation tools have been developed. These tools assist in refining prompts, tracking experimentation, and monitoring model performance, both offline and online. Here's an overview of the types of tools available:
+開發 LLM 應用程式時，開發者經常在模型效能、推論成本和延遲之間尋找複雜的平衡。增強某一方面的策略，例如迭代提示、微調模型或更換模型提供者，可能會影響其他方面。鑑於 LLM 的概率性質及其執行任務的變異性，評估效能成為一個關鍵挑戰。為了幫助這個過程，已開發出一系列評估工具。這些工具有助於精煉提示、追蹤實驗和監控模型效能，無論是離線還是在線。以下是可用工具類型的概述:
 
-For those looking to optimize the interaction with LLMs, No Code / Low Code prompt engineering tools are invaluable. They allow developers and prompt engineers to experiment with different prompts and compare outputs across various models without deep coding requirements. Some examples of such tools include [Humanloop](https://humanloop.com/), [PromptLayer](https://promptlayer.com/) etc.
+對於那些希望優化與 LLMs 互動的人來說，無程式碼 / 低程式碼提示工程工具是非常寶貴的。它們允許開發人員和提示工程師在不需要深入編碼的情況下，嘗試不同的提示並比較各種模型的輸出。一些此類工具的範例包括 [Humanloop](https://humanloop.com/)、[PromptLayer](https://promptlayer.com/) 等。
 
-Once deployed, it's important to continually monitor an LLM application's performance in the real world. Performance monitoring tools offer insights into how well the model is performing against key metrics, identify potential degradation over time, and highlight areas for improvement. These tools can alert developers to issues that may affect user experience or operational costs, enabling timely adjustments to maintain or enhance the application's effectiveness. Some performance monitoring tools include [Honeyhive](https://www.honeyhive.ai/) and [Scale AI](https://scale.com/).
+一旦部署後，持續監控 LLM 應用程式在真實世界中的效能是很重要的。效能監控工具提供了模型在關鍵指標上的表現資訊，識別隨時間可能出現的性能下降，並強調改進的領域。這些工具可以提醒開發者可能影響使用者體驗或運營成本的問題，從而進行及時調整以維持或提升應用程式的效能。一些效能監控工具包括 [Honeyhive](https://www.honeyhive.ai/) 和 [Scale AI](https://scale.com/)。
 
-The infographic below provides a summary of the tools available for each component of the LLM application process.
+下面的資訊圖表提供了 LLM 應用程式過程中每個元件可用工具的摘要。
 
-## Read/Watch These Resources (Optional)
+## 閱讀/觀看這些資源 (選擇性)
 
 1. [https://www.secopsolution.com/blog/top-10-llm-tools-in-2024](https://www.secopsolution.com/blog/top-10-llm-tools-in-2024)
-2. [https://www.sequoiacap.com/article/llm-stack-perspective/](https://www.sequoiacap.com/article/llm-stack-perspective/)
+2. [https://www.sequoiacap.com/article/llm-stack-perspective](https://www.sequoiacap.com/article/llm-stack-perspective)
 3. [https://www.codesmith.io/blog/introducing-the-emerging-llm-tech-stack](https://www.codesmith.io/blog/introducing-the-emerging-llm-tech-stack)
 4. [https://stackshare.io/index/llm-tools](https://stackshare.io/index/llm-tools)
+

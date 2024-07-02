@@ -1,33 +1,35 @@
-# LLM Agents: From Zero to One
+﻿# LLM Agents: From Zero to One
 
-LLM agents are gaining quite some momentum in the generative AI space since they can process feedback, maintain memory, strategize for future actions, and collaborate with various tools to make informed decisions.
+LLM 代理在生成式 AI 領域中正獲得相當大的動力，因為它們可以處理反饋、維持記憶、為未來行動制定策略，並與各種工具合作以做出明智的決策。
 
-If you’ve been looking to learn more about LLM agents and maybe even create your own, this roadmap is just for you! It's filled with great free resources to help you get started and stay up-to-date on what's happening in the world of agents.
+如果你一直在尋找學習更多關於 LLM 代理的資訊，甚至想要建立自己的代理，那麼這個路線圖就是為你準備的！它充滿了很棒的免費資源，幫助你開始並隨時了解代理世界中發生的事情。
 
-![agent_roadmap_image.gif](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/agent_roadmap_image.gif)
+![agent_roadmap_image.gif](img/agent_roadmap_image.gif)
 
-# Roadmap
+# 路線圖
 
-## **Day 1: Introduction to Agents**
+## **第 1 天: 介紹代理**
 
-1. LLM Agents glossary by Deepchecks ([link](https://deepchecks.com/glossary/llm-agents/))
-2. Navigating the World of LLM Agents: A Beginner’s Guide by Dominik Polzer  ([link](https://towardsdatascience.com/navigating-the-world-of-llm-agents-a-beginners-guide-3b8d499db7a9))
-
----
-
-## **Day 2: Core Components**
-
-1. Harrison Chase - Agents Masterclass from LangChain Founder ([link](https://www.youtube.com/watch?v=DWUdGhRrv2c))
-2. Introduction to LLM Agents by Nvidia ([link](https://developer.nvidia.com/blog/introduction-to-llm-agents/))
+1. Deepchecks 的 LLM Agents 詞彙表 ([link](https://deepchecks.com/glossary/llm-agents/))
+2. Dominik Polzer 的 LLM Agents 世界導航：初學者指南 ([link](https://towardsdatascience.com/navigating-the-world-of-llm-agents-a-beginners-guide-3b8d499db7a9))
 
 ---
 
-## **Day 3: Multi-Agents & Evaluation**
 
-1. Revolutionizing AI: The Era of Multi-Agent Large Language Models by Gary Fowler **([link](https://gafowler.medium.com/revolutionizing-ai-the-era-of-multi-agent-large-language-models-f70d497f3472))**
-2. Multi-Agent LLM Applications | A Review of Current Research, Tools, and Challenges by Victor Dibia ([link](https://newsletter.victordibia.com/p/multi-agent-llm-applications-a-review))
-3. How to Build, Evaluate, and Iterate on LLM Agents by [Deeplearning.AI](http://Deeplearning.AI) ([link](https://www.youtube.com/watch?v=0pnEUAwoDP0))
-4. Benchmarks for evaluating agents (read any one):
+## **第2天: 核心元件**
+
+1. Harrison Chase - 來自 LangChain 創始人的 Agents 大師班 ([link](https://www.youtube.com/watch?v=DWUdGhRrv2c))
+2. Nvidia 的 LLM Agents 簡介 ([link](https://developer.nvidia.com/blog/introduction-to-llm-agents/))
+
+---
+
+
+## **第3天: 多代理與評估**
+
+1. 革命性AI: 多代理大型語言模型的時代 by Gary Fowler **([link](https://gafowler.medium.com/revolutionizing-ai-the-era-of-multi-agent-large-language-models-f70d497f3472))**
+2. 多代理LLM應用 | 當前研究、工具和挑戰的回顧 by Victor Dibia ([link](https://newsletter.victordibia.com/p/multi-agent-llm-applications-a-review))
+3. 如何建構、評估和迭代LLM代理 by [Deeplearning.AI](http://Deeplearning.AI) ([link](https://www.youtube.com/watch?v=0pnEUAwoDP0))
+4. 評估代理的基準（閱讀任一篇):
     1. [AgentBench](https://github.com/THUDM/AgentBench)
     2. [IGLU](https://arxiv.org/abs/2304.10750)
     3. [ClemBench](https://arxiv.org/abs/2305.13455)
@@ -36,37 +38,41 @@ If you’ve been looking to learn more about LLM agents and maybe even create yo
 
 ---
 
-## **Day 4- Real-World Agents**
 
-1. Harrison Chase - Agents Masterclass from LangChain Founder ([link](https://www.youtube.com/watch?v=DWUdGhRrv2c))
-2. What's next for AI agents ft. LangChain's Harrison Chase ([link](https://www.youtube.com/watch?v=pBBe1pk8hf4))
-3. Scaling AI Agents for Real-World Tasks with Parcha CEO AJ Asver ([link](https://www.youtube.com/watch?v=zCGWDWCTYkE))
-4. Learn about popular real world agents (read any one):
-    - ChemCrow: Augmenting large-language models with chemistry tools ([link](https://arxiv.org/abs/2304.05376))
+## **Day 4- 真實世界代理**
+
+1. Harrison Chase - LangChain 創辦人的 Agents 大師班 ([link](https://www.youtube.com/watch?v=DWUdGhRrv2c))
+2. AI agents 的下一步是什麼，特邀 LangChain 的 Harrison Chase ([link](https://www.youtube.com/watch?v=pBBe1pk8hf4))
+3. 與 Parcha CEO AJ Asver 一起擴展 AI Agents 以應對現實世界的任務 ([link](https://www.youtube.com/watch?v=zCGWDWCTYkE))
+4. 了解流行的現實世界代理（閱讀任意一個):
+    - ChemCrow: 使用化學工具增強大型語言模型 ([link](https://arxiv.org/abs/2304.05376))
     - BabyAGI ([link](https://github.com/yoheinakajima/babyagi))
-    - OS-Copilot: Towards Generalist Computer Agents with Self-Improvement ([link](https://arxiv.org/abs/2402.07456))
+    - OS-Copilot: 邁向具自我改進能力的通用電腦代理 ([link](https://arxiv.org/abs/2402.07456))
 
-4. Use these Github repos to check out the latest research in agents (use this as a reference only; it’s not required to read through everything)
+4. 使用這些 Github 資源庫來查看代理的最新研究（僅供參考；不要求全部閱讀)
     -  **[awesome-llm-powered-agent](https://github.com/hyp1231/awesome-llm-powered-agent)**
     -  **[awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents/tree/main)**
 
 ---
 
-## **Day 5- Build Your Own Agent**
 
-Choose any one of these resources and follow the implementation guide in them to get started
+## **第5天- 建構你自己的代理**
 
-1. Episode #1: Intro to LLM Agents: When RAG is Not Enough by Neurons Lab ([link](https://www.youtube.com/watch?v=uVkS05qPhik))
-2. Build Anything with AI Agents, Here's How by David Ondrej ([link](https://www.youtube.com/watch?v=AxnL5GtWVNA))
-3. The Complete Guide to Building AI Agents for Beginners by VRSEN([link](https://www.youtube.com/watch?v=MOyl58VF2ak))
-4. Building a LangChain Custom Medical Agent with Memory by ****Sam Witteveen ([link](https://www.youtube.com/watch?v=6UFtRwWnHws))
-5. Langchain Agents [2024 UPDATE] - Beginner Friendly by Ryan Nolan Data ([link](https://www.youtube.com/watch?v=WVUITosaG-g))
+選擇任意一個資源並按照其中的實作指南開始使用
+
+1. 第1集: LLM代理的介紹: 當RAG不夠時由Neurons Lab ([link](https://www.youtube.com/watch?v=uVkS05qPhik))
+2. 使用AI代理建構任何東西，這裡是方法由David Ondrej ([link](https://www.youtube.com/watch?v=AxnL5GtWVNA))
+3. 初學者建構AI代理的完整指南由VRSEN ([link](https://www.youtube.com/watch?v=MOyl58VF2ak))
+4. 使用記憶體建構LangChain自訂醫療代理由****Sam Witteveen ([link](https://www.youtube.com/watch?v=6UFtRwWnHws))
+5. Langchain代理 [2024更新] - 初學者友好由Ryan Nolan Data ([link](https://www.youtube.com/watch?v=WVUITosaG-g))
 
 ---
 
-## Other comprehensive resources:
 
-1. My “Agents 101” guide ([link](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/agents_101_guide.md))
-2. LLM Powered Autonomous Agents by Lilian Weng ([link](https://lilianweng.github.io/posts/2023-06-23-agent/))
-3. LLM Agents by Prompt Engineering Guide ([link](https://www.promptingguide.ai/research/llm-agents))
-4. LangChain and the Future of LLM Agents by Arize AI ([link](https://www.youtube.com/watch?v=JwO08Pk6S_Q))
+## 其他綜合資源:
+
+1. 我的「Agents 101」指南([link](agents_101_guide.md))。
+2. Lilian Weng 的 LLM 驅動自主代理([link](https://lilianweng.github.io/posts/2023-06-23-agent/))。
+3. Prompt Engineering Guide 的 LLM 代理([link](https://www.promptingguide.ai/research/llm-agents))。
+4. Arize AI 的 LangChain 和 LLM 代理的未來([link](https://www.youtube.com/watch?v=JwO08Pk6S_Q))。
+

@@ -1,245 +1,212 @@
-# :star: :bookmark: awesome-generative-ai-guide
+﻿# :star: :bookmark: awesome-generative-ai-guide
 
-Generative AI is experiencing rapid growth, and this repository serves as a comprehensive hub for updates on generative AI research, interview materials, notebooks, and more!
+生成式 AI 正在迅速增長，本資料庫是關於生成式 AI 研究、面試材料、筆記本等更新的綜合中心！
 
-Explore the following resources:
+探索以下資源:
 
-1. [Monthly Best GenAI Papers List](https://github.com/aishwaryanr/awesome-generative-ai-guide?tab=readme-ov-file#star-best-genai-papers-list-january-2024)
-2. [GenAI Interview Resources](https://github.com/aishwaryanr/awesome-generative-ai-guide?tab=readme-ov-file#computer-interview-prep)
-3. [Applied LLMs Mastery 2024 (created by Aishwarya Naresh Reganti) course material](https://github.com/aishwaryanr/awesome-generative-ai-guide?tab=readme-ov-file#ongoing-applied-llms-mastery-2024)
-4. [List of all GenAI-related free courses (over 85 listed)](https://github.com/aishwaryanr/awesome-generative-ai-guide?tab=readme-ov-file#book-list-of-free-genai-courses)
-5. [List of code repositories/notebooks for developing generative AI applications](https://github.com/aishwaryanr/awesome-generative-ai-guide?tab=readme-ov-file#notebook-code-notebooks)
+1. [每月最佳 GenAI 論文列表](#star-最佳生成-ai-論文列表-2024年6月)
+2. [GenAI 面試資源](#computer-面試準備)
+3. [應用 LLMs 精通 2024 (由 Aishwarya Naresh Reganti 建立) 課程材料](#mortar_board-課程)
+4. [所有 GenAI 相關的免費課程列表 (列出了超過 85 個)](#book-免費生成式-ai-課程列表)
+5. [開發生成式 AI 應用程式的程式碼庫/筆記本列表](#notebook-程式碼筆記本)
 
-We'll be updating this repository regularly, so keep an eye out for the latest additions!
+我們將定期更新此儲存庫，請隨時關注最新的新增內容！
 
-Happy Learning!
-
----
-
-## [June 2024] 🔥🔥 Registrations are now open for "Generative AI Genius"
-
-- A 20-day free introductory course based on reels/short videos (no AI background needed!)
-- Check out more information and register [here](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/generative_ai_genius/README.md)
-- Register soon! The course starts on July 8th 2024!
+快樂學習！
 
 ---
 
-## :speaker: Announcements
 
-- Applied LLMs Mastery full course content has been released!!! ([Click Here](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024))
-- 5-day roadmap to learn LLM foundations out now! ([Click Here](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/genai_roadmap.md))
-- 60 Common GenAI Interview Questions out now! ([Click Here](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/interview_prep/60_gen_ai_questions.md))
-- ICLR 2024 paper summaries ([Click Here](https://areganti.notion.site/06f0d4fe46a94d62bff2ae001cfec22c?v=d501ca62e4b745768385d698f173ae14))
-- List of free GenAI courses ([Click Here](https://github.com/aishwaryanr/awesome-generative-ai-guide#book-list-of-free-genai-courses))
-- Generative AI resources and roadmaps
-  - [3-day RAG roadmap](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/RAG_roadmap.md)
-  - [5-day LLM foundations roadmap](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/genai_roadmap.md)
-  - [5-day LLM agents roadmap](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/agents_roadmap.md)
-  - [Agents 101 guide](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/agents_101_guide.md)
-  - [Introduction to MM LLMs](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/mm_llms_guide.md)
-  - [LLM Lingo Series: Commonly used LLM terms and their easy-to-understand definitions](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/llm_lingo)
+## [2024年6月] 🔥🔥 現在開放 "生成式 AI 天才" 的註冊
+
+- 基於短片/短影片的20天免費入門課程（不需要AI背景！）
+- 查看更多資訊並註冊[此處](free_courses/generative_ai_genius/README.md)。
+- 盡快註冊！課程將於2024年7月8日開始！
 
 ---
 
-## :star: Best Gen AI Papers List (June 2024)
 
-\*Updated at the end of every month
-| Date | Title | Abstract | Topics |
+## :speaker: 公告
+
+- Applied LLMs Mastery 全課程內容已發布!!! ([點擊這裡](free_courses/Applied_LLMs_Mastery_2024))
+- 5天學習LLM基礎的路線圖現已推出! ([點擊這裡](resources/genai_roadmap.md))
+- 60個常見的GenAI面試問題現已推出! ([點擊這裡](interview_prep/60_gen_ai_questions.md))
+- ICLR 2024論文摘要 ([點擊這裡](https://areganti.notion.site/06f0d4fe46a94d62bff2ae001cfec22c?v=d501ca62e4b745768385d698f173ae14))
+- 免費GenAI課程列表 ([點擊這裡](https://github.com/aishwaryanr/awesome-generative-ai-guide#book-list-of-free-genai-courses))
+- 生成式AI資源和路線圖
+  - [3天RAG路線圖](resources/RAG_roadmap.md)
+  - [5天LLM基礎路線圖](resources/genai_roadmap.md)
+  - [5天LLM代理路線圖](resources/agents_roadmap.md)
+  - [代理101指南](resources/agents_101_guide.md)
+  - [MM LLMs簡介](resources/mm_llms_guide.md)
+  - [LLM術語系列: 常用LLM術語及其易懂的定義](resources/llm_lingo)
+
+---
+
+
+## :star: 最佳生成 AI 論文列表 (2024年6月)
+
+\*每月末更新
+| 日期 | 標題 | 摘要 | 主題 |
 |------|-------|----------|--------|
-| 28 June 2024 | [Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs](https://arxiv.org/abs/2406.18629) | Mathematical reasoning presents a significant challenge for Large Language Models (LLMs) due to the extensive and precise chain of reasoning required for accuracy. Ensuring the correctness of each reasoning step is critical. To address this, we aim to enhance the robustness and factuality of LLMs by learning from human feedback. However, Direct Preference Optimization (DPO) has shown limited benefits for long-chain mathematical reasoning, as models employing DPO struggle to identify detailed errors in incorrect answers. This limitation stems from a lack of fine-grained process supervision. We propose a simple, effective, and data-efficient method called Step-DPO, which treats individual reasoning steps as units for preference optimization rather than evaluating answers holistically. Additionally, we have developed a data construction pipeline for Step-DPO, enabling the creation of a high-quality dataset containing 10K step-wise preference pairs. We also observe that in DPO, self-generated data is more effective than data generated by humans or GPT-4, due to the latter's out-of-distribution nature. Our findings demonstrate that as few as 10K preference data pairs and fewer than 500 Step-DPO training steps can yield a nearly 3% gain in accuracy on MATH for models with over 70B parameters. Notably, Step-DPO, when applied to Qwen2-72B-Instruct, achieves scores of 70.8% and 94.0% on the test sets of MATH and GSM8K, respectively, surpassing a series of closed-source models, including GPT-4-1106, Claude-3-Opus, and Gemini-1.5-Pro.  | Mathematical Reasoning, Optimization |
-| 28 June 2024 | [Scaling Synthetic Data Creation with 1,000,000,000 Personas](https://arxiv.org/abs/2406.20094) | We propose a novel persona-driven data synthesis methodology that leverages various perspectives within a large language model (LLM) to create diverse synthetic data. To fully exploit this methodology at scale, we introduce Persona Hub -- a collection of 1 billion diverse personas automatically curated from web data. These 1 billion personas (~13% of the world's total population), acting as distributed carriers of world knowledge, can tap into almost every perspective encapsulated within the LLM, thereby facilitating the creation of diverse synthetic data at scale for various scenarios. By showcasing Persona Hub's use cases in synthesizing high-quality mathematical and logical reasoning problems, instructions (i.e., user prompts), knowledge-rich texts, game NPCs and tools (functions) at scale, we demonstrate persona-driven data synthesis is versatile, scalable, flexible, and easy to use, potentially driving a paradigm shift in synthetic data creation and applications in practice, which may have a profound impact on LLM research and development | Synthetic Data Generation |
-| 27 June 2024 | [WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models](https://arxiv.org/abs/2406.18510) | We introduce WildTeaming, an automatic LLM safety red-teaming framework that mines in-the-wild user-chatbot interactions to discover 5.7K unique clusters of novel jailbreak tactics, and then composes multiple tactics for systematic exploration of novel jailbreaks. Compared to prior work that performed red-teaming via recruited human workers, gradient-based optimization, or iterative revision with LLMs, our work investigates jailbreaks from chatbot users who were not specifically instructed to break the system. WildTeaming reveals previously unidentified vulnerabilities of frontier LLMs, resulting in up to 4.6x more diverse and successful adversarial attacks compared to state-of-the-art jailbreak methods. While many datasets exist for jailbreak evaluation, very few open-source datasets exist for jailbreak training, as safety training data has been closed even when model weights are open. With WildTeaming we create WildJailbreak, a large-scale open-source synthetic safety dataset with 262K vanilla (direct request) and adversarial (complex jailbreak) prompt-response pairs. To mitigate exaggerated safety behaviors, WildJailbreak provides two contrastive types of queries: 1) harmful queries (vanilla & adversarial) and 2) benign queries that resemble harmful queries in form but contain no harm. As WildJailbreak considerably upgrades the quality and scale of existing safety resources, it uniquely enables us to examine the scaling effects of data and the interplay of data properties and model capabilities during safety training. Through extensive experiments, we identify the training properties that enable an ideal balance of safety behaviors: appropriate safeguarding without over-refusal, effective handling of vanilla and adversarial queries, and minimal, if any, decrease in general capabilities. All components of WildJailbeak contribute to achieving balanced safety behaviors of models. | Red Teaming, LLM Attacks |
-| 27 June 2024 | [LiveBench: A Challenging, Contamination-Free LLM Benchmark](https://arxiv.org/abs/2406.19314) | Test set contamination, wherein test data from a benchmark ends up in a newer model's training set, is a well-documented obstacle for fair LLM evaluation and can quickly render benchmarks obsolete. To mitigate this, many recent benchmarks crowdsource new prompts and evaluations from human or LLM judges; however, these can introduce significant biases, and break down when scoring hard questions. In this work, we introduce a new benchmark for LLMs designed to be immune to both test set contamination and the pitfalls of LLM judging and human crowdsourcing. We release LiveBench, the first benchmark that (1) contains frequently-updated questions from recent information sources, (2) scores answers automatically according to objective ground-truth values, and (3) contains a wide variety of challenging tasks, spanning math, coding, reasoning, language, instruction following, and data analysis. To achieve this, LiveBench contains questions that are based on recently-released math competitions, arXiv papers, news articles, and datasets, and it contains harder, contamination-free versions of tasks from previous benchmarks such as Big-Bench Hard, AMPS, and IFEval. We evaluate many prominent closed-source models, as well as dozens of open-source models ranging from 0.5B to 110B in size. LiveBench is difficult, with top models achieving below 65% accuracy. We release all questions, code, and model answers. Questions will be added and updated on a monthly basis, and we will release new tasks and harder versions of tasks over time so that LiveBench can distinguish between the capabilities of LLMs as they improve in the future. We welcome community engagement and collaboration for expanding the benchmark tasks and models. | Benchmark, Dataset |
-| 26 June 2024 | [Understand What LLM Needs: Dual Preference Alignment for Retrieval-Augmented Generation](https://arxiv.org/abs/2406.18676) | Retrieval-augmented generation (RAG) has demonstrated effectiveness in mitigating the hallucination problem of large language models (LLMs). However, the difficulty of aligning the retriever with the diverse LLMs' knowledge preferences inevitably poses an inevitable challenge in developing a reliable RAG system. To address this issue, we propose DPA-RAG, a universal framework designed to align diverse knowledge preferences within RAG systems. Specifically, we initially introduce a preference knowledge construction pipline and incorporate five novel query augmentation strategies to alleviate preference data scarcity. Based on preference data, DPA-RAG accomplishes both external and internal preference alignment: 1) It jointly integrate pair-wise, point-wise, and contrastive preference alignment abilities into the reranker, achieving external preference alignment among RAG components. 2) It further introduces a pre-aligned stage before vanilla Supervised Fine-tuning (SFT), enabling LLMs to implicitly capture knowledge aligned with their reasoning preferences, achieving LLMs' internal alignment. Experimental results across four knowledge-intensive QA datasets demonstrate that DPA-RAG outperforms all baselines and seamlessly integrates both black-box and open-sourced LLM readers. Further qualitative analysis and discussions also provide empirical guidance for achieving reliable RAG systems. | RAG, Alignment |
-| 21 June 2024 | [LongRAG: Enhancing Retrieval-Augmented Generation with Long-context LLMs](https://arxiv.org/abs/2406.15319) | In traditional RAG framework, the basic retrieval units are normally short. The common retrievers like DPR normally work with 100-word Wikipedia paragraphs. Such a design forces the retriever to search over a large corpus to find the `needle' unit. In contrast, the readers only need to extract answers from the short retrieved units. Such an imbalanced `heavy' retriever and `light' reader design can lead to sub-optimal performance. In order to alleviate the imbalance, we propose a new framework LongRAG, consisting of a `long retriever' and a `long reader'. LongRAG processes the entire Wikipedia into 4K-token units, which is 30x longer than before. By increasing the unit size, we significantly reduce the total units from 22M to 700K. This significantly lowers the burden of retriever, which leads to a remarkable retrieval score: answer recall@1=71% on NQ (previously 52%) and answer recall@2=72% (previously 47%) on HotpotQA (full-wiki). Then we feed the top-k retrieved units (approx 30K tokens) to an existing long-context LLM to perform zero-shot answer extraction. Without requiring any training, LongRAG achieves an EM of 62.7% on NQ, which is the best known result. LongRAG also achieves 64.3% on HotpotQA (full-wiki), which is on par of the SoTA model. Our study offers insights into the future roadmap for combining RAG with long-context LLMs. | RAG |
-| 20 June 2024 | [Claude 3.5 Sonnet](https://www.anthropic.com/news/claude-3-5-sonnet) | Today, we’re launching Claude 3.5 Sonnet—our first release in the forthcoming Claude 3.5 model family. Claude 3.5 Sonnet raises the industry bar for intelligence, outperforming competitor models and Claude 3 Opus on a wide range of evaluations, with the speed and cost of our mid-tier model, Claude 3 Sonnet. | Foundational LLM |
-| 20 June 2024 | [Can LLMs Learn by Teaching? A Preliminary Study](https://arxiv.org/abs/2406.14629) | Teaching to improve student models (e.g., knowledge distillation) is an extensively studied methodology in LLMs. However, for humans, teaching not only improves students but also improves teachers. We ask: Can LLMs also learn by teaching (LbT)? If yes, we can potentially unlock the possibility of continuously advancing the models without solely relying on human-produced data or stronger models. In this paper, we provide a preliminary exploration of this ambitious agenda. We show that LbT ideas can be incorporated into existing LLM training/prompting pipelines and provide noticeable improvements. Specifically, we design three methods, each mimicking one of the three levels of LbT in humans: observing students' feedback, learning from the feedback, and learning iteratively, with the goals of improving answer accuracy without training and improving models' inherent capability with fine-tuning. The findings are encouraging. For example, similar to LbT in human, we see that: (1) LbT can induce weak-to-strong generalization: strong models can improve themselves by teaching other weak models; (2) Diversity in students might help: teaching multiple students could be better than teaching one student or the teacher itself. We hope that this early promise can inspire future research on LbT and more broadly adopting the advanced techniques in education to improve LLMs. The code is available at https://github.com/imagination-research/lbt. | LLM learning |
-| 19 June 2024 | [Can Long-Context Language Models Subsume Retrieval, RAG, SQL, and More?](https://arxiv.org/abs/2406.13121) | Long-context language models (LCLMs) have the potential to revolutionize our approach to tasks traditionally reliant on external tools like retrieval systems or databases. Leveraging LCLMs' ability to natively ingest and process entire corpora of information offers numerous advantages. It enhances user-friendliness by eliminating the need for specialized knowledge of tools, provides robust end-to-end modeling that minimizes cascading errors in complex pipelines, and allows for the application of sophisticated prompting techniques across the entire system. To assess this paradigm shift, we introduce LOFT, a benchmark of real-world tasks requiring context up to millions of tokens designed to evaluate LCLMs' performance on in-context retrieval and reasoning. Our findings reveal LCLMs' surprising ability to rival state-of-the-art retrieval and RAG systems, despite never having been explicitly trained for these tasks. However, LCLMs still face challenges in areas like compositional reasoning that are required in SQL-like tasks. Notably, prompting strategies significantly influence performance, emphasizing the need for continued research as context lengths grow. Overall, LOFT provides a rigorous testing ground for LCLMs, showcasing their potential to supplant existing paradigms and tackle novel tasks as model capabilities scale. | Long Context, Analysis |
-| 18 June 2024 | [Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges](https://arxiv.org/abs/2406.12624) | Offering a promising solution to the scalability challenges associated with human evaluation, the LLM-as-a-judge paradigm is rapidly gaining traction as an approach to evaluating large language models (LLMs). However, there are still many open questions about the strengths and weaknesses of this paradigm, and what potential biases it may hold. In this paper, we present a comprehensive study of the performance of various LLMs acting as judges. We leverage TriviaQA as a benchmark for assessing objective knowledge reasoning of LLMs and evaluate them alongside human annotations which we found to have a high inter-annotator agreement. Our study includes 9 judge models and 9 exam taker models -- both base and instruction-tuned. We assess the judge model's alignment across different model sizes, families, and judge prompts. Among other results, our research rediscovers the importance of using Cohen's kappa as a metric of alignment as opposed to simple percent agreement, showing that judges with high percent agreement can still assign vastly different scores. We find that both Llama-3 70B and GPT-4 Turbo have an excellent alignment with humans, but in terms of ranking exam taker models, they are outperformed by both JudgeLM-7B and the lexical judge Contains, which have up to 34 points lower human alignment. Through error analysis and various other studies, including the effects of instruction length and leniency bias, we hope to provide valuable lessons for using LLMs as judges in the future. | Evaluation |
-| 18 June 2024 | [From RAGs to rich parameters: Probing how language models utilize external knowledge over parametric information for factual queries](https://arxiv.org/abs/2406.12824) | Retrieval Augmented Generation (RAG) enriches the ability of language models to reason using external context to augment responses for a given user prompt. This approach has risen in popularity due to practical applications in various applications of language models in search, question/answering, and chat-bots. However, the exact nature of how this approach works isn't clearly understood. In this paper, we mechanistically examine the RAG pipeline to highlight that language models take shortcut and have a strong bias towards utilizing only the context information to answer the question, while relying minimally on their parametric memory. We probe this mechanistic behavior in language models with: (i) Causal Mediation Analysis to show that the parametric memory is minimally utilized when answering a question and (ii) Attention Contributions and Knockouts to show that the last token residual stream do not get enriched from the subject token in the question, but gets enriched from other informative tokens in the context. We find this pronounced shortcut behaviour true across both LLaMa and Phi family of models. | RAG, Knowledge Integration |
-| 18 June 2024 | [PlanRAG: A Plan-then-Retrieval Augmented Generation for Generative Large Language Models as Decision Makers](https://arxiv.org/abs/2406.12430) | . Since there is no benchmark that can examine Decision QA, we propose Decision QA benchmark, DQA. It has two scenarios, Locating and Building, constructed from two video games (Europa Universalis IV and Victoria 3) that have almost the same goal as Decision QA. To address Decision QA effectively, we also propose a new RAG technique called the iterative plan-then-retrieval augmented generation (PlanRAG). Our PlanRAG-based LM generates the plan for decision making as the first step, and the retriever generates the queries for data analysis as the second step. The proposed method outperforms the state-of-the-art iterative RAG method by 15.8% in the Locating scenario and by 7.4% in the Building scenario, respectively. We release our code and benchmark at this https URL. | RAG, Knowledge Integration |
-| 17 June 2024 | [Self-MoE: Towards Compositional Large Language Models with Self-Specialized Experts](https://arxiv.org/abs/2406.12034) | We present Self-MoE, an approach that transforms a monolithic LLM into a compositional, modular system of self-specialized experts, named MiXSE (MiXture of Self-specialized Experts). Our approach leverages self-specialization, which constructs expert modules using self-generated synthetic data, each equipped with a shared base LLM and incorporating self-optimized routing. This allows for dynamic and capability-specific handling of various target tasks, enhancing overall capabilities, without extensive human-labeled data and added parameters. Our empirical results reveal that specializing LLMs may exhibit potential trade-offs in performances on non-specialized tasks. On the other hand, our Self-MoE demonstrates substantial improvements over the base LLM across diverse benchmarks such as knowledge, reasoning, math, and coding. It also consistently outperforms other methods, including instance merging and weight merging, while offering better flexibility and interpretability by design with semantic experts and routing. Our findings highlight the critical role of modularity and the potential of self-improvement in achieving efficient, scalable, and adaptable systems. | Mixture of Experts, LLM Architecture  |
-| 17 June 2024 | [mDPO: Conditional Preference Optimization for Multimodal Large Language Models](https://arxiv.org/abs/2406.11839) | Direct preference optimization (DPO) has shown to be an effective method for large language model (LLM) alignment. Recent works have attempted to apply DPO to multimodal scenarios but have found it challenging to achieve consistent improvement. Through a comparative experiment, we identify the unconditional preference problem in multimodal preference optimization, where the model overlooks the image condition. To address this problem, we propose mDPO, a multimodal DPO objective that prevents the over-prioritization of language-only preferences by also optimizing image preference. Moreover, we introduce a reward anchor that forces the reward to be positive for chosen responses, thereby avoiding the decrease in their likelihood -- an intrinsic problem of relative preference optimization. Experiments on two multimodal LLMs of different sizes and three widely used benchmarks demonstrate that mDPO effectively addresses the unconditional preference problem in multimodal preference optimization and significantly improves model performance, particularly in reducing hallucination. | Optimization |
-| 15 June 2024 | [SELF-TUNING: Instructing LLMs to Effectively Acquire New Knowledge through Self-Teaching](https://arxiv.org/abs/2406.06326) | Large language models (LLMs) often struggle to provide up-to-date information due to their one-time training and the constantly evolving nature of the world. To keep LLMs current, existing approaches typically involve continued pre-training on new documents. However, they frequently face difficulties in extracting stored knowledge. Motivated by the remarkable success of the Feynman Technique in efficient human learning, we introduce SELFTUNING, a learning framework aimed at improving an LLM’s ability to effectively acquire new knowledge from raw documents through self-teaching. Specifically, we develop a SELFTEACHING strategy that augments the documents with a set of knowledge-intensive tasks created in a self-supervised manner, focusing on three crucial aspects: memorization, comprehension, and self-reflection. In addition, we introduce three Wiki-Newpages-2023-QA datasets to facilitate an in-depth analysis of an LLM’s knowledge acquisition ability concerning memorization, extraction, and reasoning. Extensive experimental results on LLAMA2 family models reveal that SELF-TUNING consistently exhibits superior performance across all knowledge acquisition tasks and excels in preserving previous knowledge.1 | LLM Training, Knowledge Integration |
-| 15 June 2024 | [DeepSeek-Coder-V2](https://github.com/deepseek-ai/DeepSeek-Coder-V2) | We present DeepSeek-Coder-V2, an open-source Mixture-of-Experts (MoE) code language model that achieves performance comparable to GPT4-Turbo in code-specific tasks. Specifically, DeepSeek-Coder-V2 is further pre-trained from an intermediate checkpoint of DeepSeek-V2 with additional 6 trillion tokens. Through this continued pre-training, DeepSeek-Coder-V2 substantially enhances the coding and mathematical reasoning capabilities of DeepSeek-V2, while maintaining comparable performance in general language tasks. Compared to DeepSeek-Coder-33B, DeepSeek-Coder-V2 demonstrates significant advancements in various aspects of code-related tasks, as well as reasoning and general capabilities. Additionally, DeepSeek-Coder-V2 expands its support for programming languages from 86 to 338, while extending the context length from 16K to 128K. | Domain Specific LLMs |
-| 14 June 2024 | [Nemotron-4 340B Technical Report](https://d1qx31qr3h6wln.cloudfront.net/publications/Nemotron_4_340B_8T_0.pdf) | We release the Nemotron-4 340B model family, including Nemotron-4-340B-Base, Nemotron-4- 340B-Instruct, and Nemotron-4-340B-Reward. Our models are open access under the NVIDIA Open Model License Agreement, a permissive model license that allows distribution, modification, and use of the models and its outputs. These models perform competitively to open access models on a wide range of evaluation benchmarks, and were sized to fit on a single DGX H100 with 8 GPUs when deployed in FP8 precision. We believe that the community can benefit from these models in various research studies and commercial applications, especially for generating synthetic data to train smaller language models. Notably, over 98% of data used in our model alignment process is synthetically generated, showcasing the effectiveness of these models in generating synthetic data. To further support open research and facilitate model development, w | Foundational LLM |
-| 14 June 2024 | [Open-Sora 1.2](https://github.com/hpcaitech/Open-Sora/blob/main/docs/report_03.md) | We design and implement Open-Sora, an initiative dedicated to efficiently producing high-quality video. We hope to make the model, tools and all details accessible to all. By embracing open-source principles, Open-Sora not only democratizes access to advanced video generation techniques, but also offers a streamlined and user-friendly platform that simplifies the complexities of video generation. With Open-Sora, our goal is to foster innovation, creativity, and inclusivity within the field of content creation.  | Multimodal foundational model |
-| 14 June 2024 | [Be like a Goldfish, Don't Memorize! Mitigating Memorization in Generative LLMs](https://arxiv.org/abs/2406.10209) | Large language models can memorize and repeat their training data, causing privacy and copyright risks. To mitigate memorization, we introduce a subtle modification to the next-token training objective that we call the goldfish loss. During training, a randomly sampled subset of tokens are excluded from the loss computation. These dropped tokens are not memorized by the model, which prevents verbatim reproduction of a complete chain of tokens from the training set. We run extensive experiments training billion-scale Llama-2 models, both pre-trained and trained from scratch, and demonstrate significant reductions in extractable memorization with little to no impact on downstream benchmarks. | New Loss |
-| 13 June 2024 | [An Image is Worth More Than 16x16 Patches: Exploring Transformers on Individual Pixels](https://arxiv.org/abs/2406.09415) | This work does not introduce a new method. Instead, we present an interesting finding that questions the necessity of the inductive bias -- locality in modern computer vision architectures. Concretely, we find that vanilla Transformers can operate by directly treating each individual pixel as a token and achieve highly performant results. This is substantially different from the popular design in Vision Transformer, which maintains the inductive bias from ConvNets towards local neighborhoods (e.g. by treating each 16x16 patch as a token). We mainly showcase the effectiveness of pixels-as-tokens across three well-studied tasks in computer vision: supervised learning for object classification, self-supervised learning via masked autoencoding, and image generation with diffusion models. Although directly operating on individual pixels is less computationally practical, we believe the community must be aware of this surprising piece of knowledge when devising the next generation of neural architectures for computer vision.  | Convolutional Networks, Transformers |
-| 13 June 2024 | [Visual Sketchpad: Sketching as a Visual Chain of Thought for Multimodal Language Models](https://arxiv.org/abs/2406.09403) | Humans draw to facilitate reasoning: we draw auxiliary lines when solving geometry problems; we mark and circle when reasoning on maps; we use sketches to amplify our ideas and relieve our limited-capacity working memory. However, such actions are missing in current multimodal language models (LMs). Current chain-of-thought and tool-use paradigms only use text as intermediate reasoning steps. In this work, we introduce Sketchpad, a framework that gives multimodal LMs a visual sketchpad and tools to draw on the sketchpad. The LM conducts planning and reasoning according to the visual artifacts it has drawn. Different from prior work, which uses text-to-image models to enable LMs to draw, Sketchpad enables LMs to draw with lines, boxes, marks, etc., which is closer to human sketching and better facilitates reasoning. Sketchpad can also use specialist vision models during the sketching process (e.g., draw bounding boxes with object detection models, draw masks with segmentation models), to further enhance visual perception and reasoning. We experiment with a wide range of math tasks (including geometry, functions, graphs, and chess) and complex visual reasoning tasks. Sketchpad substantially improves performance on all tasks over strong base models with no sketching, yielding an average gain of 12.7% on math tasks, and 8.6% on vision tasks. GPT-4o with Sketchpad sets a new state of the art on all tasks, including V*Bench (80.3%), BLINK spatial reasoning (83.9%), and visual correspondence (80.8%). | Multimodal models, Prompt Engineering |
-| 12 June 2024 | [Multimodal Table Understanding](https://arxiv.org/abs/2406.08100) | Although great progress has been made by previous table understanding methods including recent approaches based on large language models (LLMs), they rely heavily on the premise that given tables must be converted into a certain text sequence (such as Markdown or HTML) to serve as model input. However, it is difficult to access such high-quality textual table representations in some real-world scenarios, and table images are much more accessible. Therefore, how to directly understand tables using intuitive visual information is a crucial and urgent challenge for developing more practical applications. In this paper, we propose a new problem, multimodal table understanding, where the model needs to generate correct responses to various table-related requests based on the given table image. To facilitate both the model training and evaluation, we construct a large-scale dataset named MMTab, which covers a wide spectrum of table images, instructions and tasks. On this basis, we develop Table-LLaVA, a generalist tabular multimodal large language model (MLLM), which significantly outperforms recent open-source MLLM baselines on 23 benchmarks under held-in and held-out settings. | Domain Specific LLMs |
-| 11 June 2024 | [TextGrad: Automatic "Differentiation" via Text](https://arxiv.org/abs/2406.07496v1) | AI is undergoing a paradigm shift, with breakthroughs achieved by systems orchestrating multiple large language models (LLMs) and other complex components. As a result, developing principled and automated optimization methods for compound AI systems is one of the most important new challenges. Neural networks faced a similar challenge in its early days until backpropagation and automatic differentiation transformed the field by making optimization turn-key. Inspired by this, we introduce TextGrad, a powerful framework performing automatic ``differentiation'' via text. TextGrad backpropagates textual feedback provided by LLMs to improve individual components of a compound AI system. In our framework, LLMs provide rich, general, natural language suggestions to optimize variables in computation graphs, ranging from code snippets to molecular structures. TextGrad follows PyTorch's syntax and abstraction and is flexible and easy-to-use. It works out-of-the-box for a variety of tasks, where the users only provide the objective function without tuning components or prompts of the framework. We showcase TextGrad's effectiveness and generality across a diverse range of applications, from question answering and molecule optimization to radiotherapy treatment planning. Without modifying the framework, TextGrad improves the zero-shot accuracy of GPT-4o in Google-Proof Question Answering from 51% to 55%, yields 20% relative performance gain in optimizing LeetCode-Hard coding problem solutions, improves prompts for reasoning, designs new druglike small molecules with desirable in silico binding, and designs radiation oncology treatment plans with high specificity. TextGrad lays a foundation to accelerate the development of the next-generation of AI systems. | Optimization Algorithm  |
-| 11 June 2024 | [Never Miss A Beat: An Efficient Recipe for Context Window Extension of Large Language Models with Consistent "Middle" Enhancement](https://arxiv.org/abs/2406.07138) | Recently, many methods have been developed to extend the context length of pre-trained large language models (LLMs), but they often require fine-tuning at the target length (≫4K) and struggle to effectively utilize information from the middle part of the context. To address these issues, we propose Continuity-Relativity indExing with gAussian Middle (CREAM), which interpolates positional encodings by manipulating position indices. Apart from being simple, CREAM is training-efficient: it only requires fine-tuning at the pre-trained context window (eg, Llama 2-4K) and can extend LLMs to a much longer target context length (eg, 256K). To ensure that the model focuses more on the information in the middle, we introduce a truncated Gaussian to encourage sampling from the middle part of the context during fine-tuning, thus alleviating the ``Lost-in-the-Middle'' problem faced by long-context LLMs. Experimental results show that CREAM successfully extends LLMs to the target length for both Base and Chat versions of 𝙻𝚕𝚊𝚖𝚊𝟸-𝟽𝙱 with ``Never Miss A Beat''. Our code will be publicly available soon. | Context Length |
-| 11 June 2024 | [Needle In A Multimodal Haystack](https://arxiv.org/abs/2406.07230) | With the rapid advancement of multimodal large language models (MLLMs), their evaluation has become increasingly comprehensive. However, understanding long multimodal content, as a foundational ability for real-world applications, remains underexplored. In this work, we present Needle In A Multimodal Haystack (MM-NIAH), the first benchmark specifically designed to systematically evaluate the capability of existing MLLMs to comprehend long multimodal documents. Our benchmark includes three types of evaluation tasks: multimodal retrieval, counting, and reasoning. In each task, the model is required to answer the questions according to different key information scattered throughout the given multimodal document. Evaluating the leading MLLMs on MM-NIAH, we observe that existing models still have significant room for improvement on these tasks, especially on vision-centric evaluation. We hope this work can provide a platform for further research on long multimodal document comprehension and contribute to the advancement of MLLMs.  | Multimodal models |
-| 11 June 2024 | [Estimating the Hallucination Rate of Generative AI](https://arxiv.org/abs/2406.07457) | This work is about estimating the hallucination rate for in-context learning (ICL) with Generative AI. In ICL, a conditional generative model (CGM) is prompted with a dataset and asked to make a prediction based on that dataset. The Bayesian interpretation of ICL assumes that the CGM is calculating a posterior predictive distribution over an unknown Bayesian model of a latent parameter and data. With this perspective, we define a hallucination as a generated prediction that has low-probability under the true latent parameter. We develop a new method that takes an ICL problem -- that is, a CGM, a dataset, and a prediction question -- and estimates the probability that a CGM will generate a hallucination. Our method only requires generating queries and responses from the model and evaluating its response log probability. We empirically evaluate our method on synthetic regression and natural language ICL tasks using large language models. | Hallucination |
-| 11 June 2024 | [Simple and Effective Masked Diffusion Language Models](https://arxiv.org/abs/2406.07524) | While diffusion models excel at generating high-quality images, prior work reports a significant performance gap between diffusion and autoregressive (AR) methods in language modeling. In this work, we show that simple masked discrete diffusion is more performant than previously thought. We apply an effective training recipe that improves the performance of masked diffusion models and derive a simplified, Rao-Blackwellized objective that results in additional improvements. Our objective has a simple form -- it is a mixture of classical masked language modeling losses -- and can be used to train encoder-only language models that admit efficient samplers, including ones that can generate arbitrary lengths of text semi-autoregressively like a traditional language model. On language modeling benchmarks, a range of masked diffusion models trained with modern engineering practices achieves a new state-of-the-art among diffusion models, and approaches AR perplexity. We release our code at: https://github.com/kuleshov-group/mdlm  | Diffusion Models |
-| 11 June 2024 | [Merging Improves Self-Critique Against Jailbreak Attacks](https://arxiv.org/abs/2406.07188) | The robustness of large language models (LLMs) against adversarial manipulations, such as jailbreak attacks, remains a significant challenge. In this work, we propose an approach that enhances the self-critique capability of the LLM and further fine-tunes it over sanitized synthetic data. This is done with the addition of an external critic model that can be merged with the original, thus bolstering self-critique capabilities and improving the robustness of the LLMs response to adversarial prompts. Our results demonstrate that the combination of merging and self-critique can reduce the attack success rate of adversaries significantly, thus offering a promising defense mechanism against jailbreak attacks. Code, data and models released at https://github.com/vicgalle/merging-self-critique-jailbreaks .  | Adversarial Attacks, Jailbreaking |
-| 10 June 2024 | [NATURAL PLAN: Benchmarking LLMs on Natural Language Planning](https://arxiv.org/abs/2406.04520) | We introduce NATURAL PLAN, a realistic planning benchmark in natural language containing 3 key tasks: Trip Planning, Meeting Planning, and Calendar Scheduling. We focus our evaluation on the planning capabilities of LLMs with full information on the task, by providing outputs from tools such as Google Flights, Google Maps, and Google Calendar as contexts to the models. This eliminates the need for a tool-use environment for evaluating LLMs on Planning. We observe that NATURAL PLAN is a challenging benchmark for state of the art models. For example, in Trip Planning, GPT-4 and Gemini 1.5 Pro could only achieve 31.1% and 34.8% solve rate respectively. We find that model performance drops drastically as the complexity of the problem increases: all models perform below 5% when there are 10 cities, highlighting a significant gap in planning in natural language for SoTA LLMs. We also conduct extensive ablation studies on NATURAL PLAN to further shed light on the (in)effectiveness of approaches such as self-correction, few-shot generalization, and in-context planning with long-contexts on improving LLM planning. | Agents, Planning |
-| 07 June 2024 | [SelfGoal: Your Language Agents Already Know How to Achieve High-level Goals](https://arxiv.org/abs/2406.04784) | Language agents powered by large language models (LLMs) are increasingly valuable as decision-making tools in domains such as gaming and programming. However, these agents often face challenges in achieving high-level goals without detailed instructions and in adapting to environments where feedback is delayed. In this paper, we present SelfGoal, a novel automatic approach designed to enhance agents' capabilities to achieve high-level goals with limited human prior and environmental feedback. The core concept of SelfGoal involves adaptively breaking down a high-level goal into a tree structure of more practical subgoals during the interaction with environments while identifying the most useful subgoals and progressively updating this structure. Experimental results demonstrate that SelfGoal significantly enhances the performance of language agents across various tasks, including competitive, cooperative, and deferred feedback environments.  | Agents, Task Decomposition |
-| 07 June 2024 | [CRAG -- Comprehensive RAG Benchmark](https://arxiv.org/abs/2406.04744) | Retrieval-Augmented Generation (RAG) has recently emerged as a promising solution to alleviate Large Language Model (LLM)'s deficiency in lack of knowledge. Existing RAG datasets, however, do not adequately represent the diverse and dynamic nature of real-world Question Answering (QA) tasks. To bridge this gap, we introduce the Comprehensive RAG Benchmark (CRAG), a factual question answering benchmark of 4,409 question-answer pairs and mock APIs to simulate web and Knowledge Graph (KG) search. CRAG is designed to encapsulate a diverse array of questions across five domains and eight question categories, reflecting varied entity popularity from popular to long-tail, and temporal dynamisms ranging from years to seconds. Our evaluation on this benchmark highlights the gap to fully trustworthy QA. Whereas most advanced LLMs achieve <=34% accuracy on CRAG, adding RAG in a straightforward manner improves the accuracy only to 44%. State-of-the-art industry RAG solutions only answer 63% questions without any hallucination. CRAG also reveals much lower accuracy in answering questions regarding facts with higher dynamism, lower popularity, or higher complexity, suggesting future research directions. The CRAG benchmark laid the groundwork for a KDD Cup 2024 challenge, attracting thousands of participants and submissions within the first 50 days of the competition. We commit to maintaining CRAG to serve research communities in advancing RAG solutions and general QA solutions. | RAG, Benchmark |
-| 07 June 2024 | [Mixture-of-Agents Enhances Large Language Model Capabilities](https://arxiv.org/abs/2406.04692) | Recent advances in large language models (LLMs) demonstrate substantial capabilities in natural language understanding and generation tasks. With the growing number of LLMs, how to harness the collective expertise of multiple LLMs is an exciting open direction. Toward this goal, we propose a new approach that leverages the collective strengths of multiple LLMs through a Mixture-of-Agents (MoA) methodology. In our approach, we construct a layered MoA architecture wherein each layer comprises multiple LLM agents. Each agent takes all the outputs from agents in the previous layer as auxiliary information in generating its response. MoA models achieves state-of-art performance on AlpacaEval 2.0, MT-Bench and FLASK, surpassing GPT-4 Omni. For example, our MoA using only open-source LLMs is the leader of AlpacaEval 2.0 by a substantial gap, achieving a score of 65.1% compared to 57.5% by GPT-4 Omni. | Agents, Multi-Agents |
-| 06 June 2024 | [AgentGym: Evolving Large Language Model-based Agents across Diverse Environments](https://arxiv.org/abs/2406.04151) | Building generalist agents that can handle diverse tasks and evolve themselves across different environments is a long-term goal in the AI community. Large language models (LLMs) are considered a promising foundation to build such agents due to their generalized capabilities. Current approaches either have LLM-based agents imitate expert-provided trajectories step-by-step, requiring human supervision, which is hard to scale and limits environmental exploration; or they let agents explore and learn in isolated environments, resulting in specialist agents with limited generalization. In this paper, we take the first step towards building generally-capable LLM-based agents with self-evolution ability. We identify a trinity of ingredients: 1) diverse environments for agent exploration and learning, 2) a trajectory set to equip agents with basic capabilities and prior knowledge, and 3) an effective and scalable evolution method. We propose AgentGym, a new framework featuring a variety of environments and tasks for broad, real-time, uni-format, and concurrent agent exploration. AgentGym also includes a database with expanded instructions, a benchmark suite, and high-quality trajectories across environments. Next, we propose a novel method, AgentEvol, to investigate the potential of agent self-evolution beyond previously seen data across tasks and environments. Experimental results show that the evolved agents can achieve results comparable to SOTA models. We release the AgentGym suite, including the platform, dataset, benchmark, checkpoints, and algorithm implementations. | Agents |
-| 06 June 2024 | [Are We Done with MMLU?](https://arxiv.org/abs/2406.04127) | Maybe not. We identify and analyse errors in the popular Massive Multitask Language Understanding (MMLU) benchmark. Even though MMLU is widely adopted, our analysis demonstrates numerous ground truth errors that obscure the true capabilities of LLMs. For example, we find that 57% of the analysed questions in the Virology subset contain errors. To address this issue, we introduce a comprehensive framework for identifying dataset errors using a novel error taxonomy. Then, we create MMLU-Redux, which is a subset of 3,000 manually re-annotated questions across 30 MMLU subjects. Using MMLU-Redux, we demonstrate significant discrepancies with the model performance metrics that were originally reported. Our results strongly advocate for revising MMLU's error-ridden questions to enhance its future utility and reliability as a benchmark. Therefore, we open up MMLU-Redux for additional annotation https://huggingface.co/datasets/edinburgh-dawg/mmlu-redux. | Evaluation, Task Benchmarks |
-| 06 June 2024 | [GenAI Arena: An Open Evaluation Platform for Generative Models](https://arxiv.org/abs/2406.04485) | Generative AI has made remarkable strides to revolutionize fields such as image and video generation. These advancements are driven by innovative algorithms, architecture, and data. However, the rapid proliferation of generative models has highlighted a critical gap: the absence of trustworthy evaluation metrics. Current automatic assessments such as FID, CLIP, FVD, etc often fail to capture the nuanced quality and user satisfaction associated with generative outputs. This paper proposes an open platform GenAI-Arena to evaluate different image and video generative models, where users can actively participate in evaluating these models. By leveraging collective user feedback and votes, GenAI-Arena aims to provide a more democratic and accurate measure of model performance. It covers three arenas for text-to-image generation, text-to-video generation, and image editing respectively. Currently, we cover a total of 27 open-source generative models. GenAI-Arena has been operating for four months, amassing over 6000 votes from the community. We describe our platform, analyze the data, and explain the statistical methods for ranking the models. To further promote the research in building model-based evaluation metrics, we release a cleaned version of our preference data for the three tasks, namely GenAI-Bench. We prompt the existing multi-modal models like Gemini, GPT-4o to mimic human voting. We compute the correlation between model voting with human voting to understand their judging abilities. Our results show existing multimodal models are still lagging in assessing the generated visual content, even the best model GPT-4o only achieves a Pearson correlation of 0.22 in the quality subscore, and behaves like random guessing in others. | Evaluation |
-| 06 June 2024 | [Scaling and evaluating sparse autoencoders](https://arxiv.org/abs/2406.04093) | Sparse autoencoders provide a promising unsupervised approach for extracting interpretable features from a language model by reconstructing activations from a sparse bottleneck layer. Since language models learn many concepts, autoencoders need to be very large to recover all relevant features. However, studying the properties of autoencoder scaling is difficult due to the need to balance reconstruction and sparsity objectives and the presence of dead latents. We propose using k-sparse autoencoders [Makhzani and Frey, 2013] to directly control sparsity, simplifying tuning and improving the reconstruction-sparsity frontier. Additionally, we find modifications that result in few dead latents, even at the largest scales we tried. Using these techniques, we find clean scaling laws with respect to autoencoder size and sparsity. We also introduce several new metrics for evaluating feature quality based on the recovery of hypothesized features, the explainability of activation patterns, and the sparsity of downstream effects. These metrics all generally improve with autoencoder size. To demonstrate the scalability of our approach, we train a 16 million latent autoencoder on GPT-4 activations for 40 billion tokens. We release training code and autoencoders for open-source models, as well as a visualizer. | LLM Architecture  |
-| 06 June 2024 | [Buffer of Thoughts: Thought-Augmented Reasoning with Large Language Models](https://arxiv.org/abs/2406.04271) | We introduce Buffer of Thoughts (BoT), a novel and versatile thought-augmented reasoning approach for enhancing accuracy, efficiency and robustness of large language models (LLMs). Specifically, we propose meta-buffer to store a series of informative high-level thoughts, namely thought-template, distilled from the problem-solving processes across various tasks. Then for each problem, we retrieve a relevant thought-template and adaptively instantiate it with specific reasoning structures to conduct efficient reasoning. To guarantee the scalability and stability, we further propose buffer-manager to dynamically update the meta-buffer, thus enhancing the capacity of meta-buffer as more tasks are solved. We conduct extensive experiments on 10 challenging reasoning-intensive tasks, and achieve significant performance improvements over previous SOTA methods: 11% on Game of 24, 20% on Geometric Shapes and 51% on Checkmate-in-One. Further analysis demonstrate the superior generalization ability and model robustness of our BoT, while requiring only 12% of the cost of multi-query prompting methods (e.g., tree/graph of thoughts) on average. Notably, we find that our Llama3-8B+BoT has the potential to surpass Llama3-70B model.  | RAG, Knowledge Integration |
-| 05 June 2024 | [Improve Mathematical Reasoning in Language Models by Automated Process Supervision](https://arxiv.org/abs/2406.06592 ) | Complex multi-step reasoning tasks, such as solving mathematical problems or generating code, remain a significant hurdle for even the most advanced large language models (LLMs). Verifying LLM outputs with an Outcome Reward Model (ORM) is a standard inference-time technique aimed at enhancing the reasoning performance of LLMs. However, this still proves insufficient for reasoning tasks with a lengthy or multi-hop reasoning chain, where the intermediate outcomes are neither properly rewarded nor penalized. Process supervision addresses this limitation by assigning intermediate rewards during the reasoning process. To date, the methods used to collect process supervision data have relied on either human annotation or per-step Monte Carlo estimation, both prohibitively expensive to scale, thus hindering the broad application of this technique. In response to this challenge, we propose a novel divide-and-conquer style Monte Carlo Tree Search (MCTS) algorithm named OmegaPRM for the efficient collection of high-quality process supervision data. This algorithm swiftly identifies the first error in the Chain of Thought (CoT) with binary search and balances the positive and negative examples, thereby ensuring both efficiency and quality. As a result, we are able to collect over 1.5 million process supervision annotations to train a Process Reward Model (PRM). Utilizing this fully automated process supervision alongside the weighted self-consistency algorithm, we have enhanced the instruction tuned Gemini Pro model's math reasoning performance, achieving a 69.4\% success rate on the MATH benchmark, a 36\% relative improvement from the 51\% base model performance. Additionally, the entire process operates without any human intervention, making our method both financially and computationally cost-effective compared to existing methods. | Math Reasoning |
-| 05 June 2024 | [SaySelf: Teaching LLMs to Express Confidence with Self-Reflective Rationales](https://arxiv.org/abs/2405.20974) | Large language models (LLMs) often generate inaccurate or fabricated information and generally fail to indicate their confidence, which limits their broader applications. Previous work elicits confidence from LLMs by direct or self-consistency prompting, or constructing specific datasets for supervised finetuning. The prompting-based approaches have inferior performance, and the training-based approaches are limited to binary or inaccurate group-level confidence estimates. In this work, we present the advanced SaySelf, a training framework that teaches LLMs to express more accurate fine-grained confidence estimates. In addition, beyond the confidence scores, SaySelf initiates the process of directing LLMs to produce self-reflective rationales that clearly identify gaps in their parametric knowledge and explain their uncertainty. This is achieved by using an LLM to automatically summarize the uncertainties in specific knowledge via natural language. The summarization is based on the analysis of the inconsistency in multiple sampled reasoning chains, and the resulting data is utilized for supervised fine-tuning. Moreover, we utilize reinforcement learning with a meticulously crafted reward function to calibrate the confidence estimates, motivating LLMs to deliver accurate, high-confidence predictions and to penalize overconfidence in erroneous outputs. Experimental results in both in-distribution and out-of-distribution datasets demonstrate the effectiveness of SaySelf in reducing the confidence calibration error and maintaining the task performance. We show that the generated self-reflective rationales are reasonable and can further contribute to the calibration. | LLM Training, LLM Challenges |
-| 04 June 2024 | [Guiding a Diffusion Model with a Bad Version of Itself](https://arxiv.org/abs/2406.02507) | The primary axes of interest in image-generating diffusion models are image quality, the amount of variation in the results, and how well the results align with a given condition, e.g., a class label or a text prompt. The popular classifier-free guidance approach uses an unconditional model to guide a conditional model, leading to simultaneously better prompt alignment and higher-quality images at the cost of reduced variation. These effects seem inherently entangled, and thus hard to control. We make the surprising observation that it is possible to obtain disentangled control over image quality without compromising the amount of variation by guiding generation using a smaller, less-trained version of the model itself rather than an unconditional model. This leads to significant improvements in ImageNet generation, setting record FIDs of 1.01 for 64x64 and 1.25 for 512x512, using publicly available networks. Furthermore, the method is also applicable to unconditional diffusion models, drastically improving their quality. | Diffusion Models |
-| 04 June 2024 | [To Believe or Not to Believe Your LLM](https://arxiv.org/abs/2406.02543) | We explore uncertainty quantification in large language models (LLMs), with the goal to identify when uncertainty in responses given a query is large. We simultaneously consider both epistemic and aleatoric uncertainties, where the former comes from the lack of knowledge about the ground truth (such as about facts or the language), and the latter comes from irreducible randomness (such as multiple possible answers). In particular, we derive an information-theoretic metric that allows to reliably detect when only epistemic uncertainty is large, in which case the output of the model is unreliable. This condition can be computed based solely on the output of the model obtained simply by some special iterative prompting based on the previous responses. Such quantification, for instance, allows to detect hallucinations (cases when epistemic uncertainty is high) in both single- and multi-answer responses. This is in contrast to many standard uncertainty quantification strategies (such as thresholding the log-likelihood of a response) where hallucinations in the multi-answer case cannot be detected. We conduct a series of experiments which demonstrate the advantage of our formulation. Further, our investigations shed some light on how the probabilities assigned to a given output by an LLM can be amplified by iterative prompting, which might be of independent interest. | Hallucinations, Uncertainty Estimation |
-| 03 June 2024 | [Self-Improving Robust Preference Optimization](https://arxiv.org/abs/2406.01660) | Both online and offline RLHF methods such as PPO and DPO have been extremely successful in aligning AI with human preferences. Despite their success, the existing methods suffer from a fundamental problem that their optimal solution is highly task-dependent (i.e., not robust to out-of-distribution (OOD) tasks). Here we address this challenge by proposing Self-Improving Robust Preference Optimization SRPO, a practical and mathematically principled offline RLHF framework that is completely robust to the changes in the task. The key idea of SRPO is to cast the problem of learning from human preferences as a self-improvement process, which can be mathematically expressed in terms of a min-max objective that aims at joint optimization of self-improvement policy and the generative policy in an adversarial fashion. The solution for this optimization problem is independent of the training task and thus it is robust to its changes. We then show that this objective can be re-expressed in the form of a non-adversarial offline loss which can be optimized using standard supervised optimization techniques at scale without any need for reward model and online inference. We show the effectiveness of SRPO in terms of AI Win-Rate (WR) against human (GOLD) completions. In particular, when SRPO is evaluated on the OOD XSUM dataset, it outperforms the celebrated DPO by a clear margin of 15% after 5 self-revisions, achieving WR of 90%. | Optimization, Alignment |
-| 03 June 2024 | [Towards Scalable Automated Alignment of LLMs: A Survey](https://arxiv.org/abs/2406.01252) | Alignment is the most critical step in building large language models (LLMs) that meet human needs. With the rapid development of LLMs gradually surpassing human capabilities, traditional alignment methods based on human-annotation are increasingly unable to meet the scalability demands. Therefore, there is an urgent need to explore new sources of automated alignment signals and technical approaches. In this paper, we systematically review the recently emerging methods of automated alignment, attempting to explore how to achieve effective, scalable, automated alignment once the capabilities of LLMs exceed those of humans. Specifically, we categorize existing automated alignment methods into 4 major categories based on the sources of alignment signals and discuss the current status and potential development of each category. Additionally, we explore the underlying mechanisms that enable automated alignment and discuss the essential factors that make automated alignment technologies feasible and effective from the fundamental role of alignment. | Alignment |
-| 02 June 2024 | [Show, Don't Tell: Aligning Language Models with Demonstrated Feedback](https://arxiv.org/abs/2406.00888) | Language models are aligned to emulate the collective voice of many, resulting in outputs that align with no one in particular. Steering LLMs away from generic output is possible through supervised finetuning or RLHF, but requires prohibitively large datasets for new ad-hoc tasks. We argue that it is instead possible to align an LLM to a specific setting by leveraging a very small number (<10) of demonstrations as feedback. Our method, Demonstration ITerated Task Optimization (DITTO), directly aligns language model outputs to a user's demonstrated behaviors. Derived using ideas from online imitation learning, DITTO cheaply generates online comparison data by treating users' demonstrations as preferred over output from the LLM and its intermediate checkpoints. We evaluate DITTO's ability to learn fine-grained style and task alignment across domains such as news articles, emails, and blog posts. Additionally, we conduct a user study soliciting a range of demonstrations from participants (N=16). Across our benchmarks and user study, we find that win-rates for DITTO outperform few-shot prompting, supervised fine-tuning, and other self-play methods by an average of 19% points. By using demonstrations as feedback directly, DITTO offers a novel method for effective customization of LLMs. | Alignment |
-| 01 June 2024 | [Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality](https://arxiv.org/abs/2405.21060) | While Transformers have been the main architecture behind deep learning's success in language modeling, state-space models (SSMs) such as Mamba have recently been shown to match or outperform Transformers at small to medium scale. We show that these families of models are actually quite closely related, and develop a rich framework of theoretical connections between SSMs and variants of attention, connected through various decompositions of a well-studied class of structured semiseparable matrices. Our state space duality (SSD) framework allows us to design a new architecture (Mamba-2) whose core layer is an a refinement of Mamba's selective SSM that is 2-8X faster, while continuing to be competitive with Transformers on language modeling. | LLM Architecture  |
-| 01 June 2024 | [Artificial Generational Intelligence: Cultural Accumulation in Reinforcement Learning](https://arxiv.org/abs/2406.00392) | Cultural accumulation drives the open-ended and diverse progress in capabilities spanning human history. It builds an expanding body of knowledge and skills by combining individual exploration with inter-generational information transmission. Despite its widespread success among humans, the capacity for artificial learning agents to accumulate culture remains under-explored. In particular, approaches to reinforcement learning typically strive for improvements over only a single lifetime. Generational algorithms that do exist fail to capture the open-ended, emergent nature of cultural accumulation, which allows individuals to trade-off innovation and imitation. Building on the previously demonstrated ability for reinforcement learning agents to perform social learning, we find that training setups which balance this with independent learning give rise to cultural accumulation. These accumulating agents outperform those trained for a single lifetime with the same cumulative experience. We explore this accumulation by constructing two models under two distinct notions of a generation: episodic generations, in which accumulation occurs via in-context learning and train-time generations, in which accumulation occurs via in-weights learning. In-context and in-weights cultural accumulation can be interpreted as analogous to knowledge and skill accumulation, respectively. To the best of our knowledge, this work is the first to present general models that achieve emergent cultural accumulation in reinforcement learning, opening up new avenues towards more open-ended learning systems, as well as presenting new opportunities for modelling human culture. | Cultural Adaptation |
+| 2024年6月28日 | [Step-DPO: 用於LLMs長鏈推理的逐步偏好最佳化](https://arxiv.org/abs/2406.18629) | 數學推理對大型語言模型（LLMs）提出了重大挑戰，因為準確性需要廣泛且精確的推理鏈。確保每一步推理的正確性至關重要。為了解決這個問題，我們旨在通過學習人類反饋來增強LLMs的穩健性和事實性。然而，直接偏好最佳化（DPO）對於長鏈數學推理顯示出有限的好處，因為使用DPO的模型難以識別錯誤答案中的詳細錯誤。這一限制源於缺乏細粒度的過程監督。我們提出了一種簡單、有效且數據高效的方法，稱為Step-DPO，將個別推理步驟作為偏好最佳化的單位，而不是整體評估答案。此外，我們開發了一個數據構建管道，用於Step-DPO，從而創建包含10K逐步偏好對的高品質數據集。我們還觀察到，在DPO中，自生成數據比人類或GPT-4生成的數據更有效，因為後者具有分布外的特性。我們的研究結果顯示，僅需10K偏好數據對和少於500個Step-DPO訓練步驟，就能在具有超過70B參數的模型上在MATH上獲得近3%的準確性提升。值得注意的是，當Step-DPO應用於Qwen2-72B-Instruct時，在MATH和GSM8K的測試集上分別達到70.8%和94.0%的得分，超越了一系列閉源模型，包括GPT-4-1106、Claude-3-Opus和Gemini-1.5-Pro。 | 數學推理, 最佳化 |
+| 2024年6月28日 | [Scaling Synthetic Data Creation with 1,000,000,000 Personas](https://arxiv.org/abs/2406.20094) | 我們提出了一種新穎的以人物為驅動的數據合成方法，利用大型語言模型（LLM）內的各種視角來創建多樣的合成數據。為了充分利用這種方法，我們引入了Persona Hub——一個從網絡數據中自動策劃的10億多樣化人物集合。這10億人物（約佔世界總人口的13%），作為世界知識的分佈式載體，可以觸及LLM內幾乎所有的視角，從而促進各種場景下大規模多樣化合成數據的創建。通過展示Persona Hub在大規模合成高品質數學和邏輯推理問題、指令（即用戶提示）、知識豐富的文本、遊戲NPC和工具（函式）方面的應用，我們展示了以人物為驅動的數據合成具有多功能性、可擴展性、靈活性和易用性，可能推動合成數據創建和應用的範式轉變，對LLM的研究和開發產生深遠影響。 | 合成數據生成 |
+| 2024年6月27日 | [WildTeaming at Scale: From In-the-Wild Jailbreaks to (Adversarially) Safer Language Models](https://arxiv.org/abs/2406.18510) | 我們介紹了WildTeaming，一個自動LLM安全紅隊框架，通過挖掘野外用戶-聊天機器人互動來發現5.7K個獨特的新的越獄策略集群，然後組合多種策略以系統地探索新的越獄方法。與之前通過招募人類工作者、基於梯度的最佳化或與LLMs的迭代修訂進行紅隊測試的工作相比，我們的工作調查了未被特別指示破壞系統的聊天機器人用戶的越獄行為。WildTeaming揭示了前沿LLMs以前未識別的漏洞，與最先進的越獄方法相比，導致多達4.6倍更多樣且成功的對抗性攻擊。雖然存在許多越獄評估數據集，但很少有開放原始碼的越獄訓練數據集，因為即使模型權重是開放的，安全訓練數據也被封閉。通過WildTeaming，我們創建了WildJailbreak，一個大規模的開放原始碼合成安全數據集，包含262K個普通（直接請求）和對抗性（複雜越獄）提示-回應對。為了減輕誇大的安全行為，WildJailbreak提供了兩種類比查詢：1）有害查詢（普通和對抗性）和2）形式上類似於有害查詢但不含有害內容的良性查詢。由於WildJailbreak大大提升了現有安全資源的品質和規模，它獨特地使我們能夠在安全訓練期間檢查數據的擴展效應以及數據屬性和模型能力之間的相互作用。通過廣泛的實驗，我們確定了實現理想安全行為的訓練屬性：適當的保護而不過度拒絕，有效處理普通和對抗性查詢，並且一般能力的減少最小甚至沒有。WildJailbreak的所有組成部分都有助於實現模型的平衡安全行為。 | 紅隊測試, LLM攻擊 |
+| 2024年6月27日 | [LiveBench: A Challenging, Contamination-Free LLM Benchmark](https://arxiv.org/abs/2406.19314) | 測試集污染，即基準測試數據進入新模型的訓練集，是公平LLM評估的眾所周知的障礙，並且可以迅速使基準測試過時。為了減輕這一問題，許多最近的基準測試從人類或LLM評審中眾包新的提示和評估；然而，這些方法可能引入顯著的偏見，並且在評分難題時會崩潰。在這項工作中，我們引入了一個新的LLM基準測試，旨在免受測試集污染和LLM評審和人類眾包的陷阱。我們發布了LiveBench，這是第一個（1）包含來自最新資訊來源的經常更新的問題，（2）根據客觀的真實值自動評分答案，（3）包含各種挑戰性任務，涵蓋數學、編碼、推理、語言、指令遵循和數據分析的基準測試。為了實現這一目標，LiveBench包含基於最近發布的數學競賽、arXiv論文、新聞文章和數據集的問題，並且包含來自以前基準測試如Big-Bench Hard、AMPS和IFEval的任務的更難、無污染版本。我們評估了許多著名的閉源模型，以及從0.5B到110B大小的數十個開放原始碼模型。LiveBench很難，頂級模型的準確率低於65%。我們發布了所有問題、程式碼和模型答案。問題將每月添加和更新，我們將隨著時間的推移發布新的任務和更難的任務版本，以便LiveBench能夠區分LLMs隨著未來改進的能力。我們歡迎社區參與和合作，以擴展基準測試任務和模型。 | 基準測試, 數據集 |
+| 2024年6月26日 | [Understand What LLM Needs: Dual Preference Alignment for Retrieval-Augmented Generation](https://arxiv.org/abs/2406.18676) | 檢索增強生成（RAG）在減輕大型語言模型（LLMs）的幻覺問題方面顯示了效果。然而，使檢索器與多樣化的LLMs的知識偏好對齊的困難不可避免地對開發可靠的RAG系統構成挑戰。為了解決這個問題，我們提出了DPA-RAG，一個旨在對齊RAG系統內多樣知識偏好的通用框架。具體來說，我們首先引入了一個偏好知識構建管道，並結合了五種新穎的查詢增強策略，以緩解偏好數據的稀缺性。基於偏好數據，DPA-RAG實現了外部和內部偏好對齊：1）它將成對、點對和對比偏好對齊能力整合到重排器中，實現RAG組件之間的外部偏好對齊。2）它進一步在普通監督微調（SFT）之前引入了一個預對齊階段，使LLMs能夠隱式捕捉與其推理偏好對齊的知識，實現LLMs的內部對齊。跨四個知識密集型QA數據集的實驗結果表明，DPA-RAG優於所有基線，並無縫整合了黑盒和開放原始碼的LLM讀者。進一步的定性分析和討論也為實現可靠的RAG系統提供了經驗指導。 | RAG, 對齊 |
+| 2024年6月21日 | [LongRAG: Enhancing Retrieval-Augmented Generation with Long-context LLMs](https://arxiv.org/abs/2406.15319) | 在傳統的RAG框架中，基本的檢索單元通常很短。常見的檢索器如DPR通常與100字的維基百科段落一起工作。這樣的設計迫使檢索器在大語料庫中搜索「針」單元。相比之下，讀者只需要從短的檢索單元中提取答案。這樣的不平衡「重」檢索器和「輕」讀者設計可能導致次優性能。為了緩解這種不平衡，我們提出了一個新框架LongRAG，包括一個「長檢索器」和一個「長讀者」。LongRAG將整個維基百科處理成4K-token單元，比以前長30倍。通過增加單元大小，我們顯著減少了總單元數量，從22M減少到700K。這顯著降低了檢索器的負擔，導致顯著的檢索得分：NQ上的答案召回@1=71%（以前為52%）和HotpotQA（全維基）上的答案召回@2=72%（以前為47%）。然後我們將前k個檢索單元（約30K tokens）餵給現有的長上下文LLM進行零樣本答案提取。無需任何訓練，LongRAG在NQ上達到62.7%的EM，這是已知的最佳結果。LongRAG在HotpotQA（全維基）上也達到64.3%，與SoTA模型相當。我們的研究為將RAG與長上下文LLMs結合的未來路線圖提供了見解。 | RAG |
+| 2024年6月20日 | [Claude 3.5 Sonnet](https://www.anthropic.com/news/claude-3-5-sonnet) | 今天，我們推出了Claude 3.5 Sonnet——我們即將推出的Claude 3.5模型家族的首次發布。Claude 3.5 Sonnet提高了行業的智能標準，在廣泛的評估中表現優於競爭對手模型和Claude 3 Opus，並且具有我們中端模型Claude 3 Sonnet的速度和成本。 | 基礎LLM |
+| 2024年6月20日 | [Can LLMs Learn by Teaching? A Preliminary Study](https://arxiv.org/abs/2406.14629) | 教學以改進學生模型（例如知識蒸餾）是LLMs中廣泛研究的方法。然而，對於人類來說，教學不僅能提高學生的能力，還能提高教師的能力。我們問：LLMs也能通過教學（LbT）學習嗎？如果是，我們可以潛在地解鎖不僅依賴於人類生成數據或更強模型的可能性，持續推進模型。在本文中，我們對這一雄心勃勃的議程進行了初步探索。我們展示了LbT的想法可以融入現有的LLM訓練/提示管道，並提供顯著改進。具體來說，我們設計了三種方法，每種方法模仿人類LbT的三個層次之一：觀察學生的反饋，從反饋中學習，並迭代學習，目標是提高答案準確性而不進行訓練，並通過微調提高模型的內在能力。研究結果令人鼓舞。例如，類似於人類的LbT，我們看到：1）LbT可以引發弱到強的泛化：強模型可以通過教其他弱模型來提高自己；2）學生的多樣性可能有幫助：教多個學生可能比教一個學生或教師本身更好。我們希望這一早期的承諾能激發未來對LbT的研究，並更廣泛地採用教育中的先進技術來改進LLMs。程式碼可在https://github.com/imagination-research/lbt獲得。 | LLM學習 |
+| 2024年6月19日 | [Can Long-Context Language Models Subsume Retrieval, RAG, SQL, and More?](https://arxiv.org/abs/2406.13121) | 長上下文語言模型（LCLMs）有潛力徹底改變我們對傳統依賴外部工具如檢索系統或數據庫的任務的處理方式。利用LCLMs本地攝取和處理整個信息語料庫的能力提供了許多優勢。它通過消除對工具的專業知識的需求提高了用戶友好性，提供了穩健的端到端建模，最小化了複雜管道中的級聯錯誤，並允許在整個系統中應用複雜的提示技術。為了評估這一範式轉變，我們引入了LOFT，一個需要上下文達到數百萬tokens的實際任務基準，用於評估LCLMs在上下文檢索和推理方面的性能。我們的研究結果顯示，LCLMs在未經專門訓練的情況下，能夠與最先進的檢索和RAG系統競爭。然而，LCLMs在SQL類任務所需的組合推理等領域仍面臨挑戰。值得注意的是，提示策略顯著影響性能，強調隨著上下文長度的增加，需要持續研究。總體而言，LOFT為LCLMs提供了一個嚴格的測試平台，展示了它們在模型能力擴展時取代現有範式和處理新任務的潛力。 | 長上下文, 分析 |
+| 2024年6月18日 | [Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges](https://arxiv.org/abs/2406.12624) | 提供一個有前途的解決方案來應對與人類評估相關的可擴展性挑戰，LLM-as-a-judge範式迅速獲得了作為評估大型語言模型（LLMs）的方法的吸引力。然而，關於這一範式的優勢和劣勢以及可能存在的偏見，仍有許多未解決的問題。在本文中，我們對充當評審的各種LLMs的性能進行了全面研究。我們利用TriviaQA作為評估LLMs客觀知識推理的基準，並將它們與我們發現具有高互評一致性的人類註釋進行比較。我們的研究包括9個評審模型和9個考試模型——包括基礎模型和指令調整模型。我們評估了不同模型大小、家族和評審提示下的評審模型的對齊情況。在其他結果中，我們的研究重新發現了使用Cohen's kappa作為對齊度量而不是簡單百分比一致性的重要性，顯示出具有高百分比一致性的評審仍然可以分配截然不同的分數。我們發現Llama-3 70B和GPT-4 Turbo與人類的對齊度非常好，但在排名考試模型方面，它們被JudgeLM-7B和詞彙評審Contains所超越，後
 
-## :mortar_board: Courses
+## :mortar_board: 課程
 
-#### [Ongoing] Applied LLMs Mastery 2024
+#### [進行中] 應用LLM精通2024
 
-Join 1000+ students on this 10-week adventure as we delve into the application of LLMs across a variety of use cases
+加入超過1000名學生的行列，在這10週的冒險中，我們將深入探討LLM在各種使用案例中的應用
 
-#### [Link](https://areganti.notion.site/Applied-LLMs-Mastery-2024-562ddaa27791463e9a1286199325045c) to the course website
+#### [連結](https://areganti.notion.site/Applied-LLMs-Mastery-2024-562ddaa27791463e9a1286199325045c)到課程網站。
 
-##### [Feb 2024] Registrations are still open [click here](https://forms.gle/353sQMRvS951jDYu7) to register
+##### [2024年2月] 註冊仍然開放[點擊這裡](https://forms.gle/353sQMRvS951jDYu7)進行註冊。
 
-🗓️\*Week 1 [Jan 15 2024]**\*: [Practical Introduction to LLMs](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week1_part1_foundations.md)**
+🗓️\*第 1 週 [2024 年 1 月 15 日]**\*: [實用的 LLMs 介紹](free_courses/Applied_LLMs_Mastery_2024/week1_part1_foundations.md)**
 
-- Applied LLM Foundations
-- Real World LLM Use Cases
-- Domain and Task Adaptation Methods
+- 應用 LLM 基礎
+- 真實世界 LLM 使用案例
+- 領域和任務適應方法
 
-🗓️\*Week 2 [Jan 22 2024]**\*: [Prompting and Prompt
-Engineering](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week2_prompting.md)**
+🗓️\*第2週 [2024年1月22日]**\*: [提示與提示工程](free_courses/Applied_LLMs_Mastery_2024/week2_prompting.md)**
 
-- Basic Prompting Principles
-- Types of Prompting
-- Applications, Risks and Advanced Prompting
+- 基本提示原則
+- 提示類型
+- 應用、風險和進階提示
 
-🗓️\*Week 3 [Jan 29 2024]**\*: [LLM Fine-tuning](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week3_finetuning_llms.md)**
+🗓️\*第3週 [2024年1月29日]**\*: [LLM 微調](free_courses/Applied_LLMs_Mastery_2024/week3_finetuning_llms.md)**
 
-- Basics of Fine-Tuning
-- Types of Fine-Tuning
-- Fine-Tuning Challenges
+- 微調的基礎
+- 微調的類型
+- 微調的挑戰
 
-🗓️\*Week 4 [Feb 5 2024]**\*: [RAG (Retrieval-Augmented Generation)](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week4_RAG.md)**
+🗓️\*第 4 週 [2024 年 2 月 5 日]**\*: [RAG (檢索增強生成)](free_courses/Applied_LLMs_Mastery_2024/week4_RAG.md)**
 
-- Understanding the concept of RAG in LLMs
-- Key components of RAG
-- Advanced RAG Methods
+- 了解LLM中RAG的概念
+- RAG的關鍵組成部分
+- 高級RAG方法
 
-🗓️\*Week 5 [ Feb 12 2024]**\*: [Tools for building LLM Apps](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week5_tools_for_LLM_apps.md)**
+🗓️\*第5週 [2024年2月12日]**\*: [建構LLM應用程式的工具](free_courses/Applied_LLMs_Mastery_2024/week5_tools_for_LLM_apps.md)**
 
-- Fine-tuning Tools
-- RAG Tools
-- Tools for observability, prompting, serving, vector search etc.
+- 微調工具
+- RAG 工具
+- 用於可觀察性、提示、服務、向量搜尋等的工具
 
-🗓️\*Week 6 [Feb 19 2024]**\*: [Evaluation Techniques](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week6_llm_evaluation.md)**
+🗓️\*第6週 [2024年2月19日]**\*: [評估技術](free_courses/Applied_LLMs_Mastery_2024/week6_llm_evaluation.md)**
 
-- Types of Evaluation
-- Common Evaluation Benchmarks
-- Common Metrics
+- 評估類型
+- 常見評估基準
+- 常見指標
 
-🗓️\*Week 7 [Feb 26 2024]**\*: [Building Your Own LLM Application](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week7_build_llm_app.md)**
+🗓️\*第7週 [2024年2月26日]**\*: [建構你自己的 LLM 應用程式](free_courses/Applied_LLMs_Mastery_2024/week7_build_llm_app.md)**
 
-- Components of LLM application
-- Build your own LLM App end to end
+- LLM 應用程式的組件
+- 從頭到尾建構你自己的 LLM 應用程式
 
-🗓️\*Week 8 [March 4 2024]**\*: [Advanced Features and Deployment](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week8_advanced_features.md)**
+🗓️\*第8週 [2024年3月4日]\*: [進階功能和部署](free_courses/Applied_LLMs_Mastery_2024/week8_advanced_features.md)
 
-- LLM lifecycle and LLMOps
-- LLM Monitoring and Observability
-- Deployment strategies
+- LLM 生命週期和 LLMOps
+- LLM 監控和可觀察性
+- 部署策略
 
-🗓️\*Week 9 [March 11 2024]**\*: [Challenges with LLMs](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week9_challenges_with_llms.md)**
+🗓️\*第9週 [2024年3月11日]**\*: [LLM的挑戰](free_courses/Applied_LLMs_Mastery_2024/week9_challenges_with_llms.md)**
 
-- Scaling Challenges
-- Behavioral Challenges
-- Future directions
+- 延展性挑戰
+- 行為挑戰
+- 未來方向
 
-🗓️\*Week 10 [March 18 2024]**\*: [Emerging Research Trends](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week10_research_trends.md)**
+🗓️\*第10週 [2024年3月18日]**\*: [新興研究趨勢](free_courses/Applied_LLMs_Mastery_2024/week10_research_trends.md)**
 
-- Smaller and more performant models
-- Multimodal models
-- LLM Alignment
+- 更小且效能更佳的模型
+- 多模態模型
+- 大型語言模型對齊
 
-🗓️*Week 11 *Bonus\* [March 25 2024]**\*: [Foundations](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week11_foundations.md)**
+🗓️*第11週 *獎勵\* [2024年3月25日]**\*: [基礎](free_courses/Applied_LLMs_Mastery_2024/week11_foundations.md)**
 
-- Generative Models Foundations
-- Self-Attention and Transformers
-- Neural Networks for Language
+- 生成模型基礎
+- 自注意力和Transformer
+- 語言神經網絡
 
 ---
 
-#### :book: List of Free GenAI Courses
 
-##### LLM Basics and Foundations
+#### :book: 免費生成式 AI 課程列表
 
-1. [Large Language Models](https://rycolab.io/classes/llm-s23/) by ETH Zurich
+##### LLM 基礎與基礎原理
 
-2. [Understanding Large Language Models](https://www.cs.princeton.edu/courses/archive/fall22/cos597G/) by Princeton
+1. [大型語言模型](https://rycolab.io/classes/llm-s23/) by ETH Zurich
 
-3. [Transformers course](https://huggingface.co/learn/nlp-course/chapter1/1) by Huggingface
+2. [理解大型語言模型](https://www.cs.princeton.edu/courses/archive/fall22/cos597G/) by Princeton
 
-4. [NLP course](https://huggingface.co/learn/nlp-course/chapter1/1) by Huggingface
+3. [Transformers 課程](https://huggingface.co/learn/nlp-course/chapter1/1) by Huggingface
 
-5. [CS324 - Large Language Models](https://stanford-cs324.github.io/winter2022/) by Stanford
+4. [NLP 課程](https://huggingface.co/learn/nlp-course/chapter1/1) by Huggingface
 
-6. [Generative AI with Large Language Models](https://www.coursera.org/learn/generative-ai-with-llms) by Coursera
+5. [CS324 - 大型語言模型](https://stanford-cs324.github.io/winter2022/) by Stanford
 
-7. [Introduction to Generative AI](https://www.coursera.org/learn/introduction-to-generative-ai) by Coursera
+6. [使用大型語言模型的生成式 AI](https://www.coursera.org/learn/generative-ai-with-llms) by Coursera
 
-8. [Generative AI Fundamentals](https://www.cloudskillsboost.google/paths/118/course_templates/556) by Google Cloud
+7. [生成式 AI 入門](https://www.coursera.org/learn/introduction-to-generative-ai) by Coursera
 
-9. [Introduction to Large Language Models](https://www.cloudskillsboost.google/paths/118/course_templates/539) by Google Cloud
-10. [Introduction to Generative AI](https://www.cloudskillsboost.google/paths/118/course_templates/536) by Google Cloud
-11. [Generative AI Concepts](https://www.datacamp.com/courses/generative-ai-concepts) by DataCamp (Daniel Tedesco Data Lead @ Google)
-12. [1 Hour Introduction to LLM (Large Language Models)](https://www.youtube.com/watch?v=xu5_kka-suc) by WeCloudData
-13. [LLM Foundation Models from the Ground Up | Primer](https://www.youtube.com/watch?v=W0c7jQezTDw&list=PLTPXxbhUt-YWjMCDahwdVye8HW69p5NYS) by Databricks
-14. [Generative AI Explained](https://courses.nvidia.com/courses/course-v1:DLI+S-FX-07+V1/) by Nvidia
-15. [Transformer Models and BERT Model](https://www.cloudskillsboost.google/course_templates/538) by Google Cloud
-16. [Generative AI Learning Plan for Decision Makers](https://explore.skillbuilder.aws/learn/public/learning_plan/view/1909/generative-ai-learning-plan-for-decision-makers) by AWS
-17. [Introduction to Responsible AI](https://www.cloudskillsboost.google/course_templates/554) by Google Cloud
-18. [Fundamentals of Generative AI](https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/) by Microsoft Azure
-19. [Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners?WT.mc_id=academic-122979-leestott) by Microsoft
-20. [ChatGPT for Beginners: The Ultimate Use Cases for Everyone](https://www.udemy.com/course/chatgpt-for-beginners-the-ultimate-use-cases-for-everyone/) by Udemy
-21. [[1hr Talk] Intro to Large Language Models](https://www.youtube.com/watch?v=zjkBMFhNj_g) by Andrej Karpathy
-22. [ChatGPT for Everyone](https://learnprompting.org/courses/chatgpt-for-everyone) by Learn Prompting
-23. [Large Language Models (LLMs) (In English)](https://www.youtube.com/playlist?list=PLxlkzujLkmQ9vMaqfvqyfvZV_o8EqjAk7) by Kshitiz Verma (JK Lakshmipat University, Jaipur, India)
+8. [生成式 AI 基礎](https://www.cloudskillsboost.google/paths/118/course_templates/556) by Google Cloud
 
-##### Building LLM Applications
+9. [大型語言模型入門](https://www.cloudskillsboost.google/paths/118/course_templates/539) by Google Cloud
+10. [生成式 AI 入門](https://www.cloudskillsboost.google/paths/118/course_templates/536) by Google Cloud
+11. [生成式 AI 概念](https://www.datacamp.com/courses/generative-ai-concepts) by DataCamp (Daniel Tedesco Data Lead @ Google)
+12. [1 小時大型語言模型入門](https://www.youtube.com/watch?v=xu5_kka-suc) by WeCloudData
+13. [從零開始的大型語言模型基礎 | 入門](https://www.youtube.com/watch?v=W0c7jQezTDw&list=PLTPXxbhUt-YWjMCDahwdVye8HW69p5NYS) by Databricks
+14. [生成式 AI 解釋](https://courses.nvidia.com/courses/course-v1:DLI+S-FX-07+V1/) by Nvidia
+15. [Transformer 模型和 BERT 模型](https://www.cloudskillsboost.google/course_templates/538) by Google Cloud
+16. [決策者的生成式 AI 學習計劃](https://explore.skillbuilder.aws/learn/public/learning_plan/view/1909/generative-ai-learning-plan-for-decision-makers) by AWS
+17. [負責任的 AI 入門](https://www.cloudskillsboost.google/course_templates/554) by Google Cloud
+18. [生成式 AI 基礎](https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/) by Microsoft Azure
+19. [生成式 AI 初學者指南](https://github.com/microsoft/generative-ai-for-beginners?WT.mc_id=academic-122979-leestott) by Microsoft
+20. [ChatGPT 初學者指南: 終極使用案例](https://www.udemy.com/course/chatgpt-for-beginners-the-ultimate-use-cases-for-everyone/) by Udemy
+21. [[1 小時講座] 大型語言模型入門](https://www.youtube.com/watch?v=zjkBMFhNj_g) by Andrej Karpathy
+22. [人人都能使用的 ChatGPT](https://learnprompting.org/courses/chatgpt-for-everyone) by Learn Prompting
+23. [大型語言模型 (LLMs) (英語)](https://www.youtube.com/playlist?list=PLxlkzujLkmQ9vMaqfvqyfvZV_o8EqjAk7) by Kshitiz Verma (JK Lakshmipat University, Jaipur, India)
 
-1. [LLMOps: Building Real-World Applications With Large Language Models](https://www.udacity.com/course/building-real-world-applications-with-large-language-models--cd13455) by Udacity
+##### 建構 LLM 應用程式
 
-2. [Full Stack LLM Bootcamp](https://fullstackdeeplearning.com/llm-bootcamp/) by FSDL
+1. [LLMOps: 建構真實世界應用與大型語言模型](https://www.udacity.com/course/building-real-world-applications-with-large-language-models--cd13455) by Udacity
 
-3. [Generative AI for beginners](https://github.com/microsoft/generative-ai-for-beginners/tree/main) by Microsoft
+2. [全堆疊 LLM 訓練營](https://fullstackdeeplearning.com/llm-bootcamp/) by FSDL
 
-4. [Large Language Models: Application through Production](https://www.edx.org/learn/computer-science/databricks-large-language-models-application-through-production) by Databricks
+3. [生成式 AI 初學者指南](https://github.com/microsoft/generative-ai-for-beginners/tree/main) by Microsoft
 
-5. [Generative AI Foundations](https://www.youtube.com/watch?v=oYm66fHqHUM&list=PLhr1KZpdzukf-xb0lmiU3G89GJXaDbAIF) by AWS
+4. [大型語言模型: 從應用到生產](https://www.edx.org/learn/computer-science/databricks-large-language-models-application-through-production) by Databricks
 
-6. [Introduction to Generative AI Community Course](https://www.youtube.com/watch?v=ajWheP8ZD70&list=PLmQAMKHKeLZ-iTT-E2kK9uePrJ1Xua9VL) by ineuron
+5. [生成式 AI 基礎](https://www.youtube.com/watch?v=oYm66fHqHUM&list=PLhr1KZpdzukf-xb0lmiU3G89GJXaDbAIF) by AWS
 
-7. [LLM University](https://docs.cohere.com/docs/llmu) by Cohere
-8. [LLM Learning Lab](https://lightning.ai/pages/llm-learning-lab/) by Lightning AI
-9. [LangChain for LLM Application Development](https://learn.deeplearning.ai/login?redirect_course=langchain&callbackUrl=https%3A%2F%2Flearn.deeplearning.ai%2Fcourses%2Flangchain) by Deeplearning.AI
+6. [生成式 AI 社群課程介紹](https://www.youtube.com/watch?v=ajWheP8ZD70&list=PLmQAMKHKeLZ-iTT-E2kK9uePrJ1Xua9VL) by ineuron
+
+7. [LLM 大學](https://docs.cohere.com/docs/llmu) by Cohere
+8. [LLM 學習實驗室](https://lightning.ai/pages/llm-learning-lab/) by Lightning AI
+9. [LangChain 用於 LLM 應用開發](https://learn.deeplearning.ai/login?redirect_course=langchain&callbackUrl=https%3A%2F%2Flearn.deeplearning.ai%2Fcourses%2Flangchain) by Deeplearning.AI
 10. [LLMOps](https://learn.deeplearning.ai/llmops) by DeepLearning.AI
-11. [Automated Testing for LLMOps](https://learn.deeplearning.ai/automated-testing-llmops) by DeepLearning.AI
-12. [Building Generative AI Applications Using Amazon Bedrock](https://explore.skillbuilder.aws/learn/course/external/view/elearning/17904/building-generative-ai-applications-using-amazon-bedrock-aws-digital-training) by AWS
-13. [Efficiently Serving LLMs](https://learn.deeplearning.ai/courses/efficiently-serving-llms/lesson/1/introduction) by DeepLearning.AI
-14. [Building Systems with the ChatGPT API](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) by DeepLearning.AI
-15. [Serverless LLM apps with Amazon Bedrock](https://www.deeplearning.ai/short-courses/serverless-llm-apps-amazon-bedrock/) by DeepLearning.AI
-16. [Building Applications with Vector Databases](https://www.deeplearning.ai/short-courses/building-applications-vector-databases/) by DeepLearning.AI
-17. [Automated Testing for LLMOps](https://www.deeplearning.ai/short-courses/automated-testing-llmops/) by DeepLearning.AI
+11. [LLMOps 自動化測試](https://learn.deeplearning.ai/automated-testing-llmops) by DeepLearning.AI
+12. [使用 Amazon Bedrock 建構生成式 AI 應用](https://explore.skillbuilder.aws/learn/course/external/view/elearning/17904/building-generative-ai-applications-using-amazon-bedrock-aws-digital-training) by AWS
+13. [高效服務 LLMs](https://learn.deeplearning.ai/courses/efficiently-serving-llms/lesson/1/introduction) by DeepLearning.AI
+14. [使用 ChatGPT API 建構系統](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) by DeepLearning.AI
+15. [使用 Amazon Bedrock 的無伺服器 LLM 應用](https://www.deeplearning.ai/short-courses/serverless-llm-apps-amazon-bedrock/) by DeepLearning.AI
+16. [使用向量資料庫建構應用](https://www.deeplearning.ai/short-courses/building-applications-vector-databases/) by DeepLearning.AI
+17. [LLMOps 自動化測試](https://www.deeplearning.ai/short-courses/automated-testing-llmops/) by DeepLearning.AI
 18. [LLMOps](https://www.deeplearning.ai/short-courses/llmops/) by DeepLearning.AI
-19. [Build LLM Apps with LangChain.js](https://www.deeplearning.ai/short-courses/build-llm-apps-with-langchain-js/) by DeepLearning.AI
-20. [Advanced Retrieval for AI with Chroma](https://www.deeplearning.ai/short-courses/advanced-retrieval-for-ai/) by DeepLearning.AI
-21. [Operationalizing LLMs on Azure](https://www.coursera.org/learn/llmops-azure) by Coursera
-22. [Generative AI Full Course – Gemini Pro, OpenAI, Llama, Langchain, Pinecone, Vector Databases & More](https://www.youtube.com/watch?v=mEsleV16qdo) by freeCodeCamp.org
-23. [Training & Fine-Tuning LLMs for Production](https://learn.activeloop.ai/courses/llms) by Activeloop
+19. [使用 LangChain.js 建構 LLM 應用](https://www.deeplearning.ai/short-courses/build-llm-apps-with-langchain-js/) by DeepLearning.AI
+20. [使用 Chroma 的 AI 進階檢索](https://www.deeplearning.ai/short-courses/advanced-retrieval-for-ai/) by DeepLearning.AI
+21. [在 Azure 上操作 LLMs](https://www.coursera.org/learn/llmops-azure) by Coursera
+22. [生成式 AI 全課程 – Gemini Pro, OpenAI, Llama, Langchain, Pinecone, 向量資料庫及更多](https://www.youtube.com/watch?v=mEsleV16qdo) by freeCodeCamp.org
+23. [訓練及微調 LLMs 用於生產](https://learn.activeloop.ai/courses/llms) by Activeloop
 
-##### Prompt Engineering, RAG and Fine-Tuning
+##### 提示工程、RAG 和微調
 
 1. [LangChain & Vector Databases in Production](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbVhnQW8xNDdhSU9IUDVLXzFhV2N0UkNRMkZrQXxBQ3Jtc0traUxHMzZJcGJQYjlyckYxaGxYVWlsOFNGUFlFVEdhNzdjTWpPUlQ2TF9XczRqNkxMVGpJTnd5YmYzV0prQ0IwZURNcHhIZ3h1Z051VTl5MXBBLUN0dkM0NHRkQTFua1Jpc0VCRFJUb0ZQZG95b0JqMA&q=https%3A%2F%2Flearn.activeloop.ai%2Fcourses%2Flangchain&v=gKUTDC13jys) by Activeloop
 
@@ -267,114 +234,115 @@ Engineering](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/mai
 20. [Retrieval Augmented Generation for Production with LangChain & LlamaIndex](https://learn.activeloop.ai/courses/rag) by Activeloop
 21. [Quantization in Depth](https://www.deeplearning.ai/short-courses/quantization-in-depth/) by Deeplearning.AI
 
-##### Evaluation
+##### 評估
 
-1. [Building and Evaluating Advanced RAG Applications](https://learn.deeplearning.ai/building-evaluating-advanced-rag) by DeepLearning.AI
-2. [Evaluating and Debugging Generative AI Models Using Weights and Biases](https://learn.deeplearning.ai/evaluating-debugging-generative-ai) by Deeplearning.AI
-3. [Quality and Safety for LLM Applications](https://www.deeplearning.ai/short-courses/quality-safety-llm-applications/) by Deeplearning.AI
-4. [Red Teaming LLM Applications](https://www.deeplearning.ai/short-courses/red-teaming-llm-applications/?utm_campaign=giskard-launch&utm_medium=headband&utm_source=dlai-homepage) by Deeplearning.AI
+1. [建構與評估進階 RAG 應用程式](https://learn.deeplearning.ai/building-evaluating-advanced-rag) by DeepLearning.AI
+2. [使用 Weights and Biases 評估與除錯生成式 AI 模型](https://learn.deeplearning.ai/evaluating-debugging-generative-ai) by Deeplearning.AI
+3. [LLM 應用程式的品質與安全](https://www.deeplearning.ai/short-courses/quality-safety-llm-applications/) by Deeplearning.AI
+4. [紅隊測試 LLM 應用程式](https://www.deeplearning.ai/short-courses/red-teaming-llm-applications/?utm_campaign=giskard-launch&utm_medium=headband&utm_source=dlai-homepage) by Deeplearning.AI
 
-##### Multimodal
+##### 多模態
 
-1. [How Diffusion Models Work](https://www.deeplearning.ai/short-courses/how-diffusion-models-work/) by DeepLearning.AI
-2. [How to Use Midjourney, AI Art and ChatGPT to Create an Amazing Website](https://www.youtube.com/watch?v=5wdCev86RYE) by Brad Hussey
-3. [Build AI Apps with ChatGPT, DALL-E and GPT-4](https://scrimba.com/learn/buildaiapps) by Scrimba
-4. [11-777: Multimodal Machine Learning](https://www.youtube.com/playlist?list=PL-Fhd_vrvisNM7pbbevXKAbT_Xmub37fA) by Carnegie Mellon University
-5. [Prompt Engineering for Vision Models](https://www.deeplearning.ai/short-courses/prompt-engineering-for-vision-models/) by Deeplearning.AI
+1. [擴散模型如何運作](https://www.deeplearning.ai/short-courses/how-diffusion-models-work/) by DeepLearning.AI
+2. [如何使用 Midjourney、AI 藝術和 ChatGPT 建立一個驚人的網站](https://www.youtube.com/watch?v=5wdCev86RYE) by Brad Hussey
+3. [使用 ChatGPT、DALL-E 和 GPT-4 建構 AI 應用程式](https://scrimba.com/learn/buildaiapps) by Scrimba
+4. [11-777: 多模態機器學習](https://www.youtube.com/playlist?list=PL-Fhd_vrvisNM7pbbevXKAbT_Xmub37fA) by Carnegie Mellon University
+5. [視覺模型的提示工程](https://www.deeplearning.ai/short-courses/prompt-engineering-for-vision-models/) by Deeplearning.AI
 
-##### Agents
-1. [Building RAG Agents with LLMs](https://courses.nvidia.com/courses/course-v1:DLI+S-FX-15+V1/) by Nvidia
-2. [Functions, Tools and Agents with LangChain](https://learn.deeplearning.ai/functions-tools-agents-langchain) by Deeplearning.AI
-3. [AI Agents in LangGraph](https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/) by Deeplearning.AI
-4. [AI Agentic Design Patterns with AutoGen](https://www.deeplearning.ai/short-courses/ai-agentic-design-patterns-with-autogen/) by Deeplearning.AI
-5. [Multi AI Agent Systems with crewAI](https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/) by Deeplearning.AI
-6. [Building Agentic RAG with LlamaIndex](https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/) by Deeplearning.AI
-7. [LLM Observability: Agents, Tools, and Chains](https://courses.arize.com/p/agents-tools-and-chains) by Arize AI
+##### 代理
 
+1. [建構 RAG Agents with LLMs](https://courses.nvidia.com/courses/course-v1:DLI+S-FX-15+V1/) by Nvidia
+2. [函式、工具和 Agents with LangChain](https://learn.deeplearning.ai/functions-tools-agents-langchain) by Deeplearning.AI
+3. [LangGraph 中的 AI Agents](https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/) by Deeplearning.AI
+4. [使用 AutoGen 的 AI Agentic 設計模式](https://www.deeplearning.ai/short-courses/ai-agentic-design-patterns-with-autogen/) by Deeplearning.AI
+5. [使用 crewAI 的多 AI Agent 系統](https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/) by Deeplearning.AI
+6. [使用 LlamaIndex 建構 Agentic RAG](https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/) by Deeplearning.AI
+7. [LLM 可觀察性: Agents、工具和 Chains](https://courses.arize.com/p/agents-tools-and-chains) by Arize AI
 
+#### 雜項
 
-
-
-
-#### Miscellaneous
-
-1. [Avoiding AI Harm](https://www.coursera.org/learn/avoiding-ai-harm) by Coursera
-2. [Developing AI Policy](https://www.coursera.org/learn/developing-ai-policy) by Coursera
+1. [避免 AI 傷害](https://www.coursera.org/learn/avoiding-ai-harm) by Coursera
+2. [制定 AI 政策](https://www.coursera.org/learn/developing-ai-policy) by Coursera
 
 ---
 
-## :paperclip: Resources
 
-- [ICLR 2024 Paper Summaries](https://areganti.notion.site/06f0d4fe46a94d62bff2ae001cfec22c?v=d501ca62e4b745768385d698f173ae14)
+## :paperclip: 資源
 
----
-
-## :computer: Interview Prep
-
-#### Topic wise Questions:
-
-1. [Common GenAI Interview Questions](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/interview_prep/60_gen_ai_questions.md)
-2. Prompting and Prompt Engineering
-3. Model Fine-Tuning
-4. Model Evaluation
-5. MLOps for GenAI
-6. Generative Models Foundations
-7. Latest Research Trends
-
-#### GenAI System Design (Coming Soon):
-
-1. Designing an LLM-Powered Search Engine
-2. Building a Customer Support Chatbot
-3. Building a system for natural language interaction with your data.
-4. Building an AI Co-pilot
-5. Designing a Custom Chatbot for Q/A on Multimodal Data (Text, Images, Tables, CSV Files)
-6. Building an Automated Product Description and Image Generation System for E-commerce
+- [ICLR 2024 論文摘要](https://areganti.notion.site/06f0d4fe46a94d62bff2ae001cfec22c?v=d501ca62e4b745768385d698f173ae14)
 
 ---
 
-## :notebook: Code Notebooks
 
-#### RAG Tutorials
+## :computer: 面試準備
 
-- [AWS Bedrock Workshop Tutorials](https://github.com/aws-samples/amazon-bedrock-workshop) by Amazon Web Services
-- [Langchain Tutorials](https://github.com/gkamradt/langchain-tutorials) by gkamradt
-- [LLM Applications for production](https://github.com/ray-project/llm-applications/tree/main) by ray-project
-- [LLM tutorials](https://github.com/ollama/ollama/tree/main/examples) by Ollama
+#### 主題相關問題:
+
+1. [常見的生成式 AI 面試問題](interview_prep/60_gen_ai_questions.md)
+2. 提示和提示工程
+3. 模型微調
+4. 模型評估
+5. GenAI 的 MLOps
+6. 生成模型基礎
+7. 最新研究趨勢
+
+#### GenAI 系統設計 (即將推出):
+
+1. 設計一個 LLM 驅動的搜尋引擎
+2. 建構一個客戶支援聊天機器人
+3. 建構一個與您的資料進行自然語言互動的系統
+4. 建構一個 AI 副駕駛
+5. 設計一個自訂的聊天機器人，用於多模態資料（文字、圖片、表格、CSV 檔案）的問答
+6. 建構一個自動化的產品描述和圖像生成系統，用於電子商務
+
+---
+
+
+## :notebook: 程式碼筆記本
+
+#### RAG 指南
+
+- [AWS Bedrock Workshop 指南](https://github.com/aws-samples/amazon-bedrock-workshop) by Amazon Web Services
+- [Langchain 指南](https://github.com/gkamradt/langchain-tutorials) by gkamradt
+- [生產用 LLM 應用](https://github.com/ray-project/llm-applications/tree/main) by ray-project
+- [LLM 指南](https://github.com/ollama/ollama/tree/main/examples) by Ollama
 - [LLM Hub](https://github.com/mallahyari/llm-hub) by mallahyari
 
-#### Fine-Tuning Tutorials
+#### 微調指南
 
-- [LLM Fine-tuning tutorials](https://github.com/ashishpatel26/LLM-Finetuning) by ashishpatel26
-- [PEFT](https://github.com/huggingface/peft/tree/main/examples) example notebooks by Huggingface
-- [Free LLM Fine-Tuning Notebooks](https://levelup.gitconnected.com/14-free-large-language-models-fine-tuning-notebooks-532055717cb7) by Youssef Hosni
+- [LLM 微調指南](https://github.com/ashishpatel26/LLM-Finetuning) by ashishpatel26
+- [PEFT](https://github.com/huggingface/peft/tree/main/examples) 範例筆記本 by Huggingface
+- [免費的 LLM 微調筆記本](https://levelup.gitconnected.com/14-free-large-language-models-fine-tuning-notebooks-532055717cb7) by Youssef Hosni
 
+#### 綜合 LLM 程式碼儲存庫
 
-#### Comprehensive LLM Code Repositories 
-- [LLM-PlayLab](https://github.com/Sakil786/LLM-PlayLab) This playlab encompasses a multitude of projects crafted through the utilization of Transformer Models
-
-
----
-
-## :black_nib: Contributing
-
-If you want to add to the repository or find any issues, please feel free to raise a PR and ensure correct placement within the relevant section or category.
+- [LLM-PlayLab](https://github.com/Sakil786/LLM-PlayLab) 此實驗室涵蓋了通過使用 Transformer 模型製作的多個項目
 
 ---
 
-## :pushpin: Cite Us
 
-To cite this guide, use the below format:
+## :black_nib: 貢獻
+
+如果你想新增到這個儲存庫或發現任何問題，請隨時提出 PR，並確保在相關部分或類別中正確放置。
+
+---
+
+
+## :pushpin: 引用我們
+
+要引用本指南，請使用以下格式:
 
 ```
 @article{areganti_generative_ai_guide,
 author = {Reganti, Aishwarya Naresh},
 journal = {https://github.com/aishwaryanr/awesome-generative-ai-resources},
 month = {01},
-title = {{Generative AI Guide}},
+title = {{生成式 AI 指南}}，
 year = {2024}
 }
 ```
 
-## License
+## 授權條款
 
 [MIT License]
+

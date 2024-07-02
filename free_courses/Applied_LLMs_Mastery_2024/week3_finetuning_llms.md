@@ -1,161 +1,162 @@
-# [Week 3] Fine Tuning LLMs
+﻿# [Week 3] 微調 LLMs
 
-## ETMI5: Explain to Me in 5
+## ETMI5: 用五分鐘解釋給我聽
 
-In this section, we will go over the Fine-Tuning domain adaptation method for LLMs. Fine-tuning involves further training pre-trained models for specific tasks or domains, adapting them to new data distributions, and enhancing efficiency by leveraging pre-existing knowledge. It is crucial for tasks where generic models may not excel. Two main types of fine-tuning include unsupervised (updating models without modifying behavior) and supervised (updating models with labeled data). We emphasize on the popular supervised method-Instruction fine-tuning which augments input-output examples with explicit instructions for better generalization. We’ll dig deeper into Reinforcement Learning from Human Feedback (RLHF) which incorporates human feedback for model fine-tuning and Direct Preference Optimization (DPO) that directly optimizes models based on user preferences. We provide an overview of Parameter-Efficient Fine-Tuning (PEFT) approaches as well where selective updates are made to model parameters, addressing computational challenges, memory efficiency, and allowing versatility across modalities.
+在本節中，我們將探討 LLMs 的微調領域適應方法。微調涉及對預訓練模型進行進一步訓練，以適應特定任務或領域，將它們調整到新的數據分佈，並通過利用已有知識來提高效率。這對於通用模型可能表現不佳的任務至關重要。微調的兩種類型包括無監督（在不修改行為的情況下更新模型）和有監督（使用標記數據更新模型）。我們強調流行的有監督方法——指令微調，它通過明確的指令增強輸入輸出範例，以提高泛化能力。我們將深入探討從人類反饋中學習的強化學習（RLHF），該方法結合了人類反饋進行模型微調，以及直接偏好最佳化（DPO），該方法根據用戶偏好直接優化模型。我們還概述了參數高效微調（PEFT）方法，在這些方法中，對模型參數進行選擇性更新，以解決計算挑戰、記憶體效率問題，並允許跨模態的多樣性。
 
-## Introduction
+## 簡介
 
-Fine-tuning  is the process of taking pre-trained models and further training them on smaller, domain-specific datasets. The aim is to refine their capabilities and enhance performance in a specific task or domain. This process transforms general-purpose models into specialized ones, bridging the gap between generic pre-trained models and the unique requirements of particular applications.
+微調是將預訓練模型進一步訓練在較小的特定領域數據集上的過程。目的是精煉其能力並提高在特定任務或領域中的性能。這個過程將通用模型轉變為專門模型，彌合了通用預訓練模型與特定應用獨特需求之間的差距。
 
-Consider OpenAI's GPT-3, a state-of-the-art LLM designed for a broad range of  NLP tasks. To illustrate the need for fine-tuning, imagine a healthcare organization wanting to use GPT-3 to assist doctors in generating patient reports from textual notes. While GPT-3 is proficient in general text understanding, it may not be optimized for intricate medical terms and specific healthcare jargon.
+考慮 OpenAI 的 GPT-3, 一個為廣泛 NLP 任務設計的先進 LLM。為了說明微調的必要性，想像一個醫療機構希望使用 GPT-3 來協助醫生從文本筆記生成病人報告。雖然 GPT-3 在一般文本理解方面很熟練，但它可能未針對複雜的醫學術語和特定的醫療行話進行最佳化。
 
-In this scenario, the organization engages in fine-tuning GPT-3 on a dataset filled with medical reports and patient notes. The model becomes more familiar with medical terminologies, nuances of clinical language, and typical report structures. As a result, after fine-tuning, GPT-3 is better suited to assist doctors in generating accurate and coherent patient reports, showcasing its adaptability for specific tasks.
+在此情境中，組織在充滿醫療報告和病人筆記的資料集上進行 GPT-3 的微調。模型變得更加熟悉醫療術語、臨床語言的細微差別和典型的報告結構。結果，微調後的 GPT-3 更適合協助醫生生成準確且連貫的病人報告，展示其對特定任務的適應能力。
 
-Fine-tuning is not exclusive to language models; any machine learning model may require retraining under certain circumstances. It involves adjusting model parameters to align with the distribution of new, specific datasets. This process is illustrated with the example of a convolutional neural network trained to identify images of automobiles and the challenges it faces when applied to detecting trucks on highways.
+微調並不僅限於語言模型；任何機器學習模型在某些情況下都可能需要重新訓練。這涉及調整模型參數以符合新的特定數據集的分佈。這個過程以一個卷積神經網路訓練來識別汽車圖像的範例來說明，並展示其在應用於檢測高速公路上的卡車時所面臨的挑戰。
 
-The key principle behind fine-tuning is to leverage pre-trained models and recalibrate their parameters using novel data, adapting them to new contexts or applications. It is particularly beneficial when the distribution of training data significantly differs from the requirements of a specific application.The choice of the base general model model depends on the nature of the task, such as text generation or text classification.
+微調背後的關鍵原則是利用預訓練模型並使用新數據重新校準其參數，使其適應新的上下文或應用。當訓練數據的分佈與特定應用的需求顯著不同時，這尤其有利。基礎通用模型的選擇取決於任務的性質，例如文本生成或文本分類。
 
-## Why Fine-Tuning?
+## 為什麼要微調？
 
-While large language models are indeed trained on a diverse set of tasks, the need for fine-tuning arises because these large generic models are designed to perform reasonably well across various applications, but not necessarily excel in a specific task. The optimization of generic models is aimed at achieving decent performance across a range of tasks, making them versatile but not specialized.
+雖然大型語言模型確實在多樣化的任務上進行訓練，但需要微調的原因是這些大型通用模型旨在在各種應用中表現得相當好，但不一定在特定任務中表現出色。通用模型的最佳化目標是實現跨多種任務的良好性能，使其具有多功能性但不專精。
 
-Fine-tuning becomes essential to ensure that a model attains exceptional proficiency in a particular task or domain of interest. The emphasis shifts from achieving general competence to achieving mastery in a specific application. This is particularly crucial when the model is intended for a focused use case, and overall general performance is not the primary concern.
+微調變得至關重要，以確保模型在特定任務或感興趣的領域中達到卓越的熟練度。重點從實現一般能力轉移到在特定應用中達到精通。當模型旨在針對特定使用案例時，這一點尤為重要，而整體一般性能並不是主要關注點。
 
-In essence, generic large language models can be considered as being proficient in multiple tasks but not reaching the level of mastery in any. Fine-tuned models, on the other hand, undergo a tailored optimization process to become masters of a specific task or domain. Therefore, the decision to fine-tune models is driven by the necessity to achieve superior performance in targeted applications, making them highly effective specialists in their designated areas. 
+從本質上講，通用的大型語言模型可以被認為在多個任務中都很熟練，但沒有達到任何一個領域的精通水平。另一方面，經過微調的模型會經歷一個量身定制的最佳化過程，成為特定任務或領域的專家。因此，決定微調模型是由於需要在目標應用中實現卓越的性能，使它們在指定領域中成為高度有效的專家。
 
-For a deeper understanding, explore why fine-tuning models for tasks in new domains is deemed crucial for several compelling reasons.
+為了更深入的了解，探討為什麼在新領域中對任務進行模型微調被認為是至關重要的幾個令人信服的原因。
 
-1. **Domain-Specific Adaptation:** Pre-trained LLMs may not be optimized for specific tasks or domains. Fine-tuning allows adaptation to the nuances and characteristics of a new domain, enhancing performance in domain-specific tasks. For instance, large generic LLMs might not be sufficiently trained on tasks like document analysis in the legal domain. Fine-tuning can allow the model to understand legal terminology and nuances for tasks like contract review.
-2. **Shifts in Data Distribution:** Models trained on one dataset may not generalize well to out-of-distribution examples. Fine-tuning helps align the model with the distribution of new data, addressing shifts in data characteristics and improving performance on specific tasks. For example: Fine-tuning a sentiment analysis model for social media comments. The distribution of language and sentiments on social media may differ significantly from the original training data, requiring adaptation for accurate sentiment classification.
-3. **Cost and Resource Efficiency:** Training a model from scratch on a new task often requires a large labeled dataset, which can be costly and time-consuming. Fine-tuning allows leveraging a pre-trained model's knowledge and adapting it to the new task with a smaller dataset, making the process more efficient. For example: Adapting a pre-trained model for a small e-commerce platform to recommend products based on user preferences. Fine-tuning is more resource-efficient than training a model from scratch with a limited dataset.
-4. **Out-of-Distribution Data Handling:**
-    - Fine-tuning mitigates the suboptimal performance of pre-trained models when dealing with out-of-distribution examples. Instead of starting training anew, fine-tuning allows building upon the existing model's foundation with a relatively modest dataset. For example: Fine-tuning a speech recognition model for a new regional accent. The model can be adapted to recognize speech patterns specific to the new accent without extensive retraining.
-5. **Knowledge Transfer:**
-    - Pre-trained models capture general patterns and knowledge from vast amounts of data during pre-training. Fine-tuning facilitates the transfer of this general knowledge to specific tasks, making it a valuable tool for leveraging pre-existing knowledge in new applications. For example: Transferring medical knowledge from a pre-trained model to a new healthcare chatbot. Fine-tuning with medical literature enables the model to provide accurate and contextually relevant responses in healthcare conversations.
-6. **Task-Specific Optimization:**
-    - Fine-tuning enables the optimization of model parameters for task-specific objectives. For example, in the medical domain, fine-tuning an LLM with medical literature can enhance its performance in medical applications. For example: Optimizing a pre-trained model for code generation in a software development environment. Fine-tuning with code examples allows the model to better understand and generate code snippets.
-7. **Adaptation to User Preferences:** Fine-tuning allows adapting the model to user preferences and specific task requirements. It enables the model to generate more contextually relevant and task-specific responses. For example: Fine-tuning a virtual assistant model to align with user preferences in language and tone. This ensures that the assistant generates responses that match the user's communication style.
-8. **Continual Learning:** Fine-tuning supports continual learning by allowing models to adapt to evolving data and user requirements over time. It enables models to stay relevant and effective in dynamic environments. For instance: Continually updating a news summarization model to adapt to evolving news topics and user preferences. Fine-tuning enables the model to stay relevant and provide timely summaries.
+1. **特定領域適應:** 預訓練的LLM可能未針對特定任務或領域進行最佳化。微調允許適應新領域的細微差別和特徵，提升在特定領域任務中的表現。例如，大型通用LLM可能未充分訓練法律領域的文件分析任務。微調可以讓模型理解法律術語和細微差別，用於合同審查等任務。
+2. **數據分佈變化:** 在一個數據集上訓練的模型可能無法很好地泛化到分佈外的範例。微調有助於使模型與新數據的分佈對齊，解決數據特徵的變化，並改善特定任務的表現。例如: 微調一個情感分析模型以適應社交媒體評論。社交媒體上的語言和情感分佈可能與原始訓練數據顯著不同，需要進行適應以準確分類情感。
+3. **成本和資源效率:** 從頭開始訓練一個新任務的模型通常需要大量標記數據集，這可能既昂貴又耗時。微調允許利用預訓練模型的知識，並用較小的數據集適應新任務，使過程更高效。例如: 將預訓練模型適應一個小型電子商務平台，根據用戶偏好推薦產品。微調比從頭開始用有限數據集訓練模型更具資源效率。
+4. **處理分佈外數據:**
+    - 微調減輕了預訓練模型在處理分佈外範例時的次優表現。與其重新開始訓練，微調允許在現有模型的基礎上用相對較小的數據集進行建構。例如: 微調一個語音識別模型以適應新的區域口音。模型可以適應識別新口音特有的語音模式，而不需要進行廣泛的重新訓練。
+5. **知識轉移:**
+    - 預訓練模型在預訓練期間從大量數據中捕捉到一般模式和知識。微調促進了這些一般知識向特定任務的轉移，使其成為在新應用中利用已有知識的寶貴工具。例如: 將預訓練模型中的醫學知識轉移到新的醫療聊天機器人。通過微調醫學文獻，使模型能夠在醫療對話中提供準確且具有上下文相關的回應。
+6. **任務特定最佳化:**
+    - 微調允許針對任務特定目標進行模型參數的最佳化。例如，在醫學領域，通過微調醫學文獻可以提升LLM在醫學應用中的表現。例如: 在軟體開發環境中優化一個預訓練模型以進行程式碼產生。通過微調程式碼範例，使模型能夠更好地理解和生成程式碼片段。
+7. **適應用戶偏好:** 微調允許模型適應用戶偏好和特定任務需求。它使模型能夠生成更具上下文相關性和任務特定的回應。例如: 微調一個虛擬助手模型以符合用戶在語言和語氣上的偏好。這確保了助手生成的回應符合用戶的溝通風格。
+8. **持續學習:** 微調支持持續學習，允許模型隨著時間的推移適應不斷變化的數據和用戶需求。它使模型在動態環境中保持相關性和有效性。例如: 持續更新一個新聞摘要模型以適應不斷變化的新聞主題和用戶偏好。微調使模型能夠保持相關性並提供及時的摘要。
 
-In summary, fine-tuning is a powerful technique that enables organizations to adapt pre-trained models to specific tasks, domains, and user requirements, providing a practical and efficient solution for deploying models in real-world applications. 
+總之，微調是一種強大的技術，使組織能夠將預訓練模型調整到特定任務、領域和用戶需求，為在現實世界應用中部署模型提供了一個實用且高效的解決方案。
 
-## Types of Fine-Tuning
+## 微調的類型
 
-At a high level, fine-tuning methods for language models can be categorized into two main approaches: supervised and unsupervised. In machine learning, supervised methods involve having labeled data, where the model is trained on examples with corresponding desired outputs. On the other hand, unsupervised methods operate with unlabeled data, focusing on extracting patterns and structures without explicit labels.
+在高層次上，語言模型的微調方法可以分為兩種主要方法: 監督式和非監督式。在機器學習中，監督式方法涉及標記數據，其中模型在具有相應期望輸出的範例上進行訓練。另一方面，非監督式方法則使用未標記數據，專注於在沒有明確標籤的情況下提取模式和結構。
 
-### **Unsupervised Fine-Tuning Methods:**
+### **無監督微調方法:**
 
-1. **Unsupervised Full Fine-Tuning:** Unsupervised fine-tuning becomes relevant when there is a need to update the knowledge base of an LLM without modifying its existing behavior. For instance, if the goal is to fine-tune the model on legal literature or adapt it to a new language, an unstructured dataset containing legal documents or texts in the desired language can be utilized. In such cases, the unstructured dataset comprises articles, legal papers, or relevant content from authoritative sources in the legal domain. This approach allows the model to effectively refine its understanding and adapt to the nuances of legal language without relying on labeled examples, showcasing the versatility of unsupervised fine-tuning across various domains.
-2. **Contrastive Learning:** Contrastive learning is a method employed in fine-tuning language models, emphasizing the training of the model to discern between similar and dissimilar examples in the latent space. The objective is to optimize the model's ability to distinguish subtle nuances and patterns within the data. This is achieved by encouraging the model to bring similar examples closer together in the latent space while pushing dissimilar examples apart. The resulting learned representations enable the model to capture intricate relationships and differences in the input data. Contrastive learning is particularly beneficial in tasks where a nuanced understanding of similarities and distinctions is crucial, making it a valuable technique for refining language models for specific applications that require fine-grained discrimination.
+1. **無監督全面微調:** 當需要更新LLM的知識庫而不修改其現有行為時，無監督微調變得相關。例如，如果目標是對模型進行法律文獻的微調或適應新語言，可以利用包含法律文件或所需語言文本的非結構化數據集。在這種情況下，非結構化數據集包括文章、法律論文或來自法律領域權威來源的相關內容。這種方法允許模型有效地完善其理解並適應法律語言的細微差別，而不依賴標記的範例，展示了無監督微調在各種領域中的多功能性。
+2. **對比學習:** 對比學習是一種用於微調語言模型的方法，強調訓練模型在潛在空間中辨別相似和不相似的範例。其目標是優化模型辨別數據中微妙差異和模式的能力。這是通過鼓勵模型在潛在空間中將相似的範例拉近，而將不相似的範例推開來實現的。所學到的表示使模型能夠捕捉輸入數據中的複雜關係和差異。對比學習在需要細緻理解相似性和區別性的任務中特別有益，使其成為微調語言模型以應對需要細緻辨別的特定應用的寶貴技術。
 
-### **Supervised Fine-Tuning Methods:**
+### **監督式微調方法:**
 
-1. **Parameter-Efficient Fine-Tuning: It** is a fine-tuning strategy that aims to reduce the computational expenses associated with updating the parameters of a language model. Instead of updating all parameters during fine-tuning, PEFT focuses on selectively updating a small set of parameters, often referred to as a low-dimensional matrix. One prominent example of PEFT is the low-rank adaptation (LoRA) technique. LoRA operates on the premise that fine-tuning a foundational model for downstream tasks only requires updates across certain parameters. The low-rank matrix effectively represents the relevant space related to the target task, and training this matrix is performed instead of adjusting the entire model's parameters. PEFT, and specifically techniques like LoRA, can significantly decrease the costs associated with fine-tuning, making it a more efficient process.
-2. **Supervised Full Fine-Tuning**: It  involves updating all parameters of the language model during the training process. Unlike PEFT, where only a subset of parameters is modified, full fine-tuning requires sufficient memory and computational resources to store and process all components being updated. This comprehensive approach results in a new version of the model with updated weights across all layers. While full fine-tuning is more resource-intensive, it ensures that the entire model is adapted to the specific task or domain, making it suitable for situations where a thorough adjustment of the language model is desired.
-3. **Instruction Fine-Tuning:** Instruction Fine-Tuning involves the process of training a language model using examples that explicitly demonstrate how it should respond to specific queries or tasks. This method aims to enhance the model's performance on targeted tasks by providing explicit instructions within the training data. For instance, if the task involves summarization or translation, the dataset is curated to include examples with clear instructions like "summarize this text" or "translate this phrase." Instruction fine-tuning ensures that the model becomes adept at understanding and executing specific instructions, making it suitable for applications where precise task execution is essential.
-4. **Reinforcement Learning from Human Feedback (RLHF):** RLHF takes the concept of supervised fine-tuning a step further by incorporating reinforcement learning principles. In RLHF, human evaluators are enlisted to rate the model's outputs based on specific prompts. These ratings serve as a form of reward, guiding the model to optimize its parameters to maximize positive feedback. RLHF is a resource-intensive process that leverages human preferences to refine the model's behavior. Human feedback contributes to training a reward model that guides the subsequent reinforcement learning phase, resulting in improved model performance aligned with human preferences.
+1. **參數高效微調: 它** 是一種旨在減少語言模型參數更新相關計算成本的微調策略。與其在微調期間更新所有參數，PEFT 專注於選擇性地更新一小部分參數，通常稱為低維矩陣。PEFT 的一個顯著範例是低秩適應（LoRA）技術。LoRA 的運作前提是，微調基礎模型以進行下游任務只需要更新某些參數。低秩矩陣有效地表示與目標任務相關的空間，並且訓練該矩陣而不是調整整個模型的參數。PEFT，特別是像 LoRA 這樣的技術，可以顯著降低微調相關的成本，使其成為一個更高效的過程。
+2. **監督式全微調**: 它涉及在訓練過程中更新語言模型的所有參數。與 PEFT 不同，PEFT 只修改一部分參數，全微調需要足夠的記憶體和計算資源來存儲和處理所有被更新的組件。這種全面的方法會產生一個新版本的模型，所有層的權重都已更新。雖然全微調資源密集，但它確保整個模型適應特定任務或領域，適合需要徹底調整語言模型的情況。
+3. **指令微調:** 指令微調涉及使用明確展示如何回應特定查詢或任務的範例來訓練語言模型。這種方法旨在通過在訓練數據中提供明確的指令來增強模型在目標任務上的性能。例如，如果任務涉及摘要或翻譯，數據集會精心編排以包含帶有明確指令的範例，如「總結這段文字」或「翻譯這句話」。指令微調確保模型能夠熟練理解和執行特定指令，適合需要精確任務執行的應用。
+4. **從人類反饋中強化學習（RLHF）:** RLHF 將監督微調的概念更進一步，結合了強化學習原則。在 RLHF 中，會招募人類評估者根據特定提示對模型的輸出進行評分。這些評分作為一種獎勵，指導模型優化其參數以最大化正面反饋。RLHF 是一個資源密集的過程，利用人類偏好來改進模型行為。人類反饋有助於訓練一個獎勵模型，指導隨後的強化學習階段，從而提高模型性能，使其與人類偏好一致。
 
-Techniques such as contrastive learning, as well as supervised and unsupervised fine-tuning, are not exclusive to LLMs and have been employed for domain adaptation even before the advent of LLMs. However, following the rise of LLMs, there has been a notable increase in the prominence of techniques such as RLHF, instruction fine-tuning, and PEFT. In the upcoming sections, we will explore these methodologies in greater detail to comprehend their applications and significance.
+對比學習等技術，以及有監督和無監督的微調，不僅限於LLM，在LLM出現之前就已經被用於領域適應。然而，隨著LLM的興起，像RLHF、指令微調和PEFT等技術的顯著性有所增加。在接下來的部分中，我們將更詳細地探討這些方法，以理解其應用和意義。
 
-## Instruction Fine-Tuning
+## 指令微調
 
-Instruction fine-tuning is a method that has gained prominence in making LLMs more practical for real-world applications. In contrast to standard supervised fine-tuning, where models are trained on input examples and corresponding outputs, instruction tuning involves augmenting input-output examples with explicit instructions. This unique approach enables instruction-tuned models to generalize more effectively to new tasks. The data for instruction tuning is constructed differently, with instructions providing additional context for the model.  
+指令微調是一種方法，在使LLM更實用於現實世界應用中獲得了顯著的地位。與標準的監督微調（模型在輸入範例和相應輸出上進行訓練）相比，指令微調涉及用明確的指令增強輸入-輸出範例。這種獨特的方法使得經過指令微調的模型能夠更有效地推廣到新任務。指令微調的數據構建方式不同，指令為模型提供了額外的上下文。
 
-![finetuning.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/finetuning.png)
+![finetuning.png](img/finetuning.png)
 
-Image Source: [Wei et al., 2022](https://openreview.net/forum?id=gEZrGCozdqR)
+圖片來源: [Wei et al., 2022](https://openreview.net/forum?id=gEZrGCozdqR)
 
-One notable dataset for instruction tuning is "Natural Instructions". This dataset consists of 193,000 instruction-output examples sourced from 61 existing English NLP tasks. The uniqueness of this dataset lies in its structured approach, where crowd-sourced instructions from each task are aligned to a common schema. Each instruction is associated with a task, providing explicit guidance on how the model should respond. The instructions cover various fields, including a definition, things to avoid, and positive and negative examples. This structured nature makes the dataset valuable for fine-tuning models, as it provides clear and detailed instructions for the desired task. However, it's worth noting that the outputs in this dataset are relatively short, which might make the data less suitable for generating long-form content. Despite this limitation, Natural Instructions serves as a rich resource for training models through instruction tuning, enhancing their adaptability to specific NLP tasks. The below image contains an example instruction format
+一個值得注意的指令調整數據集是 "Natural Instructions"。這個數據集由來自61個現有英文NLP任務的193,000個指令輸出範例組成。這個數據集的獨特之處在於其結構化的方法，將每個任務的眾包指令對齊到一個通用的架構。每個指令都與一個任務相關聯，提供了模型應如何回應的明確指導。這些指令涵蓋了各種領域，包括定義、應避免的事項以及正面和負面的範例。這種結構化的特性使得這個數據集對於微調模型非常有價值，因為它為所需任務提供了清晰而詳細的指導。然而，值得注意的是，這個數據集中的輸出相對較短，這可能使得數據不太適合生成長篇內容。儘管有這個限制，Natural Instructions 仍然是通過指令調整訓練模型的一個豐富資源，增強了它們對特定NLP任務的適應性。下面的圖片包含了一個指令格式範例
 
-![finetuning_1.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/finetuning_1.png)
+![finetuning_1.png](img/finetuning_1.png)
 
- Image Source: **[Mishra et al., 2022](https://aclanthology.org/2022.acl-long.244/)**
+圖片來源: **[Mishra et al., 2022](https://aclanthology.org/2022.acl-long.244/)**
 
-Instruction fine-tuning has become a valuable tool in the evolving landscape of natural language processing and machine learning, enabling LLMs to adapt to specific tasks with nuanced instructions.
+指令微調已成為自然語言處理和機器學習不斷發展領域中的一個寶貴工具，使LLM能夠通過細緻的指令來適應特定任務。
 
-## **Reinforcement Learning from Human Feedback (RLHF)**
+## **從人類反饋中學習強化學習 (RLHF)**
 
-Reinforcement Learning from Human Feedback  is a methodology designed to enhance language models by incorporating human feedback, aligning them more closely with intricate human values. The RLHF process comprises three fundamental steps:
+從人類反饋中強化學習是一種通過納入人類反饋來增強語言模型的方法，使其更貼近複雜的人類價值觀。RLHF 過程包括三個基本步驟:
 
-**1. Pretraining Language Models (LMs):**
-RLHF initiates with a pretrained LM, typically achieved through classical pretraining objectives. The initial LM, which can vary in size, is flexible in choice. While optional, the initial LM can undergo fine-tuning on additional data. The crucial aspect is to have a model that exhibits a positive response to diverse instructions.
+**1. 預訓練語言模型 (LMs):**
+RLHF 從預訓練的 LM 開始，通常通過經典的預訓練目標來實現。初始的 LM 大小可以靈活選擇。雖然是可選的，初始的 LM 可以在額外的數據上進行微調。關鍵在於擁有一個對多樣化指令有正面回應的模型。
 
-**2. Reward Model Training:**
-The subsequent step involves generating a reward model (RM) calibrated with human preferences. This model assigns scalar rewards to sequences of text, reflecting human preferences. The dataset for training the reward model is generated by sampling prompts and passing them through the initial LM to produce text. Human annotators rank the generated text outputs, and these rankings are used to create a regularized dataset for training the reward model. The reward function combines the preference model and a penalty on the difference between the RL policy and the initial model.
+**2. 獎勵模型訓練:**
+隨後的步驟涉及生成一個根據人類偏好校準的獎勵模型（RM）。此模型為文本序列分配標量獎勵，反映人類偏好。訓練獎勵模型的數據集是通過抽樣提示並將其傳遞給初始 LM 以生成文本來生成的。人工標註者對生成的文本輸出進行排名，這些排名用於創建一個正則化數據集以訓練獎勵模型。獎勵函式結合了偏好模型和對 RL 策略與初始模型之間差異的懲罰。
 
-**3. Fine-Tuning with RL:**
-The final step entails fine-tuning the initial LLM using reinforcement learning. Proximal Policy Optimization (PPO) is a commonly used RL algorithm for this task. The RL policy is the LM that takes in a prompt and produces text, with actions corresponding to tokens in the LM's vocabulary. The reward function, derived from the preference model and a constraint on policy shift, guides the fine-tuning. PPO updates the LM's parameters to maximize the reward metrics in the current batch of prompt-generation pairs. Some parameters of the LM are frozen due to computational constraints, and the fine-tuning aims to align the model with human preferences.
+**3. 使用強化學習進行微調:**
+最後一步是使用強化學習對初始 LLM 進行微調。近端策略最佳化（PPO）是一種常用於此任務的強化學習演算法。強化學習策略是 LM，它接收提示並生成文本，動作對應於 LM 詞彙中的標記。獎勵函式來自偏好模型和對策略變動的限制，指導微調過程。PPO 更新 LM 的參數，以最大化當前批次提示生成對中的獎勵指標。由於計算限制，LM 的一些參數是凍結的，微調的目標是使模型與人類偏好對齊。
 
-![finetuning_2.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/finetuning_2.png)
+![finetuning_2.png](img/finetuning_2.png)
 
- Image Source: [https://openai.com/research/instruction-following](https://openai.com/research/instruction-following)
+圖片來源: [https://openai.com/research/instruction-following](https://openai.com/research/instruction-following)
 
-💡If you’re lost understanding RL terms like PPO, policy etc. Think of this analogy- Fine-Tuning with RL, specifically using Proximal Policy Optimization (PPO), is similar to refining instructions to train a pet, such as teaching a dog tricks. Think of the dog initially learning with general guidance (policy) and receiving treats (rewards) for correct actions. Now, imagine the dog mastering a new trick but not quite perfectly. Fine-tuning, with PPO, involves adjusting your instructions slightly based on how well the dog performs, similar to tweaking the model's behavior (policy) in Reinforcement Learning. It's like refining the instructions to optimize the learning process, much like perfecting your pet's tricks through gradual adjustments and treats for better performance.
+💡如果你對理解 RL（強化學習）術語如 PPO、policy 等感到困惑，可以這樣類比——使用 Proximal Policy Optimization (PPO) 進行 RL 微調，就像是精煉訓練寵物的指令，例如教狗狗一些技巧。想像狗狗最初在一般指導（policy）下學習，並因正確行為獲得獎勵（rewards）。現在，想像狗狗掌握了一個新技巧，但還不夠完美。使用 PPO 進行微調，涉及根據狗狗的表現稍微調整你的指令，類似於在強化學習中調整模型的行為（policy）。這就像是通過逐步調整和獎勵來完善你的寵物技巧，以優化學習過程。
 
-## Direct Preference Optimization DPO (*Bonus Topic)*
+## 直接偏好最佳化 DPO (*額外主題)*
 
-Direct Preference Optimization (DPO) is an equivalent of RLHF and has been gaining significant traction these days. DPO offers a straightforward method for fine-tuning large language models based on human preferences. It eliminates the need for a complex reward model and directly incorporates user feedback into the optimization process. In DPO, users simply compare two model-generated outputs and express their preferences, allowing the LLM to adjust its behavior accordingly. This user-friendly approach comes with several advantages, including ease of implementation, computational efficiency, and greater control over the LLM's behavior.
+直接偏好最佳化（DPO）相當於 RLHF，並且最近獲得了顯著的關注。DPO 提供了一種基於人類偏好的簡單方法來微調大型語言模型。它消除了對複雜獎勵模型的需求，並直接將用戶反饋納入最佳化過程中。在 DPO 中，用戶只需比較兩個模型生成的輸出並表達他們的偏好，允許 LLM 相應地調整其行為。這種用戶友好的方法具有多種優勢，包括易於實施、計算效率高以及對 LLM 行為的更大控制。
 
-![finetuning_3.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/finetuning_3.png)
+![finetuning_3.png](img/finetuning_3.png)
 
-  Image Source: [Rafailov, Rafael, et al.](https://arxiv.org/html/2305.18290v2)
+圖片來源: [Rafailov, Rafael, et al.](https://arxiv.org/html/2305.18290v2)
 
-💡In the context of LLMs, maximum likelihood is a principle used during the training of the model. Imagine the model is like a writer trying to predict the next word in a sentence. Maximum likelihood training involves adjusting the model's parameters (the factors that influence its predictions) to maximize the likelihood of generating the actual sequences of words observed in the training data. It's like tuning the writer's skills to make the sentences they create most closely resemble the sentences they've seen before. So, maximum likelihood helps the LLM learn to generate text that is most similar to the examples it was trained on.
+💡在 LLMs 的背景下，最大似然是一種在模型訓練過程中使用的原則。想像這個模型像是一個試圖預測句子中下一個單詞的作家。最大似然訓練涉及調整模型的參數（影響其預測的因素），以最大化生成訓練數據中觀察到的實際單詞序列的可能性。這就像調整作家的技能，使他們創作的句子最接近他們之前見過的句子。因此，最大似然幫助 LLM 學習生成最類似於其訓練範例的文本。
 
-***DPO**:* DPO takes a straightforward approach by directly optimizing the LM based on user preferences without the need for a separate reward model. Users compare two model-generated outputs, expressing their preferences to guide the optimization process.
+***DPO**:* DPO 採取簡單的方法，根據使用者偏好直接對 LM 進行最佳化，無需單獨的獎勵模型。使用者比較兩個模型生成的輸出，表達他們的偏好以指導最佳化過程。
 
-***RLHF**:* RLHF follows a more structured path, leveraging reinforcement learning principles. It involves training a reward model that learns to identify and reward desirable LM outputs. The reward model then guides the LM's training process, shaping its behavior towards achieving positive outcomes.
+***RLHF**:* RLHF 遵循更有結構的路徑，利用強化學習原則。它涉及訓練一個獎勵模型，該模型學會識別並獎勵理想的 LM 輸出。然後，獎勵模型指導 LM 的訓練過程，塑造其行為以達到積極的結果。
 
 ### **DPO (Direct Policy Optimization) vs. RLHF (Reinforcement Learning from Human Feedback): Understanding the Differences**
 
-**DPO - A Simpler Approach:**
-Direct Policy Optimization (DPO) takes a straightforward path, sidestepping the need for a complex reward model. It directly optimizes the Large Language Model (LLM) based on user preferences, where users compare two outputs and indicate their preference. This simplicity results in key advantages:
+**DPO - 更簡單的方法:**
+直接策略最佳化 (DPO) 採取了一條簡單的路徑，避開了複雜的獎勵模型。它根據用戶偏好直接最佳化大型語言模型 (LLM)，用戶比較兩個輸出並指示他們的偏好。這種簡單性帶來了關鍵優勢:
 
-1. **Ease of Implementation:** DPO is more user-friendly as it eliminates the need for designing and training a separate reward model, making it accessible to a broader audience.
-2. **Computational Efficiency:** Operating directly on the LLM, DPO leads to faster training times and lower computational costs compared to RLHF, which involves multiple phases.
-3. **Greater Control:** Users have direct control over the LLM's behavior, guiding it toward specific goals and preferences without the complexities of RLHF.
-4. **Faster Convergence:** Due to its simpler structure and direct optimization, DPO often achieves desired results faster, making it suitable for tasks with rapid iteration needs.
-5. **Improved Performance:** Recent research suggests that DPO can outperform RLHF in scenarios like sentiment control and response quality, particularly in summarization and dialogue tasks.
+1. **實施容易:** DPO 更加使用者友好，因為它消除了設計和訓練單獨獎勵模型的需求，使其對更廣泛的受眾可及。
+2. **計算效率:** 直接在 LLM 上操作，DPO 導致更快的訓練時間和較低的計算成本，相比之下，RLHF 涉及多個階段。
+3. **更大的控制:** 使用者可以直接控制 LLM 的行為，引導其朝向特定目標和偏好，而不需要處理 RLHF 的複雜性。
+4. **更快的收斂:** 由於其結構更簡單且直接最佳化，DPO 通常更快達到期望結果，適合需要快速迭代的任務。
+5. **性能提升:** 最近的研究表明，在情感控制和回應品質等情境中，特別是在摘要和對話任務中，DPO 可以超越 RLHF。
 
-**RLHF - A More Structured Approach:**
-It follows a more structured path, leveraging reinforcement learning principles. It includes three training phases: pre-training, reward model training, and fine-tuning with reinforcement learning. While flexible, RLHF comes with complexities:
+**RLHF - 更結構化的方法:**
+它遵循一個更結構化的路徑，利用強化學習原則。它包括三個訓練階段: 預訓練、獎勵模型訓練和使用強化學習進行微調。雖然靈活，但RLHF伴隨著複雜性:
 
-1. **Complexity:** RLHF can be more complex and sometimes unstable, demanding more computational resources and dealing with challenges like convergence, drift, or uncorrelated distribution problems.
-2. **Flexibility in Defining Rewards:** RLHF allows for more nuanced reward structures, beneficial for tasks requiring precise control over the LLM's output.
-3. **Handling Diverse Feedback Formats:** RLHF can handle various forms of human feedback, including numerical ratings or textual corrections, whereas DPO primarily relies on binary preferences.
-4. **Handling Large Datasets:** RLHF can be more efficient in handling massive datasets, especially with distributed training techniques.
+1. **複雜性:** RLHF 可能更複雜且有時不穩定，需要更多的計算資源，並處理收斂、漂移或不相關分佈問題等挑戰。
+2. **定義獎勵的靈活性:** RLHF 允許更細緻的獎勵結構，對於需要精確控制 LLM 輸出的任務有益。
+3. **處理多樣化的反饋格式:** RLHF 可以處理各種形式的人類反饋，包括數值評分或文本修正，而 DPO 主要依賴二元偏好。
+4. **處理大型數據集:** RLHF 在處理大規模數據集時可能更有效，尤其是使用分佈式訓練技術。
 
-In summary, the choice depends on the specific task, available resources, and the desired level of control, with both methods offering strengths and weaknesses in different contexts. As advancements continue, these methods contribute to evolving and enhancing fine-tuning processes for LLMs.
+總結來說，選擇取決於具體任務、可用資源和所需的控制水平，這兩種方法在不同的情境中各有優劣。隨著進步不斷，這些方法有助於演變和提升LLM的微調過程。
 
-## Parameter Efficient Fine-Tuning (PEFT)
+## 參數高效微調 (PEFT)
 
-Parameter-Efficient Fine-Tuning (PEFT) addresses the resource-intensive nature of fine-tuning LLMs. Unlike full fine-tuning that modifies all parameters, PEFT fine-tunes only a small subset of additional parameters while keeping the majority of pretrained model weights frozen. This selective approach minimizes computational requirements, mitigates catastrophic forgetting, and facilitates fine-tuning even with limited computational resources. PEFT, as a whole, offers a more efficient and practical method for adapting LLMs to specific downstream tasks without the need for extensive computational power and memory.
+參數高效微調（PEFT）解決了微調大型語言模型（LLM）資源密集的特性。與修改所有參數的完全微調不同，PEFT 僅微調一小部分額外參數，同時保持大多數預訓練模型權重凍結。這種選擇性的方法最小化了計算需求，減輕了災難性遺忘，並且即使在計算資源有限的情況下也能促進微調。整體而言，PEFT 提供了一種更高效且實際的方法來適應 LLM 到特定的下游任務，而無需大量的計算能力和記憶體。
 
-**Advantages of Parameter-Efficient Fine-Tuning (PEFT)**
+**參數高效微調（PEFT）的優勢**
 
-1. **Computational Efficiency:** PEFT fine-tunes LLMs with significantly fewer parameters than full fine-tuning. This reduces the computational demands, making it feasible to fine-tune on less powerful hardware or in resource-constrained environments.
-2. **Memory Efficiency:** By freezing the majority of pretrained model weights, PEFT avoids excessive memory usage associated with modifying all parameters. This makes PEFT particularly suitable for tasks where memory constraints are a concern.
-3. **Catastrophic Forgetting Mitigation:** PEFT prevents catastrophic forgetting, a phenomenon observed during full fine-tuning where the model loses knowledge from its pre-trained state. This ensures that the LLM retains valuable information while adapting to new tasks.
-4. **Versatility Across Modalities:** PEFT extends beyond natural language processing tasks, proving effective in various modalities such as computer vision and audio. Its versatility makes it applicable to a wide range of downstream tasks.
-5. **Modular Adaptation for Multiple Tasks:** The modular nature of PEFT allows the same pretrained model to be adapted for multiple tasks by adding small task-specific weights. This avoids the need to store full copies for different applications, enhancing flexibility and efficiency.
-6. **INT8 Tuning:** PEFT's capabilities include INT8 (8-bit integer) tuning, showcasing its adaptability to different quantization techniques. This enables fine-tuning even on platforms with limited computational resources.
+1. **計算效率:** PEFT 以顯著較少的參數微調 LLMs，這減少了計算需求，使得在較不強大的硬體或資源受限的環境中進行微調成為可能。
+2. **記憶體效率:** 通過凍結大多數預訓練模型權重，PEFT 避免了修改所有參數所帶來的過度記憶體使用。這使得 PEFT 特別適合記憶體受限的任務。
+3. **災難性遺忘緩解:** PEFT 防止了災難性遺忘，這是一種在完全微調過程中觀察到的現象，模型會失去其預訓練狀態的知識。這確保了 LLM 在適應新任務時保留有價值的資訊。
+4. **跨模態的多功能性:** PEFT 不僅限於自然語言處理任務，還在計算機視覺和音頻等各種模態中證明了其有效性。其多功能性使其適用於廣泛的下游任務。
+5. **多任務的模組化適應:** PEFT 的模組化特性允許相同的預訓練模型通過添加小的任務特定權重來適應多個任務。這避免了為不同應用存儲完整複製品的需求，增強了靈活性和效率。
+6. **INT8 調整:** PEFT 的功能包括 INT8 (8 位元整數) 調整，展示了其對不同量化技術的適應性。這使得即使在計算資源有限的平台上也能進行微調。
 
-In summary, PEFT offers a practical and efficient solution for fine-tuning large language models, addressing computational and memory challenges while maintaining performance on downstream tasks.
+總之，PEFT 提供了一個實用且高效的解決方案，用於微調大型語言模型，解決計算和記憶體挑戰，同時保持在下游任務上的性能。
 
-A summary of the most popular PEFT methods are in the chart below. Please download for improved visibility.
+最受歡迎的 PEFT 方法摘要如下圖所示。請下載以獲得更好的可見性。
 
-[PEFT (1).pdf](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/PEFT_(1).pdf)
+[PEFT (1).pdf](img/PEFT_(1).pdf)
 
-## Read/Watch These Resources (Optional)
+## 閱讀/觀看這些資源 (選擇性)
 
 1. [https://www.superannotate.com/blog/llm-fine-tuning](https://www.superannotate.com/blog/llm-fine-tuning)
 2. [https://www.deeplearning.ai/short-courses/finetuning-large-language-models/](https://www.deeplearning.ai/short-courses/finetuning-large-language-models/)
 3. [https://www.youtube.com/watch?v=eC6Hd1hFvos](https://www.youtube.com/watch?v=eC6Hd1hFvos)
 4. [https://www.labellerr.com/blog/comprehensive-guide-for-fine-tuning-of-llms/](https://www.labellerr.com/blog/comprehensive-guide-for-fine-tuning-of-llms/)
 
-## Read These Papers (Optional)
+## 閱讀這些論文（可選）
 
 1. [https://arxiv.org/abs/2303.15647](https://arxiv.org/abs/2303.15647)
 2. [https://arxiv.org/abs/2109.10686](https://arxiv.org/abs/2109.10686)
 3. [https://arxiv.org/abs/2304.01933](https://arxiv.org/abs/2304.01933)
+

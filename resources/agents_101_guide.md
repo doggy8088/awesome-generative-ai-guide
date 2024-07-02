@@ -1,119 +1,118 @@
-# LLM Agents 101
+﻿# LLM Agents 101
 
-![llm_guide.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/llm_guide.png)
+![llm_guide.png](img/llm_guide.png)
 
-## Introduction to LLM Agents
+## LLM Agents 簡介
 
-LLM agents, short for Large Language Model agents, are gaining quite some popularity because they blend advanced language processing with other crucial components like planning and memory. They smart systems that can handle complex tasks by combining a large language model with other tools.
+LLM代理（大型語言模型代理的縮寫）正在獲得相當的普及，因為它們將先進的語言處理與其他關鍵組件（如規劃和記憶體）結合在一起。它們是智能系統，可以通過將大型語言模型與其他工具結合來處理複雜任務。
 
-Imagine you're trying to create a virtual assistant that helps people plan their vacations. You want it to be able to handle simple questions like "What's the weather like in Paris next week?" or "How much does it cost to fly to Tokyo in July?"
+想像一下，你正在嘗試建立一個虛擬助手，幫助人們計劃他們的假期。你希望它能夠處理簡單的問題，例如「下週巴黎的天氣怎麼樣？」或「七月飛往東京的機票要多少錢？」
 
-A basic virtual assistant might be able to answer those questions using pre-programmed responses or by searching the internet. But what if someone asks a more complicated question, like "I want to plan a trip to Europe next summer. Can you suggest an itinerary that includes visiting historic landmarks, trying local cuisine, and staying within a budget of $3000?"
+一個基本的虛擬助理可能可以使用預先編程的回應或通過搜索互聯網來回答這些問題。但是如果有人問一個更複雜的問題，比如「我想計劃明年夏天去歐洲旅行。你能建議一個行程，包括參觀歷史地標、品嚐當地美食，並且保持在3000美元的預算內嗎？」
 
-That's a tough question because it involves planning, budgeting, and finding information about different destinations. An LLM agent could help with this by using its knowledge and tools to come up with a personalized itinerary. It could search for flights, hotels, and tourist attractions, while also keeping track of the budget and the traveler's preferences.
+這是一個棘手的問題，因為它涉及到規劃、預算和尋找不同目的地的資訊。一個 LLM 代理可以利用其知識和工具來制定個性化的行程。它可以搜尋航班、酒店和旅遊景點，同時也會跟蹤預算和旅行者的偏好。
 
-To build this kind of virtual assistant, you'd need an LLM as the main "brain" to understand and respond to questions. But you'd also need other modules for planning, budgeting, and accessing travel information. Together, they would form an LLM agent capable of handling complex tasks and providing personalized assistance to users.
+要建構這種虛擬助理，你需要一個 LLM 作為主要的「大腦」來理解和回應問題。但你也需要其他模組來進行規劃、預算和存取旅遊資訊。這些模組結合在一起，將形成一個能夠處理複雜任務並提供個性化協助給使用者的 LLM 代理。
 
-![Screenshot 2024-04-07 at 2.39.12 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/Screenshot_2024-04-07_at_2.39.12_PM.png)
+![Screenshot 2024-04-07 at 2.39.12 PM.png](img/Screenshot_2024-04-07_at_2.39.12_PM.png)
 
-Image Source: [https://arxiv.org/pdf/2309.07864.pdf](https://arxiv.org/pdf/2309.07864.pdf)
+圖片來源: [https://arxiv.org/pdf/2309.07864.pdf](https://arxiv.org/pdf/2309.07864.pdf)
 
-The above image represents a potential theoretical structure of an LLM-based agent proposed by the paper “**[The Rise and Potential of Large Language Model Based Agents: A Survey](https://arxiv.org/pdf/2309.07864.pdf)**”
+上述圖片代表了一個潛在的理論結構，該結構由論文「**[The Rise and Potential of Large Language Model Based Agents: A Survey](https://arxiv.org/pdf/2309.07864.pdf)**」提出。
 
-It comprises three integral components: the brain, perception, and action. 
+它包含三個不可或缺的組成部分: 大腦、感知和行動。
 
-- Functioning as the central controller, the **brain** module engages in fundamental tasks such as storing information, processing thoughts, and making decisions.
-- Meanwhile, the **perception** module is responsible for interpreting and analyzing various forms of sensory input from the external environment.
-- Subsequently, the **action** module executes tasks using appropriate tools and influences the surrounding context.
+- 作為中央控制器運作的**大腦**模組，從事儲存資訊、處理思維和做出決策等基本任務。
+- 同時，**感知**模組負責解釋和分析來自外部環境的各種感官輸入。
+- 隨後，**行動**模組使用適當的工具執行任務並影響周圍的環境。
 
-The above framework represents one approach to breaking down the design of an LLM agent into distinct, self-contained components. However, please note that this framework is just one of many possible configurations.
+上述框架代表了一種將LLM代理的設計分解為不同的、自包含的元件的方法。然而，請注意，這個框架只是許多可能配置中的一種。
 
-In essence, an LLM agent goes beyond basic question-answering capabilities of an LLM. It processes feedback, maintains memory, strategizes for future actions, and collaborates with various tools to make informed decisions. This functionality resembles rudimentary human-like behavior, marking LLM agents as stepping stones towards the notion of Artificial General Intelligence (AGI). Here, LLMs can autonomously undertake tasks without human intervention, representing a significant advancement in AI capabilities.
+從本質上來說，LLM代理超越了LLM的基本問答能力。它處理反饋，維持記憶，為未來行動制定策略，並與各種工具合作以做出明智的決策。這種功能類似於初步的人類行為，將LLM代理標記為通向人工通用智能（AGI）概念的墊腳石。在這裡，LLM可以自主完成任務而無需人類干預，代表了AI能力的重大進步。
 
-## LLM Agent Framework
+## LLM Agent 框架
 
-In the preceding section, we discussed one framework for comprehending LLM agents, which involved breaking down the agent into three key components: the brain, perception, and action. In this section, we will explore a more widely used framework for structuring agent components. 
+在前一節中，我們討論了一種理解 LLM 代理的框架，這涉及將代理分解為三個關鍵組成部分:大腦、感知和行動。在本節中，我們將探討一個更廣泛使用的框架來構建代理組件。
 
-This framework comprises the following essential elements:
+這個框架包含以下基本元素:
 
-![Screenshot 2024-04-07 at 2.53.23 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/Screenshot_2024-04-07_at_2.53.23_PM.png)
+![螢幕截圖 2024-04-07 下午 2.53.23.png](img/Screenshot_2024-04-07_at_2.53.23_PM.png)
 
-Image Source: [https://developer.nvidia.com/blog/introduction-to-llm-agents/](https://developer.nvidia.com/blog/introduction-to-llm-agents/)
+圖片來源: [https://developer.nvidia.com/blog/introduction-to-llm-agents](https://developer.nvidia.com/blog/introduction-to-llm-agents/)。
 
-1. **Agent Core:** The agent core functions as the central decision-making component within an AI agent. It oversees the core logic and behavioral patterns of the agent. Within this core, various aspects are managed, including defining the agent's overarching goals, providing instructions for tool utilization, specifying guidelines for employing different planning modules, incorporating pertinent memory items from past interactions, and potentially shaping the agent's persona.
-2. **Memory Module:** Memory modules are essential components of AI agents, serving as repositories for storing internal logs and user interactions. These modules consist of two main types: 
-    1. Short-term memory: captures the agent's ongoing thought processes as it attempts to respond to a single user query. 
-    2. Long-term memory: maintains a historical record of conversations spanning extended periods, such as weeks or months. 
-    
-    Memory retrieval involves employing techniques based on semantic similarity, complemented by factors such as importance, recency, and application-specific metrics.
-    
-3. **Tools:** Tools represent predefined executable workflows utilized by agents to execute tasks effectively. They encompass various capabilities, such as RAG pipelines for context-aware responses, code interpreters for tackling complex programming challenges, and APIs for conducting internet searches or accessing simple services like weather forecasts or messaging.
-4. **Planning Module:** Complex problem-solving often requires well structured approaches. LLM-powered agents tackle this complexity by employing a blend of techniques within their planning modules. These techniques may involve task decomposition, breaking down complex tasks into smaller, manageable parts, and reflection or critique, engaging in thoughtful analysis to arrive at optimal solutions.
+1. **Agent Core:** 核心代理功能作為 AI 代理中的中央決策組件。它監督代理的核心邏輯和行為模式。在這個核心中，管理各種方面，包括定義代理的總體目標，提供工具使用的指示，指定使用不同計劃模組的指南，納入過去互動中的相關記憶項目，並可能塑造代理的個性。
+2. **Memory Module:** 記憶模組是 AI 代理的重要組件，作為儲存內部日誌和用戶互動的儲存庫。這些模組包括兩種類型：
+    1. 短期記憶: 捕捉代理在嘗試回應單一用戶查詢時的持續思考過程。
+    2. 長期記憶: 維護跨越較長時間（如數週或數月）的對話歷史記錄。
 
-## Multi-agent systems (MAS)
+    記憶檢索涉及使用基於語義相似性的技術，並輔以重要性、新近性和應用特定指標等因素。
 
-While LLM-based agents demonstrate impressive text understanding and generation capabilities, they typically operate in isolation, lacking the ability to collaborate with other agents and learn from social interactions. This limitation hinders their potential for enhanced performance through multi-turn feedback and collaboration in complex scenarios.
+3. **Tools:** 工具代表預定義的可執行工作流程，用於代理有效地執行任務。它們包含各種功能，例如用於上下文感知回應的 RAG 管道、處理複雜編程挑戰的程式碼解釋器，以及進行網路搜索或訪問簡單服務（如天氣預報或消息傳遞）的 API。
+4. **Planning Module:** 複雜問題的解決通常需要結構良好的方法。由 LLM 驅動的代理通過在其計劃模組中使用多種技術來應對這種複雜性。這些技術可能包括任務分解，將複雜任務分解為較小且可管理的部分，以及反思或批判，進行深思熟慮的分析以達到最佳解決方案。
 
- LLM-based multi-agent systems (MAS) prioritize diverse agent profiles, interactions among agents, and collective decision-making. Collaboration among multiple autonomous agents in LLM-MA systems enables tackling dynamic and complex tasks through unique strategies, behaviors, and communication between agents.
+## 多代理系統 (MAS)
 
-An LLM-based multi-agent system offers several advantages, primarily based on the principle of the division of labor. Specialized agents equipped with domain knowledge can efficiently handle specific tasks, leading to enhanced task efficiency and collective decision improvement. Decomposing complex tasks into multiple subtasks can streamline processes, ultimately improving system efficiency and output quality.
+雖然基於 LLM 的代理展示了令人印象深刻的文本理解和生成能力，但它們通常是獨立運作的，缺乏與其他代理合作和從社交互動中學習的能力。這一限制阻礙了它們通過多輪反饋和在複雜場景中的協作來提升性能的潛力。
 
-**Types of Multi-Agent Interactions**
+基於 LLM 的多代理系統 (MAS) 優先考慮多樣的代理配置、代理之間的互動和集體決策。在 LLM-MA 系統中，多個自主代理之間的協作通過獨特的策略、行為和代理之間的溝通來解決動態和複雜的任務。
 
-Multi-agent interactions in LLM-based systems can be broadly categorized into cooperative and adversarial interactions.
+基於LLM的多代理系統提供了幾個優勢，主要基於分工原則。配備領域知識的專業代理可以高效處理特定任務，從而提高任務效率和集體決策的改進。將複雜任務分解為多個子任務可以簡化流程，最終提高系統效率和輸出品質。
 
-![Screenshot 2024-04-07 at 3.03.48 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/Screenshot_2024-04-07_at_3.03.48_PM.png)
+**多代理互動的類型**
 
-Image source: [https://arxiv.org/pdf/2309.07864.pdf](https://arxiv.org/pdf/2309.07864.pdf)
+基於LLM系統的多代理互動大致可分為合作互動和對抗互動。
 
-### **Cooperative Interaction:**
+![Screenshot 2024-04-07 at 3.03.48 PM.png](img/Screenshot_2024-04-07_at_3.03.48_PM.png)
 
-In cooperative multi-agent systems, agents assess each other's needs and capabilities, actively seeking collaborative actions and information sharing. This approach enhances task efficiency, improves collective decision-making, and resolves complex real-world problems through synergistic complementarity. Existing cooperative multi-agent applications can be classified into disordered cooperation and ordered cooperation
+圖片來源: [https://arxiv.org/pdf/2309.07864.pdf](https://arxiv.org/pdf/2309.07864.pdf)
 
-1. **Disordered cooperation**: multiple agents within a system express their perspectives and opinions freely without adhering to a specific sequence or collaborative workflow. However, without a structured workflow, coordinating responses and consolidating feedback can be challenging, potentially leading to inefficiencies.
-2. **Ordered cooperation**: agents adhere to specific rules or sequences when expressing opinions or engaging in discussions. Each agent follows a predefined order, ensuring a structured and organized interaction.
+### **合作互動:**
 
-Therefore, disordered cooperation allows for open expression and flexibility but may lack organization and pose challenges in decision-making. On the other hand, ordered cooperation offers improved efficiency and clarity but may be rigid and dependent on predefined sequences. Each approach has its own set of benefits and challenges, and the choice between them depends on the specific requirements and goals of the multi-agent system.
+在合作多代理系統中，代理會評估彼此的需求和能力，積極尋求合作行動和資訊共享。這種方法提高了任務效率，改善了集體決策，並通過協同互補解決了複雜的現實世界問題。現有的合作多代理應用可以分為無序合作和有序合作。
 
-### **Adversarial Interaction**
+1. **無序合作**: 系統內的多個代理自由表達他們的觀點和意見，而不遵循特定的順序或協作工作流程。然而，沒有結構化的工作流程，協調回應和整合反饋可能會變得困難，可能導致效率低下。
+2. **有序合作**: 代理在表達意見或參與討論時遵循特定的規則或順序。每個代理遵循預定的順序，確保結構化和有組織的互動。
 
-While cooperative methods have been extensively explored, researchers increasingly recognize the benefits of introducing concepts from game theory into multi-agent systems. Adversarial interactions foster dynamic adjustments in agent strategies, leading to robust and efficient behaviors. Successful applications of adversarial interaction in LLM-based multi-agent systems include debate and argumentation, enhancing the quality of responses and decision-making.
+因此，無序合作允許開放表達和靈活性，但可能缺乏組織性並在決策過程中面臨挑戰。另一方面，有序合作提供了更高的效率和清晰度，但可能過於僵化且依賴於預定的順序。每種方法都有其自身的優點和挑戰，選擇哪種方法取決於多代理系統的具體需求和目標。
 
-Despite the promising advancements in multi-agent systems, several challenges persist, including limitations in processing prolonged debates, increased computational overhead in multi-agent environments, and the risk of convergence to incorrect consensus. Further development of multi-agent systems requires addressing these challenges and may involve integrating human guides to compensate for agent limitations and promote advancements.
+### **對抗互動**
 
-MAS is a dynamic field of study with significant potential for enhancing collaboration, decision-making, and problem-solving in complex environments. Continued research and development in this area promise to pave way for  new opportunities for intelligent agent interaction and cooperation leading to progress in AGI.
+雖然合作方法已被廣泛探索，但研究人員越來越認識到將博弈論概念引入多代理系統的好處。對抗性互動促進了代理策略的動態調整，從而導致穩健且高效的行為。在基於LLM的多代理系統中，對抗性互動的成功應用包括辯論和論證，從而提高了回應和決策的品質。
 
-## Real World LLM Agents: BabyAGI
+儘管多代理系統取得了令人鼓舞的進展，但仍然存在一些挑戰，包括處理長時間辯論的限制、多代理環境中的計算開銷增加以及收斂到錯誤共識的風險。進一步發展多代理系統需要解決這些挑戰，並可能涉及整合人類指導來彌補代理的限制並促進進步。
 
-BabyAGI is a popular task-driven autonomous agent designed to perform diverse tasks across various domains. It utilizes technologies such as OpenAI's GPT-4 language model, Pinecone vector search platform, and the LangChain framework. Here's a breakdown of its key components as discussed [by the author](https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications/) .
+MAS 是一個充滿活力的研究領域，在提升複雜環境中的協作、決策和問題解決方面具有巨大潛力。在這一領域的持續研究和發展有望為智能代理的互動與合作開闢新的機會，從而推動 AGI 的進步。
+
+## 真實世界 LLM 代理: BabyAGI
+
+BabyAGI 是一個受歡迎的任務驅動自主代理，設計用於在各種領域執行多樣化的任務。它利用了 OpenAI 的 GPT-4 語言模型、Pinecone 向量搜索平台和 LangChain 框架。以下是其關鍵組成部分的分解，如[作者所述](https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications)。
 
 1. GPT-4 (Agent Core):
-    - OpenAI's GPT-4 serves as the core of the system, enabling it to complete tasks, generate new tasks based on completed results, and prioritize tasks in real-time. It leverages the powerful text-based language model capabilities of GPT-4.
-2. Pinecone(Memory Module):
-    - Pinecone is utilized for efficient storage and retrieval of task-related data, including task descriptions, constraints, and results. It provides robust search and storage capabilities for high-dimensional vector data, enhancing the system's efficiency.
-3. LangChain Framework (Tooling Module):
-    - The LangChain framework enhances the system's capabilities, particularly in task completion and decision-making processes. It allows the AI agent to be data-aware and interact with its environment, contributing to a more powerful and differentiated system.
-4. Task Management (Planning Module):
-    - The system maintains a task list using a deque data structure, enabling it to manage and prioritize tasks autonomously. It dynamically generates new tasks based on completed results and adjusts task priorities accordingly.
-    
-    ![babyAGI](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/babyAGI.png)
-    
-    Image Source: [https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications/](https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications/)
-    
+    - OpenAI 的 GPT-4 作為系統的核心，使其能夠完成任務、根據已完成的結果生成新任務，並實時優先處理任務。它利用了 GPT-4 強大的基於文本的語言模型能力。
+2. Pinecone（記憶體模組）:
+    - Pinecone 用於有效存儲和檢索與任務相關的數據，包括任務描述、約束和結果。它為高維向量數據提供了強大的搜索和存儲能力，提高了系統的效率。
+3. LangChain 框架（工具模組）:
+    - LangChain 框架增強了系統的能力，特別是在任務完成和決策過程中。它允許 AI 代理對數據敏感並與其環境互動，有助於創建更強大和差異化的系統。
+4. 任務管理（計劃模組）:
+    - 系統使用雙端佇列數據結構維護任務列表，使其能夠自主管理和優先處理任務。它根據已完成的結果動態生成新任務，並相應地調整任務優先級。
 
- BabyAGI operates through the following steps:
+    ![babyAGI](img/babyAGI.png)
 
-1. Completing Tasks: The system processes tasks from the task list using GPT-4 and LangChain capabilities to generate results, which are then stored in Pinecone.
-2. Generating New Tasks: Based on completed task results, BabyAGI employs GPT-4 to generate new tasks, ensuring non-overlapping tasks with existing ones.
-3. Prioritizing Tasks: Task prioritization is conducted based on new task generation and priorities, with assistance from GPT-4 to facilitate the prioritization process.
+    圖片來源: [https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications/](https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications/)。
 
-You can find the code to test and play around with BabyAGI [here](https://github.com/yoheinakajima/babyagi)
+BabyAGI 透過以下步驟運作:
 
-Other popular LLM based agents are listed [here](https://www.promptingguide.ai/research/llm-agents#notable-llm-based-agents)
+1. 完成任務: 系統使用GPT-4和LangChain功能處理任務清單中的任務以生成結果，然後將結果存儲在Pinecone中。
+2. 生成新任務: 根據已完成的任務結果，BabyAGI使用GPT-4生成新任務，確保新任務與現有任務不重疊。
+3. 優先排序任務: 根據新任務的生成和優先級進行任務優先排序，並在GPT-4的協助下促進優先排序過程。
 
-## **Evaluating LLM Agents**
+你可以在[這裡](https://github.com/yoheinakajima/babyagi)找到測試和試玩 BabyAGI 的程式碼。
 
-Despite their remarkable performance in various domains, quantifying and objectively evaluating LLM-based agents remain challenging.  Several benchmarks have been designed to evaluate LLM agents. Some examples include
+其他受歡迎的 LLM 基於代理列在[此處](https://www.promptingguide.ai/research/llm-agents#notable-llm-based-agents)。
+
+## **評估 LLM Agents**
+
+儘管它們在各個領域的表現非常出色，但量化和客觀評估基於 LLM 的代理仍然具有挑戰性。已設計了幾個基準來評估 LLM 代理。一些範例包括
 
 1. [AgentBench](https://github.com/THUDM/AgentBench)
 2. [IGLU](https://arxiv.org/abs/2304.10750)
@@ -121,32 +120,33 @@ Despite their remarkable performance in various domains, quantifying and objecti
 4. [ToolBench](https://arxiv.org/abs/2305.16504)
 5. [GentBench](https://arxiv.org/pdf/2308.04030.pdf)
 
-![Screenshot 2024-04-07 at 3.28.33 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/Screenshot_2024-04-07_at_3.28.33_PM.png)
+![Screenshot 2024-04-07 at 3.28.33 PM.png](img/Screenshot_2024-04-07_at_3.28.33_PM.png)
 
-Image: Tasks and Datasets supported by the GentBench framework
+圖像: GentBench 框架支持的任務和數據集
 
-Apart from task specific metrics, some dimensions in which agents can be evaluated include
+除了特定任務的度量標準外，可以評估代理的某些維度包括
 
-- **Utility**: Focuses on task completion effectiveness and efficiency, with success rate and task outcomes being primary metrics.
-- **Sociability**: Includes language communication proficiency, cooperation, negotiation abilities, and role-playing capability.
-- **Values**: Ensures adherence to moral and ethical guidelines, honesty, harmlessness, and contextual appropriateness.
-- **Ability to Evolve Continually**: Considers continual learning, autotelic learning ability, and adaptability to new environments.
-- **Adversarial Robustness**: LLMs are susceptible to adversarial attacks, impacting their robustness. Traditional techniques like adversarial training are employed, along with human-in-the-loop supervision.
-- **Trustworthiness**: Calibration problems and biases in training data affect trustworthiness. Efforts are made to guide models to exhibit thought processes or explanations to enhance credibility.
+- **效用**: 專注於任務完成的有效性和效率，成功率和任務結果是主要指標。
+- **社交性**: 包括語言溝通能力、合作、談判能力和角色扮演能力。
+- **價值觀**: 確保遵守道德和倫理準則、誠實、無害和情境適當性。
+- **持續進化的能力**: 考慮持續學習、自我驅動學習能力和適應新環境的能力。
+- **對抗性魯棒性**: LLMs 容易受到對抗性攻擊，影響其魯棒性。採用傳統技術如對抗性訓練，以及人類在迴圈中的監督。
+- **可信度**: 訓練數據中的校準問題和偏見影響可信度。努力引導模型展示思考過程或解釋以增強可信度。
 
-## Build Your Own  Agent (Resources)
+## 建構你自己的 Agent (資源)
 
-Now that you have gained an understanding of LLM agents and their functioning, here are some top resources to help you construct your own LLM agent.
+現在你已經了解了 LLM 代理及其運作，這裡有一些頂級資源可以幫助你建構自己的 LLM 代理。
 
-1. [How to Create your own LLM Agent from Scratch: A Step-by-Step Guide](https://gathnex.medium.com/how-to-create-your-own-llm-agent-from-scratch-a-step-by-step-guide-14b763e5b3b8)
-2. [Building Your First LLM Agent Application](https://developer.nvidia.com/blog/building-your-first-llm-agent-application/)
-3. [Building Agents on LangChain](https://python.langchain.com/docs/use_cases/tool_use/agents/)
-4. [Building a LangChain Custom Medical Agent with Memory](https://www.youtube.com/watch?v=6UFtRwWnHws)
-5. [LangChain Agents - Joining Tools and Chains with Decisions](https://www.youtube.com/watch?v=ziu87EXZVUE)
+1. [如何從零開始建立自己的 LLM Agent：一步一步指南](https://gathnex.medium.com/how-to-create-your-own-llm-agent-from-scratch-a-step-by-step-guide-14b763e5b3b8)
+2. [建構你的第一個 LLM Agent 應用程式](https://developer.nvidia.com/blog/building-your-first-llm-agent-application/)
+3. [在 LangChain 上建構 Agents](https://python.langchain.com/docs/use_cases/tool_use/agents/)
+4. [使用記憶體建構 LangChain 自訂醫療 Agent](https://www.youtube.com/watch?v=6UFtRwWnHws)
+5. [LangChain Agents - 使用決策結合工具和鏈](https://www.youtube.com/watch?v=ziu87EXZVUE)
 
-## References:
+## 參考資料:
 
-1. [The Rise and Potential of Large Language Model Based Agents: A Survey](https://arxiv.org/pdf/2309.07864.pdf)
-2. [Large Language Model based Multi-Agents: A Survey of Progress and Challenges](https://arxiv.org/pdf/2402.01680.pdf)
-3. [LLM Agents by Prompt Engineering Guide](https://www.promptingguide.ai/research/llm-agents#notable-llm-based-agents)
-4. [Introduction to LLM Agents, Nvidia Blog](https://developer.nvidia.com/blog/introduction-to-llm-agents/)
+1. [大型語言模型基於代理的崛起與潛力：調查](https://arxiv.org/pdf/2309.07864.pdf)
+2. [基於大型語言模型的多代理：進展與挑戰調查](https://arxiv.org/pdf/2402.01680.pdf)
+3. [通過提示工程指南的LLM代理](https://www.promptingguide.ai/research/llm-agents#notable-llm-based-agents)
+4. [LLM代理簡介，Nvidia部落格](https://developer.nvidia.com/blog/introduction-to-llm-agents/)
+

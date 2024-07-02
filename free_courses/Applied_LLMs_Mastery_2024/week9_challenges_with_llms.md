@@ -1,235 +1,234 @@
-# [Week 9] Challenges with LLMs
+﻿# [第9週] LLMs 的挑戰
 
-## ETMI5: Explain to Me in 5
+## ETMI5: 用五分鐘解釋給我聽
 
-In this section of the course on LLM Challenges, we've identified two main areas of concern with LLMs: behavioral challenges and deployment challenges. Behavioral challenges include issues like hallucination, where LLMs generate fictitious information, and adversarial attacks, where inputs are crafted to manipulate model behavior. Deployment challenges encompass memory and scalability issues, as well as security and privacy concerns. LLMs demand significant computational resources for deployment and face risks of privacy breaches due to their ability to process vast datasets and generate text. To mitigate these challenges, we discuss various strategies such as robust defenses against adversarial attacks, efficient memory management, and privacy-preserving training algorithms.  Additionally we will go over techniques like differential privacy, model stacking, and preprocessing methods that are being employed to safeguard user privacy and ensure the reliable and ethical use of LLMs across different applications.
+在本課程的LLM挑戰部分中，我們已經確定了LLM的兩個主要關注領域:行為挑戰和部署挑戰。行為挑戰包括幻覺問題（LLM生成虛構資訊）和對抗性攻擊（輸入被精心設計以操縱模型行為）。部署挑戰包括記憶體和延展性問題，以及安全性和隱私問題。LLM的部署需要大量的計算資源，並面臨隱私洩露的風險，因為它們能夠處理大量數據集並生成文本。為了減輕這些挑戰，我們討論了各種策略，如對抗對抗性攻擊的強大防禦、有效的記憶體管理和隱私保護的訓練算法。此外，我們還將介紹差分隱私、模型堆疊和預處理方法等技術，這些技術被用來保護用戶隱私，並確保LLM在不同應用中的可靠和道德使用。
 
-## Types of Challenges
+## 挑戰的類型
 
-We categorize the challenges into two main areas: managing the behavior of LLMs and the technical difficulties encountered during their deployment. Given the evolving nature of this technology, it's likely that current challenges will be mitigated, and new ones may emerge over time. However, as of February 15, 2024, these are the prominently discussed challenges associated with LLMs:
+我們將挑戰分為兩個主要領域: 管理LLM的行為和在部署過程中遇到的技術困難。鑑於這項技術的不斷發展，目前的挑戰可能會減輕，並且隨著時間的推移可能會出現新的挑戰。然而，截至2024年2月15日，這些是與LLM相關的主要討論挑戰:
 
-## **A. Behavioral Challenges**
+## **A. 行為挑戰**
 
-### 1. Hallucination
+### 1. 幻覺
 
-LLMs sometimes generate plausible but entirely fictitious information or responses, known as "hallucinations." This challenge is particularly harmful in applications requiring high factual accuracy, such as news generation, educational content, or medical advice as hallucinations can erode trust in LLM outputs, leading to misinformation or potentially harmful advice being followed.
+LLM 有時會生成看似合理但完全虛構的資訊或回應，這被稱為「幻覺」。這個挑戰在需要高度事實準確性的應用中尤其有害，例如新聞生成、教育內容或醫療建議，因為幻覺會削弱對 LLM 輸出的信任，導致錯誤資訊或潛在有害的建議被採納。
 
-### 2. Adversarial Attacks
+### 2. 對抗性攻擊
 
-LLMs can be vulnerable to adversarial attacks, where inputs are specially crafted to trick the model into making errors or revealing sensitive information. These attacks can compromise the integrity and reliability of LLM applications, posing significant security risks.
+LLMs 可能會受到對抗性攻擊的影響，這些攻擊會特別設計輸入來欺騙模型，使其犯錯或洩露敏感資訊。這些攻擊可能會損害 LLM 應用程式的完整性和可靠性，帶來重大的安全風險。
 
-### 3. Alignment
+### 3. 對齊
 
-Ensuring LLMs align with human values and intentions is a complex task. Misalignment can result from the model pursuing objectives that don't fully encapsulate the user's goals or ethical standards. Misalignment can lead to undesirable outcomes, such as generating content that is offensive, biased, or ethically questionable.
+確保 LLMs 與人類價值觀和意圖一致是一項複雜的任務。錯位可能源於模型追求的目標未能完全涵蓋使用者的目標或道德標準。錯位可能導致不良後果，例如生成冒犯性、有偏見或道德上有問題的內容。
 
-### 4. Prompt Brittleness
+### 4. 提示脆弱性
 
-LLMs can be overly sensitive to the exact wording of prompts, leading to inconsistent or unpredictable outputs. Small changes in prompt structure can yield vastly different responses. This brittleness complicates the development of reliable applications and requires users to have a deep understanding of how to effectively interact with LLMs.
+LLM 對提示的確切措辭可能過於敏感，導致輸出不一致或不可預測。提示結構的微小變化可能會產生截然不同的回應。這種脆弱性使得可靠應用程式的開發變得複雜，並且需要用戶深入了解如何有效地與 LLM 互動。
 
-## **B. Deployment Challenges**
+## **B. 部署挑戰**
 
-### 1. Memory and Scalability Challenges
+### 1. 記憶體和延展性挑戰
 
- Deploying LLMs at scale involves significant memory and computational resource demands. Managing these resources efficiently while maintaining high performance and low latency is a technical hurdle. Scalability challenges can limit the ability of LLMs to be integrated into real-time or resource-constrained applications, affecting their accessibility and utility.
+部署 LLMs 需要大量的記憶體和計算資源。有效地管理這些資源，同時保持高效能和低延遲，是一個技術難題。延展性挑戰可能會限制 LLMs 被整合到即時或資源受限的應用程式中，影響其可及性和實用性。
 
-### 2. Security & Privacy
+### 2. 安全與隱私
 
-Protecting the data used by and generated from LLMs is critical, especially when dealing with personal or sensitive information. LLMs need robust security measures to prevent unauthorized access and ensure privacy. Without adequate security and privacy protections, there is a risk of data breaches, unauthorized data usage, and loss of user trust.
+保護LLM所使用和生成的數據至關重要，尤其是在處理個人或敏感資訊時。LLM需要強大的安全措施來防止未經授權的訪問並確保隱私。如果沒有足夠的安全和隱私保護，存在數據洩露、未經授權的數據使用和用戶信任喪失的風險。
 
-Let’s dig a little deeper into each of issues and existing solutions for them
+讓我們更深入地探討每個問題及其現有的解決方案
 
-## A1. Hallucinations
+## A1. 幻覺
 
-Hallucination refers to the model generating information that seems plausible but is actually false or made up. This happens because LLMs are designed to create text that mimics the patterns they've seen in their training data, regardless of whether those patterns reflect real, accurate information. Hallucination is particularly harmful in RAG based applications where the model can generate content that is not supported by data but it is very hard to decipher.
+幻覺是指模型生成看似合理但實際上是錯誤或捏造的資訊。這是因為LLM的設計目的是創建模仿其訓練數據中模式的文本，而不管這些模式是否反映真實、準確的資訊。在基於RAG的應用中，幻覺尤其有害，因為模型可以生成不受數據支持但很難辨識的內容。
 
-Hallucination can arise from several factors:
+幻覺可能源於多種因素:
 
-- **Biases in Training Data:** If the data used to train the model contains inaccuracies or biases, the model might reproduce these errors or skewed perspectives in its outputs.
-- **Lack of Real-Time Information:** Since LLMs are trained on data that becomes outdated, they can't access or incorporate the latest information, leading to responses based on no longer accurate data. This is the most common cause for hallucinations.
-- **Model's Limitations:** LLMs don't actually understand the content they generate; they just follow data patterns. This can result in outputs that are grammatically correct and sound logical but are disconnected from actual facts.
-- **Overgeneralization:** Sometimes, LLMs might apply broad patterns to specific situations where those patterns don't fit, creating convincing but incorrect information.
+- **訓練數據中的偏見:** 如果用於訓練模型的數據包含不準確或偏見，模型可能會在其輸出中重現這些錯誤或偏頗的觀點。
+- **缺乏即時資訊:** 由於LLM是基於過時的數據進行訓練的，它們無法訪問或整合最新資訊，導致基於不再準確的數據做出回應。這是幻覺最常見的原因。
+- **模型的限制:** LLM實際上並不理解它們生成的內容；它們只是遵循數據模式。這可能導致語法正確且聽起來合乎邏輯但與實際事實脫節的輸出。
+- **過度概括:** 有時，LLM可能會將廣泛的模式應用於不適合這些模式的特定情況，從而創造出看似可信但實際上不正確的資訊。
 
-**How to detect and mitigate hallucinations?** 
+**如何檢測和減輕幻覺?**
 
-There's a need for automated methods to identify hallucinations in order to understand the model's performance without constant manual checks. Below, we explore various popular research efforts focused on detecting such hallucinations and some of them also propose methods to mitigate hallucinations. 
+需要自動化的方法來識別幻覺，以便在不進行持續手動檢查的情況下了解模型的性能。以下，我們探討了各種流行的研究工作，這些工作專注於檢測此類幻覺，其中一些還提出了減輕幻覺的方法。
 
-These are only two of the popular methods, the list is not comprehensive by any means:
+這些只是受歡迎的方法之一，這個列表絕不是全面的:
 
-1. **SELFCHECKGPT: Zero-Resource Black-Box Hallucination Detection
-for Generative Large Language Models ([link](https://arxiv.org/pdf/2303.08896.pdf))**
-    
-    ✅Hallucination Detection
-    
-    ❌Hallucination Mitigation
-    
+1. **SELFCHECKGPT: 零資源黑箱幻覺檢測
+針對生成大型語言模型([link](https://arxiv.org/pdf/2303.08896.pdf))**
 
-![Screenshot 2024-02-16 at 3.21.36 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-02-16_at_3.21.36_PM.png)
+    ✅幻覺檢測
 
-Image Source: [https://arxiv.org/pdf/2303.08896.pdf](https://arxiv.org/pdf/2303.08896.pdf)
+    ❌幻覺緩解
 
-SelfCheckGPT uses the following steps to detect hallucinations
+![2024-02-16 下午 3.21.36 的螢幕截圖.png](img/Screenshot_2024-02-16_at_3.21.36_PM.png)
 
-1. **Generate Multiple Responses:** SelfCheckGPT begins by prompting the LLM to generate multiple responses to the same question or statement. This step leverages the model's ability to produce varied outputs based on the same input, exploiting the stochastic nature of its response generation mechanism.
-2. **Analyze Consistency Among Responses:** The key hypothesis is that factual information will lead to consistent responses across different samples, as the model relies on its training on real-world data. In contrast, hallucinated (fabricated) content will result in inconsistent responses, as the model doesn't have a factual basis to generate them and thus "guesses" differently each time.
-3. **Apply Metrics for Consistency Measurement:** SelfCheckGPT employs five different metrics to assess the consistency among the generated responses. Some of them are popular semantic similarity metrics like BERTScore, N-Gram Overlap etc.
-4. **Determine Factual vs. Hallucinated Content:** By evaluating the consistency of information across the sampled responses using the above metrics, SelfCheckGPT can infer whether the content is likely factual or hallucinated. High consistency across metrics suggests factual content, while significant variance indicates hallucination.
+圖片來源: [https://arxiv.org/pdf/2303.08896.pdf](https://arxiv.org/pdf/2303.08896.pdf)
 
-A significant advantage of this method is that it operates without the need for external knowledge bases or databases, making it especially useful for black-box models where the internal data or processing mechanisms are inaccessible.
+SelfCheckGPT 使用以下步驟來檢測幻覺
 
-1. **Self-Contradictory Hallucinations of LLMs: Evaluation, Detection, and Mitigation** ([link](https://arxiv.org/pdf/2305.15852.pdf))
+1. **生成多個回應:** SelfCheckGPT 首先提示 LLM 生成對同一問題或陳述的多個回應。這一步利用了模型基於相同輸入產生不同輸出的能力，利用其回應生成機制的隨機性。
+2. **分析回應之間的一致性:** 主要假設是，事實性資訊將導致不同樣本之間的一致回應，因為模型依賴於其對現實世界資料的訓練。相反，幻覺（虛構）內容將導致不一致的回應，因為模型沒有事實基礎來生成它們，因此每次都會「猜測」不同。
+3. **應用一致性測量指標:** SelfCheckGPT 採用五種不同的指標來評估生成回應之間的一致性。其中一些是流行的語義相似性指標，如 BERTScore、N-Gram Overlap 等。
+4. **確定事實性與幻覺內容:** 通過使用上述指標評估樣本回應中的資訊一致性，SelfCheckGPT 可以推斷內容是可能的事實還是幻覺。高一致性表明事實性內容，而顯著的差異則表明幻覺。
 
-✅Hallucination Detection
+這種方法的一個顯著優勢是，它在運作時不需要外部知識庫或資料庫，這使其對於內部資料或處理機制無法存取的黑箱模型特別有用。
 
-✅Hallucination Mitigation
+1. **大型語言模型的自相矛盾幻覺：評估、檢測和緩解** ([link](https://arxiv.org/pdf/2305.15852.pdf))。
 
-![Screenshot 2024-02-16 at 4.11.44 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-02-16_at_4.11.44_PM.png)
+✅幻覺偵測
 
-Image Source: [https://arxiv.org/pdf/2305.15852.pdf](https://arxiv.org/pdf/2305.15852.pdf)
+✅幻覺緩解
 
-This research presents a three-step pipeline to detect and mitigate hallucinations, specifically self-contradictions, in LLMs. 
+![2024-02-16 下午4.11.44 的螢幕截圖.png](img/Screenshot_2024-02-16_at_4.11.44_PM.png)
 
-💡 Self-contradiction refers to a scenario where a statement or series of statements within the same context logically conflict with each other, making them mutually incompatible. In the context of LLMs, self-contradiction occurs when the model generates two or more sentences that present opposing facts, ideas, or claims, such that if one sentence is true, the other must be false, given the same context.
+圖像來源: [https://arxiv.org/pdf/2305.15852.pdf](https://arxiv.org/pdf/2305.15852.pdf)
 
-Here's a breakdown of the process:
+這項研究提出了一個三步驟的流程來檢測和減輕幻覺，特別是自我矛盾，在LLMs中。
 
-1. **Triggering Self-Contradictions:** The process begins by generating sentence pairs that are likely to contain self-contradictions. This is done by applying constraints designed to elicit responses from the LLM that may logically conflict with each other within the same context.
-2. **Detecting Self-Contradictions:** Various existing prompting strategies are explored to detect these self-contradictions. The authors examine different methods that have been previously developed, applying them to identify when an LLM has produced two sentences that cannot both be true.
-3. **Mitigating Self-Contradictions:** Once self-contradictions are detected, an iterative mitigation procedure is employed. This involves making local text edits to remove the contradictory information while ensuring that the text remains fluent and informative. This step is crucial for improving the trustworthiness of the LLM's output.
+💡 自我矛盾是指在相同上下文中，一個陳述或一系列陳述在邏輯上相互衝突，使它們互不相容。在LLM的上下文中，自我矛盾發生在模型生成兩個或更多句子，這些句子呈現相反的事實、想法或主張，如果一個句子為真，則在相同上下文中另一個句子必定為假。
 
-The framework is extensively evaluated across four modern LLMs, revealing a significant prevalence of self-contradictions in their outputs. For instance, 17.7% of all sentences generated by ChatGPT contained self-contradictions, many of which could not be verified using external knowledge bases like Wikipedia.
+以下是過程的細分:
 
-## A2. Adversarial Attacks
+1. **觸發自相矛盾:** 此過程開始於生成可能包含自相矛盾的句子對。這是通過應用設計來引發 LLM 回應的約束來完成的，這些回應在相同的上下文中可能在邏輯上相互矛盾。
+2. **檢測自相矛盾:** 探索各種現有的提示策略來檢測這些自相矛盾。作者檢查了先前開發的不同方法，應用它們來識別何時 LLM 生成了兩個不能同時為真的句子。
+3. **減輕自相矛盾:** 一旦檢測到自相矛盾，便採用迭代減輕程序。這涉及進行局部文本編輯以移除矛盾的資訊，同時確保文本保持流暢和資訊豐富。這一步對於提高 LLM 輸出的可信度至關重要。
 
-Adversarial attacks involve manipulating the LLM’s behavior by providing crafted inputs or prompts, with the goal of causing unintended or malicious outcomes. There are many types of adversarial attacks, we discuss a few here:
+這個框架在四個現代 LLMs 中進行了廣泛的評估，揭示了它們輸出中自相矛盾的現象非常普遍。例如，ChatGPT 生成的所有句子中有 17.7% 包含自相矛盾，其中許多無法使用像 Wikipedia 這樣的外部知識庫進行驗證。
 
-1. Prompt Injection (PI): Injecting prompts to manipulate the behavior of the model, overriding original instructions and controls.
-2. Jailbreaking: Circumventing filtering or restrictions by simulating scenarios where the model has no constraints or accessing a developer mode that can bypass restrictions.
-3. Data Poisoning: Injecting malicious data into the training set to manipulate the model's behavior during training or inference.
-4. Model Inversion: Exploiting the model's output to infer sensitive information about the training data or the model's parameters.
-5. Backdoor Attacks: Embedding hidden patterns or triggers into the model, which can be exploited to achieve certain outcomes when specific conditions are met.
-6. Membership Inference: Determining whether a particular sample was used in the training data of the model, potentially revealing sensitive information about individuals.
+## A2. 對抗性攻擊
 
-Adversarial attacks pose a significant challenge to LLMs by compromising model integrity and security. These attacks enable adversaries to remotely control the model, steal data, and propagate disinformation. Furthermore, LLMs' adaptability and autonomy make them potent tools for user manipulation, increasing the risk of societal harm. 
+對抗性攻擊涉及通過提供精心設計的輸入或提示來操縱LLM的行為，目的是引起意外或惡意的結果。有許多類型的對抗性攻擊，我們在這裡討論一些:
 
-Effectively addressing these challenges requires robust defenses and proactive measures to safeguard against adversarial manipulation of AI systems.
+1. Prompt Injection (PI): 注入提示以操縱模型的行為，覆蓋原始指令和控制。
+2. Jailbreaking: 通過模擬模型無約束的情境或訪問可以繞過限制的開發者模式來規避過濾或限制。
+3. Data Poisoning: 向訓練集注入惡意數據，以在訓練或推論期間操縱模型的行為。
+4. Model Inversion: 利用模型的輸出推斷訓練數據或模型參數的敏感資訊。
+5. Backdoor Attacks: 在模型中嵌入隱藏的模式或觸發器，當特定條件滿足時可以被利用來達成某些結果。
+6. Membership Inference: 確定特定樣本是否在模型的訓練數據中使用，可能會洩露個人的敏感資訊。
 
-Several efforts have been made to develop robust LLMs and evaluate them against adversarial attacks. One approach to mitigating such attacks involves training the LLM to become accustomed to adversarial inputs, instructing it not to respond to them. An example of this is presented in the paper [SmoothLLM](https://arxiv.org/pdf/2310.03684.pdf), which functions by perturbing multiple copies of a given input prompt at the character level and then consolidating the resulting predictions to identify adversarial inputs. Leveraging the fragility of prompts generated adversarially to changes at the character level, SmoothLLM notably decreases the success rate of jailbreaking attacks on various widely-used LLMs to less than one percent. Critically, this defensive strategy avoids unnecessary caution and provides demonstrable assurances regarding the mitigation of attacks.
+對抗性攻擊對大型語言模型（LLM）構成了重大挑戰，因為它們會損害模型的完整性和安全性。這些攻擊使對手能夠遠程控制模型、竊取數據並傳播虛假資訊。此外，LLM 的適應性和自主性使其成為用戶操縱的強大工具，增加了社會危害的風險。
 
-Another mechanism to defend LLMs against adversarial attacks involves the use of a perplexity filter as presented in [this](https://arxiv.org/pdf/2309.00614v2.pdf) paper. This filter operates on the principle that unconstrained attacks on LLMs often result in gibberish strings with high perplexity, indicating a lack of fluency, grammar mistakes, or illogical sequences. In this approach, two variations of the perplexity filter are considered. The first is a simple threshold-based filter, where a prompt passes the filter if its log perplexity is below a predefined threshold. The second variation involves checking perplexity in windows, treating the text as a sequence of contiguous chunks and flagging the text as suspicious if any window has high perplexity.
+有效應對這些挑戰需要強大的防禦措施和積極的措施來保護 AI 系統免受對抗性操縱。
 
-A good starting point to read about Adversarial techniques is [Greshake et al. 2023](https://arxiv.org/abs/2302.12173). The paper proposes a classification of attacks and potential causes, as depicted in the image below.
+多項努力已經投入於開發穩健的 LLMs 並評估其對抗對抗性攻擊的能力。一種減輕此類攻擊的方法涉及訓練 LLM 以適應對抗性輸入，指導其不對這些輸入作出回應。這方面的一個範例展示於論文 [SmoothLLM](https://arxiv.org/pdf/2310.03684.pdf) 中，其通過在字元層級擾動給定輸入提示的多個複製品，然後整合所得的預測來識別對抗性輸入。利用對抗性生成提示對字元層級變化的脆弱性，SmoothLLM 顯著降低了各種廣泛使用的 LLMs 被越獄攻擊成功的比率至不到百分之一。關鍵是，這種防禦策略避免了不必要的謹慎，並提供了有關減輕攻擊的可證明保證。
 
-![challenges.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/challenges.png)
+另一種防禦 LLMs 免受對抗性攻擊的機制涉及使用困惑度過濾器，如[這篇](https://arxiv.org/pdf/2309.00614v2.pdf)論文所述。這種過濾器的運作原理是，對 LLMs 進行不受限制的攻擊通常會產生高困惑度的胡言亂語，這表明缺乏流暢性、語法錯誤或不合邏輯的序列。在這種方法中，考慮了困惑度過濾器的兩種變體。第一種是簡單的閾值過濾器，如果提示的對數困惑度低於預定的閾值，則通過過濾器。第二種變體涉及在窗口中檢查困惑度，將文本視為連續塊的序列，如果任何窗口具有高困惑度，則將文本標記為可疑。
 
-## A3. Alignment
+閱讀有關對抗技術的一個良好起點是[Greshake et al. 2023](https://arxiv.org/abs/2302.12173)。該論文提出了攻擊和潛在原因的分類，如下圖所示。
 
-Alignment refers to the ability of LLMs to understand instructions and generate outputs that align with human expectations. Foundational LLMs, like GPT-3, are trained on massive textual datasets to predict subsequent tokens, giving them extensive world knowledge. However, they may still struggle with accurately interpreting instructions and producing outputs that match human expectations. This can lead to biased or incorrect content generation, limiting their practical usefulness.
+![challenges.png](img/challenges.png)
 
-Alignment is a broad concept that can be explained in various dimensions, one such categorization is done in [this](https://arxiv.org/pdf/2308.05374.pdf) paper. The paper proposes multiple dimensions and sub-classes for ensuring LLM alignment. For instance, harmful content generated by LLMs can be categorized into harms incurred to individual users (e.g., emotional harm, offensiveness, discrimination), society (e.g., instructions for creating violent or dangerous behaviors), or stakeholders (e.g., providing misinformation leading to wrong business decisions).
+## A3. 對齊
 
-![Screenshot 2024-02-17 at 3.39.35 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-02-17_at_3.39.35_PM.png)
+Alignment 是指 LLMs 理解指令並生成符合人類期望的輸出的能力。像 GPT-3 這樣的基礎 LLMs 是在大量文本數據集上訓練的，以預測後續的標記，從而賦予它們廣泛的世界知識。然而，它們可能仍然難以準確解釋指令並生成符合人類期望的輸出。這可能導致有偏見或不正確的內容生成，從而限制其實際用途。
 
-In broad terms, LLM Alignment can be improved through the following process:
+對齊是一個廣泛的概念，可以在各種維度上進行解釋，[這篇](https://arxiv.org/pdf/2308.05374.pdf) 論文中進行了一種分類。該論文提出了多個維度和子類別以確保 LLM 對齊。例如，LLM 生成的有害內容可以分為對個別用戶造成的傷害（例如，情感傷害、冒犯、歧視）、社會（例如，創建暴力或危險行為的指示）或利益相關者（例如，提供導致錯誤商業決策的錯誤資訊）。
 
-- Determine the most crucial dimensions for alignment depending on the specific use-case.
-- Identify suitable benchmarks for evaluation purposes.
-- Employ Supervised Fine-Tuning (SFT) methods to enhance the benchmarks.
+![Screenshot 2024-02-17 at 3.39.35 PM.png](img/Screenshot_2024-02-17_at_3.39.35_PM.png)
 
-Some popular aligned LLMs and benchmarks are listed in the image below
+從廣義上講，可以通過以下過程改進LLM對齊:
 
-![Screenshot 2024-02-17 at 3.52.00 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-02-17_at_3.52.00_PM.png)
+- 確定最關鍵的對齊維度，取決於具體的使用案例。
+- 確定適合的基準來進行評估。
+- 使用監督微調（SFT）方法來提升基準。
 
-Image Source: [https://arxiv.org/pdf/2307.12966.pdf](https://arxiv.org/pdf/2307.12966.pdf) 
+一些受歡迎的對齊 LLM 和基準列在下圖中
 
-## A4. Prompt Brittleness
+![Screenshot 2024-02-17 at 3.52.00 PM.png](img/Screenshot_2024-02-17_at_3.52.00_PM.png)
 
-During the prompt engineering segment of our course, we explored various techniques for prompting LLMs. These sophisticated methods are essential because providing instructions similar to humans isn't suitable for LLMs. An overview of commonly used prompting methods is shown in the image below.
+圖片來源: [https://arxiv.org/pdf/2307.12966.pdf](https://arxiv.org/pdf/2307.12966.pdf)
 
-LLMs require precise prompting, and even slight alterations can impact LLMs, altering their responses. This poses a challenge during deployment, as individuals unfamiliar with prompting methods may struggle to obtain accurate answers from LLMs. 
+## A4. 提示脆弱性
 
-![Screenshot 2024-02-17 at 4.00.44 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-02-17_at_4.00.44_PM.png)
+在我們課程的提示工程部分，我們探索了各種提示LLM的技術。這些複雜的方法是必需的，因為提供類似於人類的指示並不適合LLM。常用提示方法的概述如下圖所示。
 
-Image Source: [https://arxiv.org/pdf/2307.10169.pdf](https://arxiv.org/pdf/2307.10169.pdf)
+LLMs 需要精確的提示，即使是輕微的改動也會影響 LLMs，改變它們的回應。這在部署期間構成挑戰，因為不熟悉提示方法的人可能難以從 LLMs 獲得準確的答案。
 
-In general, prompt brittleness in LLMs can be reduced by adopting the following high level strategies:
+![Screenshot 2024-02-17 at 4.00.44 PM.png](img/Screenshot_2024-02-17_at_4.00.44_PM.png)
 
-1. **Standardized Prompts:** Establishing standardized prompt formats and syntax guidelines can help ensure consistency and reduce the risk of unexpected variations.
-2. **Robust Prompt Engineering:** Invest in thorough prompt engineering, considering various prompt formulations and their potential impacts on model outputs. This may involve testing different prompt styles and formats to identify the most effective ones.
-3. **Human-in-the-Loop Validation:** Incorporate human validation or feedback loops to assess the effectiveness of prompts and identify potential brittleness issues before deployment.
-4. **Diverse Prompt Testing:** Test prompts across diverse datasets and scenarios to evaluate their robustness and generalizability. This can help uncover any brittleness issues that may arise in different contexts.
-5. **Adaptive Prompting:** Develop adaptive prompting techniques that allow the model to dynamically adjust its behavior based on user input or contextual cues, reducing reliance on fixed prompt structures.
-6. **Regular Monitoring and Maintenance:** Continuously monitor model performance and prompt effectiveness in real-world applications, updating prompts as needed to address any brittleness issues that may arise over time.
+圖片來源: [https://arxiv.org/pdf/2307.10169.pdf](https://arxiv.org/pdf/2307.10169.pdf)
 
-## B1. Memory and Scalability Challenges
+一般來說，可以通過採用以下高層策略來減少LLM中的提示脆弱性:
 
-In this section, we delve into the specific challenges related to memory and scalability when deploying LLMs, rather than focusing on their development. 
+1. **標準化提示:** 建立標準化提示格式和語法指南可以幫助確保一致性並減少意外變異的風險。
+2. **強健的提示工程:** 投資於徹底的提示工程，考慮各種提示的表達方式及其對模型輸出的潛在影響。這可能涉及測試不同的提示風格和格式以識別最有效的提示。
+3. **人類在環中的驗證:** 結合人類驗證或反饋循環來評估提示的有效性，並在部署前識別潛在的脆弱性問題。
+4. **多樣化提示測試:** 在多樣化的數據集和場景中測試提示，以評估其穩健性和普遍性。這有助於發現不同情境下可能出現的脆弱性問題。
+5. **自適應提示:** 開發自適應提示技術，使模型能夠根據用戶輸入或上下文線索動態調整其行為，減少對固定提示結構的依賴。
+6. **定期監控和維護:** 持續監控模型在實際應用中的表現和提示的有效性，根據需要更新提示以解決隨時間出現的脆弱性問題。
 
-Let's explore these challenges and potential solutions in detail:
+## B1. 記憶體和延展性挑戰
 
-1. **Fine-tuning LLMs:** Continuous fine-tuning of LLMs is crucial to ensure they stay updated with the latest knowledge or adapt to specific domains. Fine-tuning involves adjusting pre-trained model parameters on smaller, task-specific datasets to enhance performance. However, fine-tuning entire LLMs requires substantial memory, making it impractical for many users and leading to computational inefficiencies during deployment.
-    
-    **Solutions:** One approach is to leverage systems like RAG, where information can be utilized as context, enabling the model to learn from any knowledge base. Another solution is Parameter-efficient Fine-tuning (PEFT), such as adapters, which update only a subset of model parameters, reducing memory requirements while maintaining task performance. Methods like prefix-tuning and prompt-tuning prepend learnable token embeddings to inputs, facilitating efficient adaptation to specific datasets without the need to store and load individual fine-tuned models for each task. All these methods have been discussed in our previous weeks’ content. Please read through for deeper insights.
-    
-2. **Inference Latency:** LLMs often suffer from high inference latencies due to low parallelizability and large memory footprints. This results from processing tokens sequentially during inference and the extensive memory needed for decoding.
-    
-    **Solution:** Various techniques address these challenges, including efficient attention mechanisms. These mechanisms aim to accelerate attention computations by reducing memory bandwidth bottlenecks and introducing sparsity patterns to the attention matrix. [Multi-query attention](https://blog.fireworks.ai/multi-query-attention-is-all-you-need-db072e758055) and [FlashAttention](https://arxiv.org/abs/2205.14135) optimize memory bandwidth usage, while [quantization](https://www.tensorops.ai/post/what-are-quantized-llms) and [pruning](https://medium.com/@bnjmn_marie/freeze-and-prune-to-fine-tune-your-llm-with-apt-dc750b7bfbae) techniques reduce memory footprint and computational complexity without sacrificing performance.
-    
-3. **Limited Context Length:** Limited context length refers to the constraint on the amount of contextual information an LLM can effectively process during computations. This limitation stems from practical considerations such as computational resources and memory constraints, posing challenges for tasks requiring understanding longer contexts, such as novel writing or summarization.
-    
-    **Solution:** Researchers propose several solutions to address limited context length. Efficient attention mechanisms, like [Luna](https://arxiv.org/abs/2106.01540) and [dilated attention](https://arxiv.org/abs/2209.15001), handle longer sequences efficiently by reducing computational requirements. Length generalization methods aim to enable LLMs trained on short sequences to perform well on longer sequences during inference. This involves exploring different positional embedding schemes, such as Absolute Positional Embeddings and [ALiBi,](https://arxiv.org/abs/2108.12409) to inject positional information effectively. 
-    
+在本節中，我們深入探討部署 LLMs 時與記憶體和延展性相關的具體挑戰，而不是專注於它們的開發。
 
-## B2. Privacy
+讓我們詳細探討這些挑戰和潛在的解決方案:
 
-Privacy risks stem from their ability to process and generate text based on vast and varied training datasets. Models like GPT-3 have the potential to inadvertently capture and replicate sensitive information present in their training data, leading to potential privacy concerns during text generation. Issues such as unintentional data memorization, data leakage, and the possibility of disclosing confidential or personally identifiable information (PII) are significant challenges.
+1. **微調 LLMs:** 持續微調 LLMs 對於確保它們保持最新知識或適應特定領域至關重要。微調涉及在較小的、特定任務的數據集上調整預訓練模型參數以提高性能。然而，微調整個 LLMs 需要大量記憶體，使得對許多用戶來說不切實際，並在部署期間導致計算效率低下。
 
-Moreover, when LLMs are fine-tuned for specific tasks, additional privacy considerations arise. Striking a balance between harnessing the utility of these powerful language models and safeguarding user privacy is crucial for ensuring their reliable and ethical use across various applications.
+    **解決方案:** 一種方法是利用像 RAG 這樣的系統，將資訊用作上下文，使模型能夠從任何知識庫中學習。另一個解決方案是參數高效微調（PEFT），例如適配器，只更新模型參數的子集，減少記憶體需求，同時保持任務性能。前綴微調和提示微調等方法將可學習的標記嵌入添加到輸入中，促進對特定數據集的高效適應，而無需為每個任務存儲和加載單獨的微調模型。所有這些方法都在我們前幾週的內容中討論過。請閱讀以獲得更深入的見解。
 
-We review key privacy risks and attacks, along with possible mitigation strategies. The classification provided below is adapted from [this](https://arxiv.org/pdf/2402.00888.pdf) paper, which categorizes privacy attacks as:
+2. **推論延遲:** 由於低平行性和大的記憶體佔用，LLMs 經常遭受高推論延遲。這是由於在推論期間順序處理標記以及解碼所需的大量記憶體。
 
-![Screenshot 2024-02-17 at 4.23.14 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Screenshot_2024-02-17_at_4.23.14_PM.png)
+    **解決方案:** 各種技術解決了這些挑戰，包括高效的注意力機制。這些機制旨在通過減少記憶體帶寬瓶頸並引入稀疏模式到注意力矩陣來加速注意力計算。[多查詢注意力](https://blog.fireworks.ai/multi-query-attention-is-all-you-need-db072e758055)和[FlashAttention](https://arxiv.org/abs/2205.14135)優化記憶體帶寬使用，而[量化](https://www.tensorops.ai/post/what-are-quantized-llms)和[剪枝](https://medium.com/@bnjmn_marie/freeze-and-prune-to-fine-tune-your-llm-with-apt-dc750b7bfbae)技術在不犧牲性能的情況下減少記憶體佔用和計算複雜性。
 
-Image Source: [https://arxiv.org/pdf/2402.00888.pdf](https://arxiv.org/pdf/2402.00888.pdf)
+3. **有限的上下文長度:** 有限的上下文長度指的是 LLM 在計算過程中能夠有效處理的上下文資訊量的限制。這一限制源於計算資源和記憶體限制等實際考慮，對於需要理解較長上下文的任務（如小說寫作或摘要）構成挑戰。
 
-1. **Gradient Leakage Attack:** 
+    **解決方案:** 研究人員提出了幾種解決有限上下文長度的方法。高效的注意力機制，如[Luna](https://arxiv.org/abs/2106.01540)和[擴張注意力](https://arxiv.org/abs/2209.15001)，通過減少計算需求來高效處理較長的序列。長度泛化方法旨在使訓練於短序列的 LLM 在推論期間能夠在較長序列上表現良好。這涉及探索不同的位置嵌入方案，如絕對位置嵌入和[ALiBi](https://arxiv.org/abs/2108.12409)，以有效注入位置信息。
 
-In this attack, adversaries exploit access to gradients or gradient information to compromise the privacy and safety of deep learning models. Gradients, which indicate the direction of the steepest increase in a function, are crucial for optimizing model parameters during training to minimize the loss function. 
+## B2. 隱私
 
-To mitigate gradient-based attacks, several strategies can be employed:
+隱私風險源於它們能夠基於龐大且多樣的訓練數據集處理和生成文本。像 GPT-3 這樣的模型有可能無意中捕捉和複製訓練數據中存在的敏感資訊，從而在文本生成過程中引發潛在的隱私問題。無意識的數據記憶、數據洩漏以及披露機密或個人識別資訊（PII）的可能性等問題是重大挑戰。
 
-1. **Random Noise Insertion**: Injecting random noise into gradients can disrupt the adversary's ability to infer sensitive information accurately.
-2. **Differential Privacy**: Applying differential privacy techniques helps to add noise to the gradients, thereby obscuring any sensitive information contained within them.
-3. **Homomorphic Encryption**: Using homomorphic encryption allows for computations on encrypted data, preventing adversaries from accessing gradients directly.
-4. **Defense Mechanisms**: Techniques like adding Gaussian or Laplacian noise to gradients, coupled with differential privacy and additional clipping, can effectively defend against gradient leakage attacks. However, these methods may slightly reduce the model's utility.
+此外，當 LLMs 為特定任務進行微調時，會出現額外的隱私考量。在利用這些強大語言模型的效用與保護用戶隱私之間取得平衡，對於確保它們在各種應用中的可靠和倫理使用至關重要。
 
-**2. Membership Inference Attack**
+我們審查了主要的隱私風險和攻擊，以及可能的緩解策略。以下提供的分類改編自[此](https://arxiv.org/pdf/2402.00888.pdf)論文，該論文將隱私攻擊分類為:
 
-A Membership Inference Attack (MIA) aims to determine if a particular data sample was part of a machine learning model's training data, even without direct access to the model's parameters. Attackers exploit the model's tendency to overfit its training data, leading to lower loss values for training samples.  These attacks raise serious privacy concerns, especially when models are trained on sensitive data like medical records or financial information. 
+![Screenshot 2024-02-17 at 4.23.14 PM.png](img/Screenshot_2024-02-17_at_4.23.14_PM.png)
 
-Mitigating MIA in language models involves various mechanisms:
+圖片來源: [https://arxiv.org/pdf/2402.00888.pdf](https://arxiv.org/pdf/2402.00888.pdf)
 
-1. **Dropout and Model Stacking**: Dropout randomly deletes neuron connections during training to mitigate overfitting. Model stacking involves training different parts of the model with different subsets of data to reduce overall overfitting tendencies.
-2. **Differential Privacy (DP)**: DP-based techniques involve data perturbation and output perturbation to prevent privacy leakage. Models equipped with DP and trained using stochastic gradient descent can reduce privacy leakages while maintaining model utility.
-3. **Regularization**: Regularization techniques prevent overfitting and improve model generalization. Label smoothing is one such method that prevents overfitting, thus contributing to MIA prevention.
+1. **梯度洩漏攻擊:**
 
-**3. Personally Identifiable Information (PII) attack**
+在這次攻擊中，對手利用對梯度或梯度資訊的訪問來危害深度學習模型的隱私和安全。梯度指示函式中最陡增長的方向，對於在訓練期間最佳化模型參數以最小化損失函式至關重要。
 
-This attack involves the exposure of data that can uniquely identify individuals, either alone or in combination with other information. This includes direct identifiers like passport details and indirect identifiers such as race and date of birth. Sensitive PII encompasses information like name, phone number, address, social security number (SSN), financial, and medical records, while non-sensitive PII includes data like zip code, race, and gender. Attackers may acquire PII through various means such as phishing, social engineering, or exploiting vulnerabilities in systems.
+為了減輕基於梯度的攻擊，可以採用幾種策略:
 
-To mitigate PII leakage in LLMs, several strategies can be employed:
+1. **隨機噪音插入**: 在梯度中注入隨機噪音可以破壞對手準確推論敏感資訊的能力。
+2. **差分隱私**: 應用差分隱私技術有助於在梯度中添加噪音，從而掩蓋其中包含的任何敏感資訊。
+3. **同態加密**: 使用同態加密允許對加密資料進行計算，防止對手直接訪問梯度。
+4. **防禦機制**: 像在梯度中添加高斯或拉普拉斯噪音的技術，結合差分隱私和額外的剪裁，可以有效防禦梯度洩漏攻擊。然而，這些方法可能會略微降低模型的實用性。
 
-1. **Preprocessing Techniques**: Deduplication during the preprocessing phase can significantly reduce the amount of memorized text in LLMs, thus decreasing the stored personal information. Additionally, personal information or content identifying and filtering with restrictive terms of use can limit the presence of sensitive content in training data.
-2. **Privacy-Preserving Training Algorithms**: Techniques like differentially private stochastic gradient descent [(DP-SGD)](https://assets.amazon.science/01/6e/4f6c2b1046d4b9b8651166bbcd93/differentially-private-decoding-in-large-language-models.pdf#:~:text=While%20the%20intersection%20of%20DP%20and%20LLMs%20is%20fairly%20novel%2C%20the%20prominent%20approach&text=vate%20Stochastic%20Gradient%20Descent%20(DP%2DSGD)%20(Song%20et%20al.%2C%202013;) can be used during training to ensure the privacy of training data. However, DP-SGD may incur a significant computational cost and decrease model utility.
-3. **PII Scrubbing**: This involves filtering datasets to eliminate PII from text, often leveraging Named Entity Recognition (NER) to tag PII. However, PII scrubbing methods may face challenges in preserving dataset utility and accurately removing all PII.
-4. **Fine-Tuning Considerations**: During fine-tuning on task-specific data, it's crucial to ensure that the data doesn't contain sensitive information to prevent privacy leaks. While fine-tuning may help the LM "forget" some memorized data from pretraining, it can still introduce privacy risks if the task-specific data contains PII.
+**2. 成員推論攻擊**
 
-## Read/Watch These Resources (Optional)
+一次會員推論攻擊(MIA)旨在確定特定數據樣本是否是機器學習模型訓練數據的一部分，即使沒有直接訪問模型的參數。攻擊者利用模型過度擬合其訓練數據的傾向，導致訓練樣本的損失值較低。這些攻擊引發了嚴重的隱私問題，特別是當模型在敏感數據（如醫療記錄或財務資訊）上訓練時。
 
-1. The Unspoken Challenges of Large Language Models - [https://deeperinsights.com/ai-blog/the-unspoken-challenges-of-large-language-models](https://deeperinsights.com/ai-blog/the-unspoken-challenges-of-large-language-models)
-2. 15 Challenges With Large Language Models (LLMs)- [https://www.predinfer.com/blog/15-challenges-with-large-language-models-llms/](https://www.predinfer.com/blog/15-challenges-with-large-language-models-llms/)
+減輕語言模型中的MIA涉及各種機制:
 
-## Read These Papers (Optional)
+1. **Dropout 和模型堆疊**: Dropout 在訓練過程中隨機刪除神經元連接以減少過擬合。模型堆疊涉及使用不同的數據子集訓練模型的不同部分，以減少整體的過擬合傾向。
+2. **差分隱私（DP）**: 基於 DP 的技術涉及數據擾動和輸出擾動，以防止隱私洩露。配備 DP 並使用隨機梯度下降訓練的模型可以減少隱私洩露，同時保持模型的實用性。
+3. **正則化**: 正則化技術防止過擬合並改進模型泛化能力。標籤平滑就是一種防止過擬合的方法，從而有助於防止 MIA。
+
+**3. 個人識別資訊(PII)攻擊**
+
+這次攻擊涉及暴露能夠唯一識別個人的數據，無論是單獨還是與其他資訊結合使用。這包括護照詳情等直接識別碼和種族及出生日期等間接識別碼。敏感的個人識別資訊（PII）包括姓名、電話號碼、地址、社會安全號碼（SSN）、財務和醫療記錄，而非敏感的PII包括郵遞區號、種族和性別。攻擊者可能通過釣魚、社交工程或利用系統中的漏洞來獲取PII。
+
+為了減少在 LLMs 中的 PII 洩漏，可以採用幾種策略:
+
+1. **預處理技術**: 在預處理階段進行重複資料刪除可以顯著減少LLM中記憶的文本量，從而減少存儲的個人資訊。此外，使用限制性使用條款進行個人資訊或內容識別和過濾可以限制訓練數據中敏感內容的存在。
+2. **隱私保護訓練算法**: 像差分隱私隨機梯度下降[(DP-SGD)](https://assets.amazon.science/01/6e/4f6c2b1046d4b9b8651166bbcd93/differentially-private-decoding-in-large-language-models.pdf#:~:text=While%20the%20intersection%20of%20DP%20and%20LLMs%20is%20fairly%20novel%2C%20the%20prominent%20approach&text=vate%20Stochastic%20Gradient%20Descent%20(DP%2DSGD)%20(Song%20et%20al.%2C%202013)可以在訓練期間使用，以確保訓練數據的隱私。然而，DP-SGD可能會產生顯著的計算成本並降低模型效用。
+3. **PII清理**: 這涉及過濾數據集以消除文本中的PII，通常利用命名實體識別(NER)來標記PII。然而，PII清理方法在保持數據集效用和準確移除所有PII方面可能面臨挑戰。
+4. **微調考量**: 在對特定任務數據進行微調時，確保數據不包含敏感資訊以防止隱私洩露是至關重要的。雖然微調可能有助於LM「忘記」一些預訓練中的記憶數據，但如果特定任務數據包含PII，仍可能引入隱私風險。
+
+## 閱讀/觀看這些資源 (選擇性)
+
+1. 大型語言模型的未說挑戰 - [https://deeperinsights.com/ai-blog/the-unspoken-challenges-of-large-language-models](https://deeperinsights.com/ai-blog/the-unspoken-challenges-of-large-language-models)
+2. 大型語言模型（LLMs）的15個挑戰 - [https://www.predinfer.com/blog/15-challenges-with-large-language-models-llms](https://www.predinfer.com/blog/15-challenges-with-large-language-models-llms/)。
+
+## 閱讀這些論文（可選）
 
 1. [https://arxiv.org/abs/2307.10169](https://arxiv.org/abs/2307.10169)
 2. [https://www.techrxiv.org/doi/full/10.36227/techrxiv.23589741.v1](https://www.techrxiv.org/doi/full/10.36227/techrxiv.23589741.v1)
 3. [https://arxiv.org/abs/2311.05656](https://arxiv.org/abs/2311.05656)
+

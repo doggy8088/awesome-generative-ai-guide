@@ -1,87 +1,88 @@
-# Generative AI Genius 2024
+﻿# 生成式 AI 天才 2024
 
 ![Screenshot 2024-06-13 at 3.19.32 PM.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/generative_ai_genius/genai_intro.png)
 
-# 🎉The course starts on July 8th 2024! [Register now](https://forms.gle/sDdjXcmn9ka8BSFg9)
+# 🎉課程將於2024年7月8日開始! [立即註冊](https://forms.gle/sDdjXcmn9ka8BSFg9)
 
-# About the Course:
+# 關於課程:
 
-Welcome to Generative AI Genius! This 20-day introductory course is designed to help you break into generative AI.  This course is designed for today's busy individuals who crave concise, succinct information. 
+歡迎來到生成式 AI 天才！這個為期 20 天的入門課程旨在幫助你進入生成式 AI 領域。這個課程是為了今天忙碌的個人設計的，他們渴望簡潔、扼要的資訊。
 
-**Generative AI Genius the first AI course based on short videos or reels!** 
+**生成式 AI 天才，首個基於短影片或捲軸的 AI 課程！**
 
-If you've been wanting to learn about generative AI, understand the buzzwords, and not feel lost, you're in the right place. You can spend as little as 2-5 minutes a day learning generative AI in a way that builds on the knowledge gained from previous videos, giving you a comprehensive mind-map of the field. 
+如果你一直想了解生成式 AI、理解流行語並且不感到迷失，那麼你來對地方了。你可以每天花 2-5 分鐘學習生成式 AI，以從之前的影片中獲得的知識為基礎，為你提供該領域的全面心智圖。
 
-I see each of you as one of the following types of learners:
+我將你們每一位視為以下類型的學習者之一:
 
-**1. The Busy Bee** 
+**1. 忙碌的蜜蜂**
 
-If you're short on time but want to grasp generative AI concepts, my videos/reels are perfect for you. Just dedicate 2-5 minutes daily, and you'll stay informed without needing to look up extra material. Concepts will build on each other, keeping you perfectly in the loop.
+如果你時間不多但想掌握生成式 AI 概念，我的影片/reels 非常適合你。每天只需花 2-5 分鐘，你就能保持資訊更新，無需查找額外的資料。概念將相互建構，讓你完全掌握最新動態。
 
-**2. The Curious Learner**
+**2. 好奇的學習者**
 
-If you liked the the videos but want to explore the concepts further, I've handpicked some great resources for you. These usually take about 20-30 minutes and will help you grasp the material more deeply. They'll also improve your understanding of related concepts, making everything more cohesive.
+如果你喜歡這些影片但想進一步探索這些概念，我已經為你精選了一些很棒的資源。這些通常需要大約20-30分鐘，將幫助你更深入地掌握這些材料。它們還會提高你對相關概念的理解，使一切更加連貫。
 
-**3. The Hands-On Enthusiast**
+**3. 實作愛好者**
 
-If you're someone with a coding background who prefers hands-on learning, I'll be sharing few mini-project resources throughout the course. These projects will allow you to put the concepts into practice, using high-quality tutorials and videos.
+如果你有程式碼背景並且偏好動手學習，我將在課程中分享一些迷你專案資源。這些專案將允許你將概念付諸實踐，使用高品質的指南和影片。
 
-🚨**NOTE: The videos stand alone, so you can understand the concepts without needing to read the additional resources—they're just there to aid your understanding.**
+🚨**注意: 這些影片是獨立的，因此你可以在不需要閱讀額外資源的情況下理解這些概念—它們只是為了幫助你理解。**
 
-# What you'll Learn
-This course heavily focuses on applied generative AI to help you get started with building applications. Here's an overview of the topics we'll cover, and if you don't understand some of these, don't worry—you'll get enough background during the course:
+# 你將學到什麼
 
-- Basics of Generative AI and Large Language Models (LLMs)
-- Prompting Techniques
-- Building Generative AI Applications (RAG)
-- Basics of Fine-Tuning
-- Common Challenges and Evaluation
-- Future Trends in Generative AI
+這門課程主要著重於應用生成式 AI，幫助你開始建構應用程式。以下是我們將涵蓋的主題概述，如果你不理解其中的一些，不用擔心——你會在課程中獲得足夠的背景知識:
 
-Please note that this course emphasizes understanding applied concepts and building applications using generative AI. It won't teach you to build generative AI models, which requires a much more comprehensive course structure and a lot of prerequisites. If someone tells you otherwise, I'd double-check their credentials 🙂
+- 生成式 AI 和大型語言模型 (LLMs) 的基礎知識
+- 提示技術
+- 建構生成式 AI 應用程式 (RAG)
+- 微調的基礎知識
+- 常見挑戰和評估
+- 生成式 AI 的未來趨勢
 
-# What are the Prerequisites?
+請注意，本課程強調理解應用概念和使用生成式AI建構應用程式。它不會教你建構生成式AI模型，這需要一個更全面的課程結構和很多先決條件。如果有人告訴你不是這樣，我會仔細檢查他們的資格 🙂
 
-Honestly, this is a course I want people from all backgrounds to engage with and take away valuable insights at their preferred level of understanding. However, the amount of information you can absorb may vary depending on your background.
+# 什麼是先決條件?
 
-Here’s what it offers to individuals with different backgrounds:
+坦白說，這是一門我希望各種背景的人都能參與並在他們的理解層次上獲得有價值見解的課程。然而，你能吸收的資訊量可能會因你的背景而有所不同。
 
-### 1. No Computer Science (CS) Background
+以下是它為不同背景的個人提供的內容:
 
-The course may introduce terms that are new to you and some parts might be challenging. However, you'll still gain a high-level overview of the field and understand key concepts. Based on my experience, you should be able to grasp about 60-80% of the content. It's still worth your 2-5 minutes daily, right?
+### 1. 無計算機科學（CS）背景
 
-### 2. CS Background, Limited Machine Learning (ML) Experience
+這門課程可能會介紹一些你不熟悉的術語，有些部分可能會有挑戰性。然而，你仍然會獲得該領域的高層次概覽並理解關鍵概念。根據我的經驗，你應該能夠掌握大約60-80%的內容。每天花2-5分鐘還是值得的，對吧？
 
-If you're a software engineer or tech enthusiast, you probably have a basic understanding of ML concepts such as training and evaluation. You should be able to follow the course from beginning to end and complete a few projects in generative AI. My primary audience consists of individuals like you who are seeking to enter the field. This course can also serve as your entry into building generative AI projects and transitioning to a career as a generative AI engineer.
+### 2. 計算機科學背景，有限的機器學習（ML）經驗
 
-### 3. ML Background
+如果你是軟體工程師或技術愛好者，你可能對機器學習概念（如訓練和評估）有基本的了解。你應該能夠從頭到尾跟隨這門課程，並完成一些生成式 AI 的專案。我的主要受眾是像你這樣希望進入該領域的人士。這門課程也可以作為你建構生成式 AI 專案的入門，並轉型為生成式 AI 工程師的職業。
 
-If you have experience in ML but are new to NLP or LLMs, the main advantage for you will be the mini-projects and supplementary reading materials. These resources should provide you with enough knowledge to begin implementing your own projects and also enable you to start studying generative AI research and understand its broader context.
+### 3. 機器學習背景
 
-# How to Register:
+如果你有機器學習的經驗，但對自然語言處理或大型語言模型是新手，主要的優勢將是小型專案和補充閱讀材料。這些資源應該能夠為你提供足夠的知識，以開始實施自己的專案，並使你能夠開始研究生成式 AI 研究並理解其更廣泛的背景。
 
-You have two options: auditing the course or registering, both of which are free!
+# 如何註冊:
 
-**Auditing the Course:**
+你有兩個選擇: 旁聽課程或註冊，兩者都是免費的!
 
-- You can watch the daily videos first on [Instagram](https://rb.gy/ae4z68). Links will be posted here too, but there might be a delay. For quicker updates, follow my account.
-- Access additional resources through this page daily; mini-project resources will also be available here.
+**審計課程:**
 
-**Registering For the Course:**
+- 你可以先在[Instagram](https://rb.gy/ae4z68)上觀看每日影片。連結也會在這裡發布，但可能會有延遲。為了更快獲得更新，請關注我的帳號。
+- 每天通過此頁面訪問更多資源；迷你專案資源也將在這裡提供。
 
-- If you prefer to register (you can register any day during the 20-day course): submit a form [here](https://forms.gle/sDdjXcmn9ka8BSFg9)
-- Registered participants will receive all the benefits mentioned above, plus
-    - Priority RSVP to a 1 hour seminar on building generative AI applications for the real world
-    - Updates regarding any future courses or events
-    - A completion certificate
+**註冊課程:**
 
-# About your Instructor:
+- 如果您希望註冊（您可以在20天課程期間的任何一天註冊）: 提交表單[這裡](https://forms.gle/sDdjXcmn9ka8BSFg9)
+- 註冊的參與者將收到上述所有好處，另外還有
+    - 優先預訂參加一小時的研討會，內容為建構生成式 AI 應用於現實世界
+    - 關於未來任何課程或活動的更新
+    - 完成證書
 
-[Aishwarya Naresh Reganti](https://www.linkedin.com/in/areganti/) works as a tech lead at the AWS-Generative AI Innovation Center in California, where she leads projects aimed at building production-ready generative AI applications for medium to large-sized businesses. With over 8 years of experience in machine learning, Aishwarya has published 30+ research papers in top AI conferences and mentored numerous graduate students. She actively collaborates with research labs and professors from institutions like Stanford University, University of Michigan, and University of South Carolina on projects related to LLMs, graph models and generative AI.
+# 關於你的講師:
 
-Outside her professional and academic pursuits, Aishwarya actively contributes to education through various channels. She offers free courses online, with over 3000 individuals having taken them already, and serves as a visiting lecturer at  institutions like Massachusetts Institute of Technology and University of Oxford.  
+[Aishwarya Naresh Reganti](https://www.linkedin.com/in/areganti/) 在加州的 AWS-Generative AI Innovation Center 擔任技術主管，領導旨在為中大型企業建構可投入生產的生成式 AI 應用程式的專案。Aishwarya 擁有超過 8 年的機器學習經驗，已在頂尖的 AI 會議上發表了 30 多篇研究論文，並指導了許多研究生。她積極與來自 Stanford University、University of Michigan 和 University of South Carolina 等機構的研究實驗室和教授合作，進行與 LLMs、圖模型和生成式 AI 相關的專案。
 
-Additionally, she co-founded The LevelUp Org in 2022, a tech mentoring community dedicated to assisting newcomers in the field through mentorship programs and career-oriented events. A recognized industry expert and thought leader, Aishwarya frequently speaks at various industry conferences like ODSC, WomenTech Network, ReWork, and AI4, and has presented research at top-tier AI research conferences including EMNLP, AAAI, and CVPR.
+在她的專業和學術追求之外，Aishwarya 積極通過各種渠道為教育做出貢獻。她在線提供免費課程，已有超過 3000 人參加，並在麻省理工學院和牛津大學等機構擔任客座講師。
+
+此外，她在2022年共同創立了The LevelUp Org，這是一個技術指導社群，致力於通過指導計劃和職業導向活動幫助新進入該領域的人。作為公認的行業專家和思想領袖，Aishwarya經常在各種行業會議上發表演講，如ODSC、WomenTech Network、ReWork和AI4，並在包括EMNLP、AAAI和CVPR在內的頂級AI研究會議上展示研究成果。
 
 LinkedIn: [https://www.linkedin.com/in/areganti/](https://www.linkedin.com/in/areganti/)
 
@@ -89,23 +90,29 @@ Instagram: [https://www.instagram.com/aish_reganti/](https://www.instagram.com/a
 
 ---
 
----
-
-# 🎉The course starts on July 8th 2024. Stay tuned!
-
----------YET TO APPEAR---------
-## 🗓️ Day 0: Course Introduction
 
 ---
 
-Video:
 
-Reading Material:
+# 🎉課程將於2024年7月8日開始。敬請期待！
 
-## 🗓️ Day 1: What is Generative AI
+---------尚未出現---------
+
+## 🗓️ 第 0 天: 課程介紹
 
 ---
 
-Video:
 
-Reading Material:
+影片:
+
+閱讀材料:
+
+## 🗓️ 第1天: 什麼是生成式AI
+
+---
+
+
+影片:
+
+閱讀材料:
+

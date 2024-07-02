@@ -1,63 +1,58 @@
-# Applied LLMs Mastery 2024
+﻿# 應用LLMs精通2024
 
-![mind_map.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/mind_map.png)
+![mind_map.png](img/mind_map.png)
 
-# About This Course
+# 關於本課程
 
+**[官方課程網站](https://areganti.notion.site/The-LevelUp-Org-Applied-LLMs-562ddaa27791463e9a1286199325045c)**
 
-**[Official Course Website](https://areganti.notion.site/The-LevelUp-Org-Applied-LLMs-562ddaa27791463e9a1286199325045c)**
+歡迎來到激動人心的10週大型語言模型世界之旅!
 
-Welcome to an exciting 10-week journey into the world of large language models!
+目前，LLM 正在經歷顯著的流行趨勢。它們在各種應用中的重要性顯著增加，包括自然語言處理、機器翻譯以及程式碼和文本產生。這種顯著性上升是由於公司和個人越來越多地利用 LLM 來自動化各種任務的趨勢所驅動的。鑑於 LLM 的使用日益增長及其在各個領域的變革性影響，理解和學習 LLM 是非常有價值的。
 
-LLMs are currently experiencing a substantial surge in popularity. Their significance has notably increased in diverse applications, including natural language processing, machine translation, and code and text generation. This rise in prominence is driven by a growing trend among both companies and individuals to leverage LLMs for automating a wide range of tasks. Understanding and learning about LLMs is highly valuable in light of their growing usage and transformative impact across various domains.
+如果你渴望深入了解這個趨勢，你會發現網路上有很多資源。但這裡有個問題——其中許多資源都很零散，缺乏從基礎到實際應用的逐步指南。這可能會讓人不知所措，你可能會感到有點迷失。
 
-If you're eager to dive into this trend, you'll discover plenty of resources on the internet. But here's the catch – many of them are all over the place, missing a step-by-step guide from basics to real-world use. This can be overwhelming, and you might feel a bit lost. 
+想像這門課程是你的綜合指南，探索在現實世界中使用 LLMs 的各個方面。它是將一切聯繫在一起的重要環節。每週，我們將深入探討上述主題，提供深入的見解和實踐經驗。這種方法確保你能全面且深入地理解主題內的每一個方面。
 
-Imagine this course as your comprehensive guide, exploring every aspect of using LLMs in real-world scenarios. It serves as the crucial link that brings everything together. Each week, we'll delve into the above topics, providing in-depth insights and hands-on experiences. This approach ensures you gain a thorough and well-rounded understanding of every facet within the topic.
+我們已將內容組織成四個關鍵支柱 –
 
-We've organized the content into four key pillars – 
+- **基礎** (第1週)
+- **工具和技術** (第2-5週)
+- **部署和評估** (第6-9週)
+- **挑戰和未來趨勢** (第9-10週)
 
-- **Fundamentals**  (Week 1)
-- **Tools and Techniques** (Weeks 2-5)
-- **Deployment and Evaluation** (Weeks 6-9)
-- **Challenges and Future trends** (Weeks 9-10)
+這門課程適合多元的受眾，包括商業領袖、專業人士、計算機科學愛好者或希望增進LLM知識的學生。雖然我們力求使數學基礎相對簡單，但我們會在第11週作為額外內容，介紹LLM架構基礎，供有興趣深入研究LLM的人參考。
 
-This course caters to a diverse audience, including business leaders, professionals, computer science enthusiasts, or students looking to enhance their knowledge in LLMs. While we aim to keep mathematical foundations relatively light, we'll touch on LLM architectural basics in week 11 as bonus content for those interested in delving into LLM research. 
+# 課程格式
 
-# Course Format
+為了讓這門課程對廣大受眾更具吸引力，我們將其設計為自我節奏的審核課程。你可以在此註冊課程，課程材料將每週發布，包含心智圖、"ETMI5: 用5分鐘解釋給我"部分以快速概覽、相關資源和綜合內容以確保你理解每個主題。此外，我們還會提供研究論文和精煉摘要，以便你了解最新的研究。此頁面是你所有資源的中心樞紐。
 
-To make this course accessible to a wide audience, we've designed it as a self-paced audit course. You can register for the course here and course material will be released weekly, featuring mind maps, "ETMI5: Explain to Me in 5" sections for a quick overview, relevant resources, and comprehensive content to ensure your understanding of each topic. Additionally, we'll provide research papers and distilled summaries to keep you updated on the latest research. This page serves as your central hub for all resources.
+隨時掌握最新資訊，註冊電子郵件通知以便在有新內容上傳時收到通知，或在[LinkedIn](https://www.linkedin.com/in/areganti/)上關注我們的更新。如有任何疑問，請隨時聯繫講師***aish@levelup4all.org***或在LinkedIn上聯繫。在每週結束時，我們將解答常見問題。為了最大化您的學習體驗，每週分配2-3小時閱讀內容並參與建議的實驗。
 
-Stay informed by registering for email notifications whenever new content is uploaded, or follow our updates on [LinkedIn](https://www.linkedin.com/in/areganti/). For any queries, feel free to contact the instructor at ***aish@levelup4all.org*** or on LinkedIn. At the end of each week, we'll address frequently asked questions. To maximize your learning experience, allocate 2-3 hours weekly for reading content and engaging in suggested hands-on experiments.
+# 主要收穫
 
+- 理解LLM的實際基本原理，包括其功能和限制
+- 實際操作LLM使用案例的端到端執行
+- 學習探索和評估LLM在特定情境中有用性的最佳實踐
+- 熟練整合和理解LLM的新更新，有效地將每個部分拼接成更大的拼圖並理解其相關性。
 
-# Key Takeaways
+# 免責聲明
 
-- Understanding the practical fundamentals of LLMs, including its capabilities and limitations
-- Hands-on experience with end-to-end execution of LLM use cases
-- Learning best practices for exploring and evaluating the usefulness of LLMs in specific scenarios
-- Proficiency in integrating and comprehending new updates in LLMs, effectively fitting each piece into the larger puzzle and understanding its relevance.
+本課程內容由[Aishwarya Naresh Reganti](https://www.linkedin.com/in/areganti/)開發。該課程獨立提供，**免費**，與她的專業責任或雇主無關。本課程中呈現的內容僅供教育用途，不代表任何相關組織的觀點或政策。
 
-
-
-# Disclaimer
-
-This course content is developed by [Aishwarya Naresh Reganti](https://www.linkedin.com/in/areganti/). The course is offered independently, for **free** and is not affiliated with her professional responsibilities or employer. The content presented in this course is intended for educational purposes only and does not reflect the views or policies of any associated organizations.
-
-
-
-To cite this guide, use the below format:
+要引用本指南，請使用以下格式:
 
 ```
 @article{areganti_generative_ai_guide,
 author = {Reganti, Aishwarya},
 journal = {https://github.com/aishwaryanr/awesome-generative-ai-resources},
 month = {01},
-title = {{Generative AI Guide}},
+title = {{生成式 AI 指南}}，
 year = {2024}
 }
 ```
 
-## License
+## 授權條款
 
 [MIT License]
+

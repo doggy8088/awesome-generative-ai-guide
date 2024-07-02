@@ -1,156 +1,157 @@
-# [Week 1, Part 2] Domain and Task Adaptation Methods
+﻿# [Week 1, Part 2] 領域和任務適應方法
 
-## ETMI5: Explain to Me in 5
+## ETMI5: 用五分鐘解釋給我聽
 
-In this section, we delve into the limitations of general AI models in specialized domains, underscoring the significance of domain-adapted LLMs. We explore the advantages of these models, including depth, precision, improved user experiences, and addressing privacy concerns.
+在本節中，我們深入探討一般 AI 模型在專業領域中的限制，強調適應領域的 LLMs 的重要性。我們探討這些模型的優勢，包括深度、精確度、改進的使用者體驗，以及解決隱私問題。
 
-We introduce three types of domain adaptation methods: Domain-Specific Pre-Training, Domain-Specific Fine-Tuning, and Retrieval Augmented Generation (RAG). Each method is outlined, providing details on types, training durations, and quick summaries. We then explain each of these methods in further detail with real-world examples. In the end, we provide an overview of when RAG should be used as opposed to model updating methods.
+我們介紹了三種類型的領域適應方法: 領域特定的預訓練、領域特定的微調和檢索增強生成 (RAG)。每種方法都有概述，提供了類型、訓練時間和快速摘要的詳細資訊。然後我們用實際範例進一步解釋了這些方法。最後，我們概述了何時應使用 RAG 而不是模型更新方法。
 
-## Using LLMs Effectively
+## 有效使用 LLMs
 
-While general AI models such as ChatGPT demonstrate impressive text generation abilities across various subjects, they may lack the depth and nuanced understanding required for specific domains. Additionally, these models are more prone to generating inaccurate or contextually inappropriate content, referred to as hallucinations. For instance, in healthcare, specific terms like "electronic health record interoperability" or "patient-centered medical home" hold significant importance, but a generic language model may struggle to fully comprehend their relevance due to a lack of specific training on healthcare data. This is where task-specific and domain-specific LLMs play a crucial role. These models need to possess specialized knowledge of industry-specific terminology and practices to ensure accurate interpretation of domain-specific concepts. Throughout the remainder of this course, we will refer to these specialized LLMs as **domain-specific LLM**s, a commonly used term for such models.
+雖然像 ChatGPT 這樣的一般 AI 模型在各種主題上展示了令人印象深刻的文本生成能力，但它們可能缺乏特定領域所需的深度和細微理解。此外，這些模型更容易生成不準確或上下文不適當的內容，這被稱為幻覺。例如，在醫療保健領域，像「電子健康記錄互操作性」或「以病人為中心的醫療之家」這樣的特定術語具有重要意義，但通用語言模型可能由於缺乏特定的醫療保健數據訓練而難以完全理解其相關性。這就是任務特定和領域特定的 LLM 發揮關鍵作用的地方。這些模型需要具備行業特定術語和實踐的專業知識，以確保準確解釋領域特定的概念。在本課程的其餘部分，我們將這些專業的 LLM 稱為**領域特定 LLM**，這是對此類模型的常用術語。
 
-Here are some benefits of using domain-specific LLMs:
+以下是使用特定領域LLM的一些好處:
 
-1. **Depth and Precision**: General LLMs, while proficient in generating text across diverse topics, may lack the depth and nuance required for specialized domains. Domain-specific LLMs are tailored to understand and interpret industry-specific terminology, ensuring precision in comprehension.
-2. **Overcoming Limitations**: General LLMs have limitations, including potential inaccuracies, lack of context, and susceptibility to hallucinations. In domains like finance or medicine, where specific terminology is crucial, domain-specific LLMs excel in providing accurate and contextually relevant information.
-3. **Enhanced User Experiences**: Domain-specific LLMs contribute to enhanced user experiences by offering tailored and personalized responses. In applications such as customer service chatbots or dynamic AI agents, these models leverage specialized knowledge to provide more accurate and insightful information.
-4. **Improved Efficiency and Productivity**: Businesses can benefit from the improved efficiency of domain-specific LLMs. By automating tasks, generating content aligned with industry-specific terminology, and streamlining operations, these models free up human resources for higher-level tasks, ultimately boosting productivity.
-5. **Addressing Privacy Concerns**: In industries dealing with sensitive data, such as healthcare, using general LLMs may pose privacy challenges. Domain-specific LLMs can provide a closed framework, ensuring the protection of confidential data and adherence to privacy agreements.
+1. **深度和精確性**: 一般的 LLMs 雖然能夠生成涵蓋各種主題的文本，但可能缺乏專業領域所需的深度和細微差別。專業領域的 LLMs 針對行業特定術語進行了調整，確保理解的精確性。
+2. **克服限制**: 一般的 LLMs 存在一些限制，包括潛在的不準確性、缺乏上下文以及易受幻覺影響。在金融或醫療等需要特定術語的領域，專業領域的 LLMs 在提供準確且上下文相關的資訊方面表現出色。
+3. **增強用戶體驗**: 專業領域的 LLMs 通過提供量身定制和個性化的回應來增強用戶體驗。在客戶服務聊天機器人或動態 AI 代理等應用中，這些模型利用專業知識提供更準確和有見地的資訊。
+4. **提高效率和生產力**: 企業可以從專業領域的 LLMs 提高的效率中受益。通過自動化任務、生成與行業特定術語一致的內容以及簡化操作，這些模型釋放了人力資源以處理更高層次的任務，最終提升生產力。
+5. **解決隱私問題**: 在處理敏感數據的行業中，例如醫療保健，使用一般的 LLMs 可能會帶來隱私挑戰。專業領域的 LLMs 可以提供一個封閉的框架，確保保護機密數據並遵守隱私協議。
 
-If you recall from the [previous section](https://www.notion.so/Week-1-Applied-LLM-Foundations-369ae7cf630d467cbfeedd3b9b3bfc46?pvs=21), we had multiple ways to use LLMs in specific use cases, namely
+如果你還記得[上一節](https://www.notion.so/Week-1-Applied-LLM-Foundations-369ae7cf630d467cbfeedd3b9b3bfc46?pvs=21)，我們有多種方法在特定用例中使用LLM，即
 
-1. **Zero-shot learning**
-2. **Few-shot learning**
-3. **Domain Adaptation**
+1. **零樣本學習**
+2. **少樣本學習**
+3. **領域適應**
 
-Zero-shot learning and few-shot learning involve instructing the general model either through examples or by prompting it with specific questions of interest. Another concept introduced is domain adaptation, which will be the primary focus in this section. More details about the first two methods will be explored when we delve into the topic of prompting.
+零樣本學習和少樣本學習涉及通過範例或通過提示特定感興趣的問題來指導通用模型。另一個引入的概念是領域適應，這將是本節的主要重點。關於前兩種方法的更多詳細資訊將在我們深入探討提示主題時進一步探討。
 
-## Types of Domain Adaptation Methods
+## 領域適應方法的類型
 
-There are several methods to incorporate domain-specific knowledge into LLMs, each with its own advantages and limitations. Here are three classes of approaches:
+有幾種方法可以將領域特定知識整合到LLM中，每種方法都有其優點和限制。以下是三種類別的方法:
 
-1. **Domain-Specific Pre-Training:**
-    - ***Training Duration**:* Days to weeks to months
-    - ***Summary**:* Requires a large amount of domain training data; can customize model architecture, size, tokenizer, etc.
-    
-    In this method, LLMs are pre-trained on extensive datasets representing various natural language use cases. For instance, models like PaLM 540B, GPT-3, and LLaMA 2 have been pre-trained on datasets with sizes ranging from 499 billion to 2 trillion tokens. Examples of domain-specific pre-training include models like ESMFold, ProGen2 for protein sequences, Galactica for science, BloombergGPT for finance, and StarCoder for code. These models outperform generalist models within their domains but still face limitations in terms of accuracy and potential hallucinations.
-    
-2. **Domain-Specific Fine-Tuning:**
-    - ***Training Duration**:* Minutes to hours
-    - ***Summary**:* Adds domain-specific data; tunes for specific tasks; updates LLM model
-    
-    Fine-tuning involves training a pre-trained LLM on a specific task or domain, adapting its knowledge to a narrower context. Examples include Alpaca (fine-tuned LLaMA-7B model for general tasks), xFinance (fine-tuned LLaMA-13B model for financial-specific tasks), and ChatDoctor (fine-tuned LLaMA-7B model for medical chat). The costs for fine-tuning are significantly smaller compared to pre-training.
-    
-3. **Retrieval Augmented Generation (RAG):**
-    - ***Training Duration**:* Not required
-    - ***Summary**:* No model weights; external information retrieval system can be tuned
-    
-    RAG involves grounding the LLM's parametric knowledge with external or non-parametric knowledge from an information retrieval system. This external knowledge is provided as additional context in the prompt to the LLM. The advantages of RAG include no training costs, low expertise requirement, and the ability to cite sources for human verification. This approach addresses limitations such as hallucinations and allows for precise manipulation of knowledge. The knowledge base is easily updatable without changing the LLM. Strategies to combine non-parametric knowledge with an LLM's parametric knowledge are actively researched.
-    
+1. **特定領域的預訓練:**
+    - ***訓練時間**:* 幾天到幾週到幾個月
+    - ***摘要**:* 需要大量的領域訓練數據; 可以自訂模型架構、大小、分詞器等
 
-## **Domain-Specific Pre-Training**
+    在這種方法中，LLM 在代表各種自然語言使用案例的大型數據集上進行預訓練。例如，像 PaLM 540B、GPT-3 和 LLaMA 2 這樣的模型已在大小從 4990 億到 2 兆個標記的數據集上進行了預訓練。特定領域預訓練的範例包括 ESMFold、ProGen2 用於蛋白質序列、Galactica 用於科學、BloombergGPT 用於金融和 StarCoder 用於程式碼。這些模型在其領域內的表現優於通用模型，但在準確性和潛在幻覺方面仍面臨限制。
 
-![domain_specific](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/domain_specific.png)
+2. **特定領域的微調:**
+    - ***訓練時間**:* 幾分鐘到幾小時
+    - ***摘要**:* 添加特定領域數據; 為特定任務進行調整; 更新 LLM 模型
 
-      Image Source [https://www.analyticsvidhya.com/blog/2023/08/domain-specific-llms/](https://www.analyticsvidhya.com/blog/2023/08/domain-specific-llms/)
+    微調涉及在特定任務或領域上訓練預訓練的 LLM，將其知識適應於更狹窄的上下文。範例包括 Alpaca（微調的 LLaMA-7B 模型用於一般任務）、xFinance（微調的 LLaMA-13B 模型用於金融特定任務）和 ChatDoctor（微調的 LLaMA-7B 模型用於醫療聊天）。與預訓練相比，微調的成本顯著較小。
 
-Domain-specific pre-training involves training large language models on extensive datasets that specifically represent the language and characteristics of a particular domain or field. This process aims to enhance the model's understanding and performance within a defined subject area.  Let’s understand domain specific pretraining through the example of [BloombergGPT,](https://arxiv.org/pdf/2303.17564.pdf) a large language model for finance. 
+3. **檢索增強生成 (RAG):**
+    - ***訓練時間**:* 不需要
+    - ***摘要**:* 沒有模型權重; 外部資訊檢索系統可以調整
 
-BloombergGPT is a 50 billion parameter language model designed to excel in various tasks within the financial industry. While general models are versatile and perform well across diverse tasks, they may not outperform domain-specific models in specialized areas. At Bloomberg, where a significant majority of applications are within the financial domain, there is a need for a model that excels in financial tasks while maintaining competitive performance on general benchmarks. BloombergGPT can perform the following tasks:
+    RAG 涉及將 LLM 的參數知識與來自資訊檢索系統的外部或非參數知識結合。這些外部知識作為額外的上下文提供給 LLM 的提示。RAG 的優點包括無訓練成本、低專業知識要求以及能夠引用來源以供人類驗證。這種方法解決了幻覺等限制，並允許精確操控知識。知識庫可以輕鬆更新而不改變 LLM。將非參數知識與 LLM 的參數知識結合的策略正在積極研究。
 
-1. **Financial Sentiment Analysis:** Analyzing and determining sentiment in financial texts, such as news articles, social media posts, or financial reports. This helps in understanding market sentiment and making informed investment decisions.
-2. **Named Entity Recognition:** Identifying and classifying entities (such as companies, individuals, and financial instruments) mentioned in financial documents. This is crucial for extracting relevant information from large datasets.
-3. **News Classification:** Categorizing financial news articles into different topics or classes. This can aid in organizing and prioritizing news updates based on their relevance to specific financial areas.
-4. **Question Answering in Finance:** Answering questions related to financial topics. Users can pose queries about market trends, financial instruments, or economic indicators, and BloombergGPT can provide relevant answers.
-5. **Conversational Systems for Finance:** Engaging in natural language conversations related to finance. Users can interact with BloombergGPT to seek information, clarify doubts, or discuss financial concepts.
+## **特定領域預訓練**
 
-To achieve this, BloombergGPT undergoes domain-specific pre-training using a large dataset that combines domain-specific financial language documents from Bloomberg's extensive archives with public datasets. This dataset, named FinPile, consists of diverse English financial documents, including news, filings, press releases, web-scraped financial documents, and social media content. The training corpus is roughly divided into half domain-specific text and half general-purpose text. The aim is to leverage the advantages of both domain-specific and general data sources.
+![domain_specific](img/domain_specific.png)
 
-The model architecture is based on guidelines from previous research efforts, containing 70 layers of transformer decoder blocks (read more in the [paper](https://arxiv.org/pdf/2303.17564.pdf))
+圖片來源 [https://www.analyticsvidhya.com/blog/2023/08/domain-specific-llms/](https://www.analyticsvidhya.com/blog/2023/08/domain-specific-llms/)。
 
-## **Domain-Specific Fine-Tuning**
+領域特定的預訓練涉及在廣泛的數據集上訓練大型語言模型，這些數據集專門代表特定領域或領域的語言和特徵。此過程旨在增強模型在定義的主題領域內的理解和性能。讓我們通過[彭博GPT](https://arxiv.org/pdf/2303.17564.pdf)這個金融領域的大型語言模型來了解領域特定的預訓練。
 
-Domain-specific fine-tuning is the process of refining a pre-existing language model for a particular task or within a specific domain to enhance its performance and tailor it to the unique context of that domain. This method involves taking an LLM that has undergone pre-training on a diverse dataset encompassing various language use cases and subsequently fine-tuning it on a narrower dataset specifically related to a particular domain or task. 
+BloombergGPT 是一個擁有 500 億參數的語言模型，旨在在金融行業的各種任務中表現出色。雖然通用模型具有多功能性，並且在各種任務中表現良好，但在專門領域中，它們可能無法超越特定領域的模型。在 Bloomberg，大多數應用都在金融領域，因此需要一個在金融任務中表現出色，同時在一般基準測試中保持競爭力的模型。BloombergGPT 可以執行以下任務:
 
-💡Note that the previous method, i.e., domain-specific pre-training involves training a language model exclusively on data from a specific domain, creating a specialized model for that domain. On the other hand, domain-specific fine-tuning takes a pre-trained general model and further trains it on domain-specific data, adapting it for tasks within that domain without starting from scratch. Pre-training is domain-exclusive from the beginning, while fine-tuning adapts a more versatile model to a specific domain.
+1. **金融情感分析:** 分析和判斷金融文本中的情感，例如新聞文章、社交媒體帖子或財務報告。這有助於理解市場情緒並做出明智的投資決策。
+2. **命名實體識別:** 識別和分類金融文件中提到的實體（如公司、個人和金融工具）。這對於從大型數據集中提取相關資訊至關重要。
+3. **新聞分類:** 將金融新聞文章分類為不同的主題或類別。這可以幫助根據其與特定金融領域的相關性來組織和優先處理新聞更新。
+4. **金融問答:** 回答與金融主題相關的問題。用戶可以提出關於市場趨勢、金融工具或經濟指標的查詢，BloombergGPT 可以提供相關答案。
+5. **金融對話系統:** 進行與金融相關的自然語言對話。用戶可以與 BloombergGPT 互動以尋求資訊、澄清疑問或討論金融概念。
 
-The key steps in domain-specific fine-tuning include:
+為了達成這一目標，BloombergGPT 使用一個大型數據集進行領域特定的預訓練，該數據集結合了來自 Bloomberg 廣泛檔案的領域特定金融語言文件和公共數據集。這個數據集名為 FinPile，由多樣的英文金融文件組成，包括新聞、申報、新聞稿、網頁抓取的金融文件和社交媒體內容。訓練語料庫大致分為一半領域特定文本和一半通用文本。目的是利用領域特定和一般數據來源的優勢。
 
-1. **Pre-training:** Initially, a large language model is pre-trained on an extensive dataset, allowing it to grasp general language patterns, grammar, and contextual understanding (A general LLM).
-2. **Fine-tuning Dataset:** A more focused dataset, tailored to the desired domain or task, is collected or prepared. This dataset contains relevant examples and instances related to the target domain, potentially including labeled examples for supervised learning.
-3. **Fine-tuning Process:** The pre-trained language model undergoes further training on this domain-specific dataset. During fine-tuning, the model's parameters are adjusted based on the new dataset, while retaining the general language understanding acquired during pre-training.
-4. **Task Optimization:** The fine-tuned model is optimized for specific tasks within the chosen domain. This optimization may involve adjusting parameters related to the task, such as the model architecture, size, or tokenizer, to achieve optimal performance.
+模型架構基於先前研究工作的指南，包含70層變壓器解碼器塊（閱讀更多在[論文](https://arxiv.org/pdf/2303.17564.pdf)）。
 
-Domain-specific fine-tuning offers several advantages:
+## **領域專用微調**
 
-- It enables the model to specialize in a particular domain, enhancing its effectiveness for tasks within that domain.
-- It saves time and computational resources compared to training a model from scratch, leveraging the knowledge gained during pre-training.
-- The model can adapt to the specific requirements and nuances of the target domain, leading to improved performance on domain-specific tasks.
+特定領域微調是指為特定任務或特定領域精煉現有語言模型，以提升其性能並使其適應該領域的獨特背景。這種方法涉及使用一個已經在包含各種語言使用情況的多樣化數據集上進行過預訓練的LLM，然後在一個與特定領域或任務相關的較窄數據集上進行微調。
 
-A popular example for domain-specific fine-tuning is the ChatDoctor LLM which is a specialized language model fine-tuned on Meta-AI's large language model meta-AI (LLaMA) using a dataset of 100,000 patient-doctor dialogues from an online medical consultation platform. The model undergoes fine-tuning on real-world patient interactions, significantly improving its understanding of patient needs and providing more accurate medical advice. ChatDoctor uses real-time information from online sources like Wikipedia and curated offline medical databases, enhancing the accuracy of its responses to medical queries. The model's contributions include a methodology for fine-tuning LLMs in the medical field, a publicly shared dataset, and an autonomous ChatDoctor model capable of retrieving updated medical knowledge. Read more about ChatDoctor in the paper [here](https://arxiv.org/pdf/2303.14070.pdf).
+💡請注意，前述方法，即領域專屬的預訓練，涉及僅在特定領域的數據上訓練語言模型，從而為該領域創建一個專門的模型。另一方面，領域專屬的微調則是將一個預訓練的通用模型進一步在領域專屬的數據上訓練，使其適應該領域內的任務，而不需要從頭開始。預訓練從一開始就是領域專屬的，而微調則是將一個更通用的模型適應到特定領域。
 
-## Retrieval Augmented Generation (RAG)
+領域特定微調的關鍵步驟包括:
 
-Retrieval Augmented Generation (RAG) is an AI framework that enhances the quality of responses generated by LLMs by incorporating up-to-date and contextually relevant information from external sources during the generation process. It addresses the inconsistency and lack of domain-specific knowledge in LLMs, reducing the chances of hallucinations or incorrect responses. RAG involves two phases: retrieval, where relevant information is searched and retrieved, and content generation, where the LLM synthesizes an answer based on the retrieved information and its internal training data. This approach improves accuracy, allows source verification, and reduces the need for continuous model retraining. 
+1. **預訓練:** 最初，一個大型語言模型在廣泛的數據集上進行預訓練，使其能夠掌握一般的語言模式、語法和上下文理解(一個一般的LLM)。
+2. **微調數據集:** 收集或準備一個更專注的數據集，針對所需的領域或任務進行定制。這個數據集包含與目標領域相關的範例和實例，可能包括標記範例以進行監督學習。
+3. **微調過程:** 預訓練的語言模型在這個特定領域的數據集上進行進一步訓練。在微調過程中，模型的參數根據新的數據集進行調整，同時保留在預訓練期間獲得的一般語言理解。
+4. **任務最佳化:** 微調後的模型針對所選領域內的特定任務進行最佳化。這種最佳化可能涉及調整與任務相關的參數，例如模型架構、大小或分詞器，以達到最佳性能。
 
-![RAG_w1.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/RAG_w1.png)
+領域特定的微調提供了幾個優點:
 
-Image Source: [https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/](https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/)
+- 它使模型能夠專門針對特定領域，增強其在該領域內任務的有效性。
+- 與從頭開始訓練模型相比，它節省了時間和計算資源，利用了預訓練期間獲得的知識。
+- 模型可以適應目標領域的具體需求和細微差別，從而提高在特定領域任務上的性能。
 
-The diagram above outlines the fundamental RAG pipeline, consisting of three key components:
+一個針對特定領域進行微調的流行範例是 ChatDoctor LLM，它是一個專門的語言模型，使用來自線上醫療諮詢平台的 100,000 個病患-醫生對話數據集，在 Meta-AI 的大型語言模型 meta-AI (LLaMA) 上進行微調。該模型在真實世界的病患互動中進行微調，顯著提高了對病患需求的理解，並提供更準確的醫療建議。ChatDoctor 使用來自線上來源（如 Wikipedia）和精選的離線醫療數據庫的即時資訊，增強其對醫療查詢的回應準確性。該模型的貢獻包括在醫療領域微調 LLMs 的方法論、一個公開共享的數據集，以及一個能夠檢索更新醫學知識的自主 ChatDoctor 模型。閱讀更多關於 ChatDoctor 的論文[此處](https://arxiv.org/pdf/2303.14070.pdf)。
 
-1. **Ingestion:**
-    - Documents undergo segmentation into chunks, and embeddings are generated from these chunks, subsequently stored in an index.
-    - Chunks are essential for pinpointing the relevant information in response to a given query, resembling a standard retrieval approach.
-2. **Retrieval:**
-    - Leveraging the index of embeddings, the system retrieves the top-k documents when a query is received, based on the similarity of embeddings.
-3. **Synthesis:**
-    - Examining the chunks as contextual information, the LLM utilizes this knowledge to formulate accurate responses.
+## 檢索增強生成 (RAG)
 
-💡Unlike previous methods for domain adaptation, it's important to highlight that RAG doesn't necessitate any model training whatsoever. It can be readily applied without the need for training when specific domain data is provided.
+增強檢索生成（RAG）是一種 AI 框架，通過在生成過程中結合來自外部來源的最新且上下文相關的資訊，提高 LLMs 生成的回應品質。它解決了 LLMs 中的不一致性和缺乏特定領域知識的問題，減少了幻覺或錯誤回應的機會。RAG 包含兩個階段：檢索階段，搜索並檢索相關資訊；內容生成階段，LLM 根據檢索到的資訊及其內部訓練數據綜合生成答案。這種方法提高了準確性，允許來源驗證，並減少了持續模型重新訓練的需求。
 
-In contrast to earlier approaches for model updates (pre-training and fine-tuning), RAG comes with specific advantages and disadvantages. The decision to employ or refrain from using RAG depends on an evaluation of these factors.
+![RAG_w1.png](img/RAG_w1.png)
 
-| Advantages of RAG  | Disadvantages of RAG |
+圖片來源: [https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/](https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/)
+
+上述圖表概述了基本的 RAG 管線，由三個關鍵組成部分構成:
+
+1. **資料攝取:**
+    - 文件被分割成塊，並從這些塊生成嵌入，隨後存儲在索引中。
+    - 塊對於在回應給定查詢時定位相關資訊至關重要，類似於標準檢索方法。
+2. **檢索:**
+    - 利用嵌入的索引，系統在接收到查詢時根據嵌入的相似性檢索出前 k 個文件。
+3. **綜合:**
+    - 檢查塊作為上下文資訊，LLM 利用這些知識來制定準確的回應。
+
+💡與先前的領域適應方法不同，值得強調的是，RAG 完全不需要任何模型訓練。當提供特定領域資料時，它可以直接應用而無需訓練。
+
+與先前的模型更新方法（預訓練和微調）相比，RAG 具有特定的優勢和劣勢。是否使用 RAG 的決定取決於對這些因素的評估。
+
+| RAG 的優點  | RAG 的缺點 |
 | --- | --- |
-| Information Freshness: RAG addresses the static nature of LLMs by providing up-to-date or context-specific data from an external database. | Complex Implementation (Multiple moving parts): Implementing RAG may involve creating a vector database, embedding models, search index etc. The performance of RAG depends on the individual performance of all these components |
-| Domain-Specific Knowledge: RAG supplements LLMs with domain-specific knowledge by fetching relevant results from a vector database | Increased Latency: The retrieval step in RAG involves searching through databases, which may introduce latency in generating responses compared to models that don't rely on external sources. |
-| Reduced Hallucination and Citations: RAG reduces the likelihood of hallucinations by grounding LLMs with external, verifiable facts and can also cite sources |  |
-| Cost-Efficiency: RAG is a cost-effective solution, avoiding the need for extensive model training or fine-tuning |  |
+| 資訊新鮮度: RAG 通過提供來自外部資料庫的最新或上下文特定的數據，解決了 LLMs 的靜態特性。 | 複雜的實現（多個移動部分）: 實現 RAG 可能涉及建立向量資料庫、嵌入模型、搜索索引等。RAG 的性能取決於所有這些組件的個別性能 |
+| 特定領域知識: RAG 通過從向量資料庫中提取相關結果，補充 LLMs 的特定領域知識 | 增加延遲: RAG 中的檢索步驟涉及搜索資料庫，這可能會在生成回應時引入延遲，與不依賴外部來源的模型相比。 |
+| 減少幻覺和引用: RAG 通過將 LLMs 與外部、可驗證的事實結合，減少了幻覺的可能性，並且還可以引用來源 |  |
+| 成本效益: RAG 是一種具有成本效益的解決方案，避免了大量模型訓練或微調的需求 |  |
 
-## **Choosing Between RAG, Domain-Specific Fine-Tuning, and Domain-Specific Pre-Training**
+## **選擇 RAG、特定領域微調和特定領域預訓練之間**
 
-![types_domain_task.png](https://github.com/aishwaryanr/awesome-generative-ai-resources/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/types_domain_task.png)
+![types_domain_task.png](img/types_domain_task.png)
 
-### **Use Domain-Specific Pre-Training When:**
+### **在以下情況使用領域特定的預訓練:**
 
-- **Exclusive Domain Focus:** Pre-training is suitable when you require a model exclusively trained on data from a specific domain, creating a specialized language model for that domain.
-- **Customizing Model Architecture:** It allows you to customize various aspects of the model architecture, size, tokenizer, etc., based on the specific requirements of the domain.
-- **Extensive Training Data Available:** Effective pre-training often requires a large amount of domain-specific training data to ensure the model captures the intricacies of the chosen domain.
+- **專屬領域專注:** 當您需要一個專門在特定領域數據上訓練的模型時，預訓練是合適的，這樣可以為該領域創建一個專門的語言模型。
+- **自訂模型架構:** 它允許您根據該領域的具體需求來自訂模型架構、大小、分詞器等各個方面。
+- **豐富的訓練數據:** 有效的預訓練通常需要大量的領域特定訓練數據，以確保模型能夠捕捉所選領域的細微差別。
 
-### **Use Domain-Specific Fine-Tuning When:**
+### **當使用特定領域微調時:**
 
-- **Specialization Needed:** Fine-tuning is suitable when you already have a pre-trained LLM, and you want to adapt it for specific tasks or within a particular domain.
-- **Task Optimization:** It allows you to adjust the model's parameters related to the task, such as architecture, size, or tokenizer, for optimal performance in the chosen domain.
-- **Time and Resource Efficiency:** Fine-tuning saves time and computational resources compared to training a model from scratch since it leverages the knowledge gained during the pre-training phase.
+- **專業化需求:** 微調適用於當你已經有一個預訓練的 LLM，並且你想要將其調整為特定任務或特定領域時。
+- **任務最佳化:** 它允許你調整與任務相關的模型參數，例如架構、大小或 tokenizer，以在選定的領域中達到最佳性能。
+- **時間和資源效率:** 微調相比從頭訓練模型節省了時間和計算資源，因為它利用了在預訓練階段獲得的知識。
 
-### **Use RAG When:**
+### **使用 RAG 當:**
 
-- **Information Freshness Matters:** RAG provides up-to-date, context-specific data from external sources.
-- **Reducing Hallucination is Crucial:** Ground LLMs with verifiable facts and citations from an external knowledge base.
-- **Cost-Efficiency is a Priority:** Avoid extensive model training or fine-tuning; implement without the need for training.
 
-## Read/Watch These Resources (Optional)
+- **資訊新鮮度很重要:** RAG 提供來自外部來源的最新、上下文特定的資料。
+- **減少幻覺至關重要:** 使用可驗證的事實和引用來支持 LLMs，來自外部知識庫。
+- **成本效益是優先事項:** 避免廣泛的模型訓練或微調; 實現無需訓練。
+
+## 閱讀/觀看這些資源 (選擇性)
 
 1. [https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/](https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/)
 2. [https://www.superannotate.com/blog/llm-fine-tuning#what-is-llm-fine-tuning](https://www.superannotate.com/blog/llm-fine-tuning#what-is-llm-fine-tuning)
-3. [https://aws.amazon.com/what-is/retrieval-augmented-generation/#:~:text=Retrieval-Augmented Generation (RAG),sources before generating a response](https://aws.amazon.com/what-is/retrieval-augmented-generation/#:~:text=Retrieval%2DAugmented%20Generation%20(RAG),sources%20before%20generating%20a%20response).
+3. [https://aws.amazon.com/what-is/retrieval-augmented-generation/#:~:text=Retrieval-Augmented Generation (RAG),sources before generating a response](https://aws.amazon.com/what-is/retrieval-augmented-generation/#:~:text=Retrieval%2DAugmented%20Generation%20(RAG),sources%20before%20generating%20a%20response)。
 4. [https://www.youtube.com/watch?v=cXPYtkosXG4](https://www.youtube.com/watch?v=cXPYtkosXG4)
 5. [https://gradientflow.substack.com/p/best-practices-in-retrieval-augmented](https://gradientflow.substack.com/p/best-practices-in-retrieval-augmented)
 
-## Read These Papers (Optional)
+## 閱讀這些論文（可選）
 
 1. [https://proceedings.neurips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf](https://proceedings.neurips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf)
 2. [https://arxiv.org/abs/2202.01110](https://arxiv.org/abs/2202.01110)
 3. [https://arxiv.org/abs/1801.06146](https://arxiv.org/abs/1801.06146)
+

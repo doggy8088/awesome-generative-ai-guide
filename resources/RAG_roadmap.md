@@ -1,67 +1,72 @@
-# 3 Day RAG Roadmap: Understanding, Building and Evaluating RAG Systems 2024
+﻿# 3 Day RAG Roadmap: Understanding, Building and Evaluating RAG Systems 2024
 
-Retrieval Augmented Generation (RAG) has become a popular application of LLMs recently, with significant progress made in just a few months. Its popularity stems from its lightweight nature and the ease with which it can be integrated with any LLM. To help you get acquainted with RAG, we have put together a 3-day learning plan.
+檢索增強生成（RAG）最近已成為 LLMs 的熱門應用，在短短幾個月內取得了顯著進展。其受歡迎程度源於其輕量級特性以及易於與任何 LLM 整合的特性。為了幫助您熟悉 RAG，我們制定了一個為期 3 天的學習計劃。
 
-This guide will introduce you to the fundamentals, show you how to develop applications, delve into advanced functionalities, and teach you how to assess RAG applications. Plan to spend about 2-3 hours each day on the provided materials.
+這個指南將介紹基本原理，展示如何開發應用程式，深入探討進階功能，並教你如何評估 RAG 應用程式。計劃每天花費大約 2-3 小時在提供的材料上。
 
-Happy Learning!
+快樂學習！
 
-![RAG_roadmap.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/resources/img/RAG_roadmap.png)
+![RAG_roadmap.png](img/RAG_roadmap.png)
 
-## Day 1: Introduction to RAG
+## 第一天: 介紹 RAG
 
-**Watch these videos:**
+**觀看這些影片:**
 
-1. Explanation of RAG by [DeepLearning.AI](http://DeepLearning.AI) ([link](<https://learn.deeplearning.ai/courses/building-applications-vector-databases/lesson/3/retrieval-augmented-generation-(rag)>))
+1. [DeepLearning.AI](http://DeepLearning.AI) 對 RAG 的解釋 ([link](https://learn.deeplearning.ai/courses/building-applications-vector-databases/lesson/3/retrieval-augmented-generation-(rag)))。
 
-**Read these resources:**
+**閱讀這些資源:**
 
-1. What is RAG by DataStax ([link](https://www.datastax.com/guides/what-is-retrieval-augmented-generation))
-2. Retrieval-Augmented Generation (RAG) from basics to advanced by Tejpal Kumawat ([link](https://medium.com/@tejpal.abhyuday))
-
----
-
-## Day 2: Advanced RAG + Build Your Own RAG System
-
-**Watch these videos:**
-
-1. Advanced RAG series (6 videos) by Sam Witteveen ([link](https://www.youtube.com/watch?v=f4LeWlt3T8Y&t=125s))
-2. LangChain101: Question A 300 Page Book (w/ OpenAI + Pinecone) by Greg Kamradt ([link](https://www.youtube.com/watch?v=h0DHDp1FbmQ))
-
-**Read these resources:**
-
-1. Blog on advanced RAG techniques by Akash ([link](https://akash-mathur.medium.com/advanced-rag-optimizing-retrieval-with-additional-context-metadata-using-llamaindex-aeaa32d7aa2f))
-2. RAG hands-on tutorials on GitHub([link](https://github.com/gkamradt/langchain-tutorials/blob/main/data_generation/Ask%20A%20Book%20Questions.ipynb))
+1. 什麼是 DataStax 的 RAG ([link](https://www.datastax.com/guides/what-is-retrieval-augmented-generation))
+2. Tejpal Kumawat 的從基礎到進階的檢索增強生成 (RAG) ([link](https://medium.com/@tejpal.abhyuday))
 
 ---
 
-## Day 3: RAG Evaluation and Challenges
 
-**Watch these videos:**
+## 第2天: 進階RAG + 建構您自己的RAG系統
 
-1. LlamaIndex Sessions: 12 RAG Pain Points and Solutions ([link](https://www.youtube.com/watch?v=EBpT_cscTis))
-2. Building and Evaluating Advanced RAG Applications by [DeepLearning.AI](http://DeepLearning.AI)([link](https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/))
-3. Challenges with Naive RAG & How to Evaluate RAG Applications? by ActiveLoop ([link](https://www.youtube.com/watch?v=CgQdg0SRuC0))
+**觀看這些影片:**
 
-**Read these resources:**
+1. 進階 RAG 系列 (6 影片) by Sam Witteveen ([link](https://www.youtube.com/watch?v=f4LeWlt3T8Y&t=125s))
+2. LangChain101: 問一個 300 頁的書 (w/ OpenAI + Pinecone) by Greg Kamradt ([link](https://www.youtube.com/watch?v=h0DHDp1FbmQ))
 
-1. 12 RAG Pain Points and Solutions article([link](https://towardsdatascience.com/12-rag-pain-points-and-proposed-solutions-43709939a28c))
-2. RAGas core concepts for evaluating RAG([link](https://docs.ragas.io/en/stable/concepts/index.html))
+**閱讀這些資源:**
 
----
-
-## Optional Resources to Read
-
-1. Week 4 content from Applied LLMs mastery course on RAG ([link](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/week4_RAG.md))
-2. “Seven Failure Points When Engineering a Retrieval Augmented
-   Generation System” paper([link](https://arxiv.org/pdf/2401.05856.pdf))
-3. “Retrieval-Augmented Generation for Large Language Models: A Survey” paper([link](https://arxiv.org/abs/2312.10997))
-4. RAG description and available tools on Huggingface([link](https://huggingface.co/transformers/v3.3.1/model_doc/rag.html))
-5. Original RAG paper "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks” ([link](https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html))
+1. Akash 撰寫的進階 RAG 技術部落格([link](https://akash-mathur.medium.com/advanced-rag-optimizing-retrieval-with-additional-context-metadata-using-llamaindex-aeaa32d7aa2f))
+2. GitHub 上的 RAG 實作指南([link](https://github.com/gkamradt/langchain-tutorials/blob/main/data_generation/Ask%20A%20Book%20Questions.ipynb))
 
 ---
 
-## Latest RAG Research from 2023-2024
 
-[Click Here](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/research_updates/rag_research_table.md)
+## 第三天: RAG 評估和挑戰
+
+**觀看這些影片:**
+
+1. LlamaIndex Sessions: 12 RAG 痛點與解決方案 ([link](https://www.youtube.com/watch?v=EBpT_cscTis))
+2. 建構和評估進階 RAG 應用程式 by [DeepLearning.AI](http://DeepLearning.AI)([link](https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/))
+3. Naive RAG 的挑戰及如何評估 RAG 應用程式? by ActiveLoop ([link](https://www.youtube.com/watch?v=CgQdg0SRuC0))
+
+**閱讀這些資源:**
+
+1. 12 RAG 痛點和解決方案文章([link](https://towardsdatascience.com/12-rag-pain-points-and-proposed-solutions-43709939a28c))
+2. RAGas 核心概念用於評估 RAG([link](https://docs.ragas.io/en/stable/concepts/index.html))。
+
 ---
+
+
+## 可選資源閱讀
+
+1. 應用LLMs精通課程中第4週的RAG內容([link](../free_courses/Applied_LLMs_Mastery_2024/week4_RAG.md))
+2. 「工程檢索增強生成系統的七個失敗點」論文([link](https://arxiv.org/pdf/2401.05856.pdf))
+3. 「大型語言模型的檢索增強生成：一項調查」論文([link](https://arxiv.org/abs/2312.10997))
+4. Huggingface上的RAG描述和可用工具([link](https://huggingface.co/transformers/v3.3.1/model_doc/rag.html))
+5. 原始RAG論文 "知識密集型NLP任務的檢索增強生成」 ([link](https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html))
+
+---
+
+
+## 最新的 RAG 研究（2023-2024）
+
+[點擊這裡](../research_updates/rag_research_table.md)
+---
+
+

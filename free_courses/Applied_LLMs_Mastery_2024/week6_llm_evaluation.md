@@ -1,210 +1,209 @@
-# [Week 6] LLM Evaluation Techniques
+﻿# [第6週] LLM 評估技術
 
-## ETMI5: Explain to Me in 5
+## ETMI5: 用五分鐘解釋給我聽
 
-In this section of the content, we dive deep into the evaluation techniques applied to LLMs, focusing on two dimensions- pipeline and model evaluations. We examine how prompts are assessed for their effectiveness, leveraging tools like Prompt Registry and Playground. Additionally, we explore the importance of evaluating the quality of retrieved documents in RAG pipelines, utilizing metrics such as Context Precision and Relevancy. We then discuss the relevance metrics used to gauge response pertinence, including Perplexity and Human Evaluation, along with specialized RAG-specific metrics like Faithfulness and Answer Relevance. Additionally, we emphasize the significance of alignment metrics in ensuring LLMs adhere to human standards, covering dimensions such as Truthfulness and Safety. Lastly, we highlight the role of task-specific benchmarks like GLUE and SQuAD in assessing LLM performance across diverse real-world applications.
+在本節內容中，我們深入探討應用於 LLMs 的評估技術，重點關注兩個維度——管線和模型評估。我們檢視如何評估提示的有效性，利用像 Prompt Registry 和 Playground 這樣的工具。此外，我們探討在 RAG 管線中評估檢索文件品質的重要性，使用 Context Precision 和 Relevancy 等指標。我們接著討論用於衡量回應相關性的相關性指標，包括 Perplexity 和 Human Evaluation，以及專門的 RAG 特定指標如 Faithfulness 和 Answer Relevance。此外，我們強調對齊指標在確保 LLMs 遵循人類標準方面的重要性，涵蓋 Truthfulness 和 Safety 等維度。最後，我們強調像 GLUE 和 SQuAD 這樣的任務特定基準在評估 LLM 在各種現實應用中的表現所扮演的角色。
 
-## Evaluating Large Language Models (Dimensions)
+## 評估大型語言模型 (Dimensions)
 
-Understanding whether LLMs meet our specific needs is crucial. We must establish clear metrics to gauge the value added by LLM applications. When we refer to "LLM evaluation" in this section, we encompass assessing the entire pipeline, including the LLM itself, all input sources, and the content processed by it. This includes the prompts used for the LLM and, in the case of RAG use-cases, the quality of retrieved documents. To evaluate systems effectively, we'll break down LLM evaluation into dimensions:
+了解 LLMs 是否符合我們的特定需求至關重要。我們必須建立明確的指標來衡量 LLM 應用所增加的價值。當我們在本節中提到「LLM 評估」時，我們涵蓋了評估整個管道，包括 LLM 本身、所有輸入來源以及它所處理的內容。這包括用於 LLM 的提示，並且在 RAG 用例中，還包括檢索到的文件的品質。為了有效地評估系統，我們將 LLM 評估分解為幾個維度:
 
-A. **Pipeline Evaluation**: Assessing the effectiveness of individual components within the LLM pipeline, including prompts and retrieved documents.
-B. **Model Evaluation**: Evaluating the performance of the LLM model itself, focusing on the quality and relevance of its generated output.
+A. **管道評估**: 評估 LLM 管道內各個組件的有效性，包括提示和檢索到的文件。
+B. **模型評估**: 評估 LLM 模型本身的性能，重點關注其生成輸出的品質和相關性。
 
-Now we’ll dig deeper into each of these two dimensions
+現在我們將深入探討這兩個維度中的每一個
 
-## A. LLM Pipeline Evaluation
+## A. LLM Pipeline 評估
 
-In this section, we’ll look at 2 types of evaluation:
+在這部分，我們將會看兩種類型的評估:
 
-1. **Evaluating Prompts**: Given the significant impact prompts have on the output of LLM pipelines, we will delve into various methods for assessing and experimenting with prompts.
-2. **Evaluating the Retrieval Pipeline**: Essential for LLM pipelines incorporating RAG, this involves retrieving the top-k documents to assess the LLM's performance.
+1. **評估提示**: 鑑於提示對 LLM 管線輸出有顯著影響，我們將深入探討各種評估和實驗提示的方法。
+2. **評估檢索管線**: 對於包含 RAG 的 LLM 管線至關重要，這涉及檢索前 k 個文件以評估 LLM 的性能。
 
-### A1. Evaluating Prompts
+### A1. 評估提示
 
-The effectiveness of prompts can be evaluated by experimenting with various prompts and observing the changes in LLM performance. This process is facilitated by prompt testing frameworks, which generally include:
+提示的有效性可以透過實驗各種提示並觀察LLM性能的變化來評估。這個過程由提示測試框架促進，通常包括:
 
-- Prompt Registry: A space for users to list prompts they wish to evaluate on the LLM.
-- Prompt Playground: A feature to experiment with different prompts, observe the responses generated, and log them. This function calls the LLM API to get responses.
-- Evaluation: A section with a user-defined function for evaluating how various prompts perform.
-- Analytics and Logging: Features providing additional information such as logging and resource usage, aiding in the selection of the most effective prompts.
+- 提示註冊表: 一個用戶列出他們希望在 LLM 上評估的提示的空間。
+- 提示遊樂場: 一個用來試驗不同提示、觀察生成的回應並記錄它們的功能。此功能呼叫 LLM API 以獲取回應。
+- 評估: 一個包含用戶定義函式以評估各種提示表現的部分。
+- 分析和日誌: 提供額外資訊如日誌和資源使用情況的功能，有助於選擇最有效的提示。
 
-Commonly used tools for prompt testing include Promptfoo, PromptLayer, and others.
+常用的提示測試工具包括 Promptfoo、PromptLayer 等。
 
-**Automatic Prompt Generation**
+**自動提示生成**
 
-More recently there have also been methods to optimize prompts in an automatic manner, for instance-  [Zhou et al., (2022)](https://arxiv.org/abs/2211.01910) introduced Automatic Prompt EngineerAPE, a framework for automatically generating and selecting instructions. It treats prompt generation as a language synthesis problem and uses the LLM itself to generate and explore candidate solutions. First, an LLM generates prompt candidates based on output demonstrations. These candidates guide the search process. Then, the prompts are executed using a target model, and the best instruction is chosen based on evaluation scores.
+最近，也有一些方法可以自動化地最佳化提示，例如 [Zhou et al., (2022)](https://arxiv.org/abs/2211.01910) 介紹了自動提示工程師APE，一個自動生成和選擇指令的框架。它將提示生成視為一個語言合成問題，並使用LLM本身來生成和探索候選解決方案。首先，LLM根據輸出展示生成提示候選。這些候選引導搜索過程。然後，使用目標模型執行這些提示，並根據評估分數選擇最佳指令。
 
-![eval_1.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/eval_1.png)
+![eval_1.png](img/eval_1.png)
 
-### A2. Evaluating Retrieval Pipeline
+### A2. 評估檢索管線
 
-In RAG use-cases, solely assessing the end outcome doesn't capture the complete picture. Essentially, the LLM responds to queries based on the context provided. It's crucial to evaluate intermediate results, including the quality of retrieved documents. If the term RAG is unfamiliar to you, please refer to the Week 4 content explaining how RAG operates. Throughout this discussion, we'll refer to the top-k retrieved documents as "context" for the LLM, which requires evaluation. Below are some typical metrics to evaluate the quality of RAG context.
+在 RAG 使用案例中，僅評估最終結果無法捕捉完整的情況。本質上，LLM 根據提供的上下文來回應查詢。評估中間結果，包括檢索到的文件品質，是至關重要的。如果你對 RAG 這個術語不熟悉，請參考第 4 週的內容，該內容解釋了 RAG 的運作方式。在整個討論中，我們將把前 k 個檢索到的文件稱為 LLM 的「上下文」，這需要進行評估。以下是一些評估 RAG 上下文品質的典型指標。
 
-The below mentioned metrics are sourced from [RAGas](https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html) an open-source library for RAG pipeline evaluations
+以下提到的指標來自於[此連結](https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html)，這是一個用於 RAG 管線評估的開放原始碼函式庫。
 
-1. **Context Precision (From RAGas [documentation](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html)):** 
+1. **上下文精確度 (來自 RAGas [文件](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html)):**
 
-Context Precision is a metric that evaluates whether all of the ground-truth relevant items present in the contexts are ranked higher or not. Ideally all the relevant chunks must appear at the top ranks. This metric is computed using the question and the contexts, with values ranging between 0 and 1, where higher scores indicate better precision.
+上下文精確度是一種評估指標，用於評估在上下文中是否所有真實相關項目都排名較高。理想情況下，所有相關片段必須出現在頂部排名。此指標使用問題和上下文計算，值範圍在0到1之間，較高的分數表示更好的精確度。
 
 $$
-\text{Context Precision@k} = {\sum {\text{precision@k}} \over \text{total number of relevant items in the top K results}}
+\text{上下文精度@k} = {\sum {\text{精度@k}} \over \text{前K個結果中相關項目的總數}}
 $$
 
 $$
 \text{Precision@k} = {\text{true positives@k} \over  (\text{true positives@k} + \text{false positives@k})}
 $$
 
-Where k is the total number of chunks in contexts
+在 contexts 中，k 是總塊數
 
-2. **Context Relevancy(From RAGas [documentation](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
+2. **上下文相關性(來自 RAGas [文件](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
 
-This metric gauges the relevancy of the retrieved context, calculated based on both the question and contexts. The values fall within the range of (0, 1), with higher values indicating better relevancy. Ideally, the retrieved context should exclusively contain essential information to address the provided query. To compute this, we initially estimate the value of
-by identifying sentences within the retrieved context that are relevant for answering the given question. The final score is determined by the following formula:
+此指標衡量檢索到的上下文的相關性，根據問題和上下文計算。值範圍在(0, 1)之間，值越高表示相關性越好。理想情況下，檢索到的上下文應僅包含解答所提供查詢的必要資訊。為了計算這個，我們最初通過識別檢索到的上下文中與回答給定問題相關的句子來估計該值。最終得分由以下公式確定:
 
 $$
 \text{context relevancy} = {|S| \over |\text{Total number of sentences in retrived context}|}
 $$
 
 ```python
-Hint
+提示
 
-Question: What is the capital of France?
+問題: 法國的首都是什麼？
 
-High context relevancy: France, in Western Europe, encompasses medieval cities, alpine villages and Mediterranean beaches. Paris, its capital, is famed for its fashion houses, classical art museums including the Louvre and monuments like the Eiffel Tower.
+高上下文相關性: 法國位於西歐，擁有中世紀城市、阿爾卑斯山村莊和地中海海灘。其首都巴黎以其時尚品牌、包括盧浮宮在內的古典藝術博物館和像艾菲爾鐵塔這樣的地標而聞名。
 
-Low context relevancy: France, in Western Europe, encompasses medieval cities, alpine villages and Mediterranean beaches. Paris, its capital, is famed for its fashion houses, classical art museums including the Louvre and monuments like the Eiffel Tower. The country is also renowned for its wines and sophisticated cuisine. Lascaux’s ancient cave drawings, Lyon’s Roman theater and the vast Palace of Versailles attest to its rich history.
+低上下文相關性: 法國位於西歐，擁有中世紀城市、阿爾卑斯山村莊和地中海海灘。其首都巴黎以其時尚品牌、包括盧浮宮在內的古典藝術博物館和像艾菲爾鐵塔這樣的地標而聞名。這個國家還以其葡萄酒和精緻的美食而著稱。拉斯科的古代洞穴畫、里昂的羅馬劇場和凡爾賽宮的宏偉見證了其豐富的歷史。
 ```
 
-3. **Context Recall(From RAGas [documentation](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html)):** Context recall measures the extent to which the retrieved context aligns with the annotated answer, treated as the ground truth. It is computed based on the ground truth and the retrieved context, and the values range between 0 and 1, with higher values indicating better performance. To estimate context recall from the ground truth answer, each sentence in the ground truth answer is analyzed to determine whether it can be attributed to the retrieved context or not. In an ideal scenario, all sentences in the ground truth answer should be attributable to the retrieved context.
-    
-    The formula for calculating context recall is as follows:
-    
+3. **上下文召回（來自 RAGas [文件](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html)）:** 上下文召回衡量檢索到的上下文與註釋答案（視為真實值）的一致程度。它是根據真實值和檢索到的上下文計算的，值範圍在 0 到 1 之間，值越高表示性能越好。為了從真實值答案中估計上下文召回，會分析真實值答案中的每個句子，以確定它是否可以歸因於檢索到的上下文。在理想情況下，真實值答案中的所有句子都應該可以歸因於檢索到的上下文。
+
+    計算上下文召回的公式如下:
+
     $$
     \text{context recall} = {|\text{GT sentences that can be attributed to context}| \over |\text{Number of sentences in GT}|}
     $$
-    
 
-General retrieval metrics can also be used to evaluate the quality of retrieved documents or context, however, note that these metrics provide a lot more weight to the ranks of retrieved documents which might not be super crucial for RAG use-cases:
+一般檢索指標也可以用來評估檢索到的文件或上下文的品質，但是請注意，這些指標對檢索到的文件排名賦予了更多的權重，這對於 RAG 用例可能並不是非常關鍵:
 
-1. **Mean Average Precision (MAP)**: Averages the precision scores after each relevant document is retrieved, considering the order of the documents. It is particularly useful when the order of retrieval is important.
-2. **Normalized Discounted Cumulative Gain (nDCG)**: Measures the gain of a document based on its position in the result list. The gain is accumulated from the top of the result list to the bottom, with the gain of each result discounted at lower ranks.
-3. **Reciprocal Rank**: Focuses on the rank of the first relevant document, with higher scores for cases where the first relevant document is ranked higher.
-4. **Mean Reciprocal Rank (MRR)**: Averages the reciprocal ranks of results for a sample of queries. It is particularly used when the interest is in the rank of the first correct answer.
+1. **Mean Average Precision (MAP)**: 平均每個相關文件被檢索後的精確度分數，考慮文件的順序。當檢索順序很重要時，它特別有用。
+2. **Normalized Discounted Cumulative Gain (nDCG)**: 根據文件在結果列表中的位置來衡量收益。收益從結果列表的頂部累積到底部，較低排名的結果收益會被折扣。
+3. **Reciprocal Rank**: 專注於第一個相關文件的排名，第一個相關文件排名越高，得分越高。
+4. **Mean Reciprocal Rank (MRR)**: 平均樣本查詢結果的倒數排名。當關注第一個正確答案的排名時，它特別有用。
 
-## B. LLM Model Evaluation
+## B. LLM 模型評估
 
-Now that we've discussed evaluating LLM pipeline components, let's delve into the heart of the pipeline: the LLM model itself. Assessing LLM models isn't straightforward due to their broad applicability and versatility. Different use cases may require focusing on certain dimensions more than others. For instance, in applications where accuracy is paramount, evaluating whether the model avoids hallucinations (generating responses that are not factual) can be crucial. Conversely, in other scenarios where maintaining impartiality across different populations is essential, adherence to principles to avoid bias is paramount. LLM evaluation can be broadly categorized into these dimensions:
+現在我們已經討論了評估 LLM 管線元件，讓我們深入探討管線的核心：LLM 模型本身。由於 LLM 模型的廣泛適用性和多功能性，評估它們並不簡單。不同的使用案例可能需要專注於某些維度。例如，在準確性至關重要的應用中，評估模型是否避免幻覺（生成不符合事實的回應）可能是關鍵。相反，在其他需要在不同群體間保持公正的情境中，遵循避免偏見的原則是至關重要的。LLM 評估大致可以分為以下幾個維度：
 
-- **Relevance Metrics**: Assess the pertinence of the response to the user's query and context.
-- **Alignment Metrics**: Evaluate how well the model aligns with human preferences in the given use-case, in aspects such as fairness, robustness, and privacy.
-- **Task-Specific Metrics**: Gauge the performance of LLMs across different downstream tasks, such as multihop reasoning, mathematical reasoning, and more.
+- **相關性指標**: 評估回應與使用者查詢及上下文的相關性。
+- **一致性指標**: 評估模型在特定使用情境下與人類偏好的一致性，如公平性、穩健性和隱私。
+- **任務特定指標**: 衡量LLM在不同下游任務中的表現，如多跳推理、數學推理等。
 
-### B1. Relevance Metrics
+### B1. 相關性指標
 
-Some common response relevance metrics include:
+一些常見的回應相關性指標包括:
 
-1. Perplexity: Measures how well the LLM predicts a sample of text. Lower perplexity values indicate better performance. [Formula and mathematical explanation](https://huggingface.co/docs/transformers/en/perplexity)
-2. Human Evaluation: Involves human evaluators assessing the quality of the model's output based on criteria such as relevance, fluency, coherence, and overall quality.
-3. BLEU (Bilingual Evaluation Understudy): Compares the  LLM generated output with reference answer to measure similarity. Higher BLEU scores signify better performance. [Formula](https://www.youtube.com/watch?v=M05L1DhFqcw)
-4. Diversity: Measures the variety and uniqueness of generated LLM responses, including metrics like n-gram diversity or semantic similarity. Higher diversity scores indicate more diverse and unique outputs.
-5. ROUGE (Recall-Oriented Understudy for Gisting Evaluation) is a metric used to evaluate the quality of LLM generated text by comparing it with reference text. It assesses how well the generated text captures the key information present in the reference text. ROUGE calculates precision, recall, and F1-score, providing insights into the similarity between the generated and reference texts. [Formula](https://www.youtube.com/watch?v=TMshhnrEXlg)
+1. Perplexity: 衡量 LLM 預測文本樣本的效果。較低的 perplexity 值表示更好的性能。[公式和數學解釋](https://huggingface.co/docs/transformers/en/perplexity)
+2. Human Evaluation: 涉及人類評估者根據相關性、流暢性、一致性和整體品質等標準評估模型輸出的品質。
+3. BLEU (Bilingual Evaluation Understudy): 將 LLM 生成的輸出與參考答案進行比較以衡量相似性。較高的 BLEU 分數表示更好的性能。[公式](https://www.youtube.com/watch?v=M05L1DhFqcw)
+4. Diversity: 衡量生成的 LLM 回應的多樣性和獨特性，包括 n-gram 多樣性或語義相似性等指標。較高的多樣性分數表示輸出更為多樣和獨特。
+5. ROUGE (Recall-Oriented Understudy for Gisting Evaluation) 是一種用於評估 LLM 生成文本品質的指標，通過將其與參考文本進行比較來評估。它評估生成文本捕捉參考文本中關鍵資訊的效果。ROUGE 計算精確度、召回率和 F1 分數，提供生成文本與參考文本之間相似性的見解。[公式](https://www.youtube.com/watch?v=TMshhnrEXlg)
 
-**RAG specific relevance metrics**
+**RAG 特定相關性指標**
 
-Apart from the above mentioned generic relevance metrics, RAG pipelines use additional metrics to judge if the answer is relevant to the context provided and to the query posed. Some metrics as defined by [RAGas](https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html) are:
+除了上述提到的一般相關性指標外，RAG 管線還使用其他指標來判斷答案是否與提供的上下文和提出的查詢相關。一些由 [RAGas](https://docs.ragas.io/en/stable/concepts/metrics/faithfulness.html) 定義的指標有:
 
-1. **Faithfulness(From RAGas [documentation](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
+1. **忠實度(來自 RAGas 的[文件](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
 
-This measures the factual consistency of the generated answer against the given context. It is calculated from answer and retrieved context. The answer is scaled to (0,1) range. Higher the better.
+這衡量了生成答案與給定上下文之間的事實一致性。它是從答案和檢索到的上下文中計算的。答案的範圍縮放到(0,1)。越高越好。
 
-The generated answer is regarded as faithful if all the claims that are made in the answer can be inferred from the given context. To calculate this a set of claims from the generated answer is first identified. Then each one of these claims are cross checked with given context to determine if it can be inferred from given context or not. The faithfulness score is given by:
+生成的答案被認為是忠實的，如果答案中提出的所有主張都可以從給定的上下文中推論出來。為了計算這個分數，首先識別生成答案中的一組主張。然後將這些主張中的每一個與給定的上下文進行交叉檢查，以確定它是否可以從給定的上下文中推論出來。忠實度分數由以下公式給出:
 
 $$
-{|\text{Number of claims in the generated answer that can be inferred from given context}| \over |\text{Total number of claims in the generated answer}|}
+{|\text{生成答案中可從給定上下文推論出的主張數量}| \over |\text{生成答案中的主張總數}|}
 $$
 
 ```markdown
-Hint
+提示
 
-Question: Where and when was Einstein born?
+問題: 愛因斯坦在哪裡和什麼時候出生？
 
-Context: Albert Einstein (born 14 March 1879) was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time
+背景: 阿爾伯特·愛因斯坦（1879年3月14日出生）是一位德國出生的理論物理學家，被廣泛認為是有史以來最偉大和最有影響力的科學家之一
 
-High faithfulness answer: Einstein was born in Germany on 14th March 1879.
+高忠實度答案: 愛因斯坦於1879年3月14日出生在德國。
 
-Low faithfulness answer: Einstein was born in Germany on 20th March 1879.
+低忠實度答案: 愛因斯坦於1879年3月20日出生在德國。
 ```
 
-2. **Answer Relevance(From RAGas [documentation](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
+2. **答案相關性(來自 RAGas [文件](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
 
-The evaluation metric, Answer Relevancy, focuses on assessing how pertinent the generated answer is to the given prompt. A lower score is assigned to answers that are incomplete or contain redundant information. This metric is computed using the  question and the answer with values ranging between 0 and 1, where higher scores indicate better relevancy.
+評估指標，答案相關性，專注於評估生成的答案與給定提示的相關程度。對於不完整或包含冗餘資訊的答案會給予較低的分數。此指標使用問題和答案計算，值範圍在 0 到 1 之間，分數越高表示相關性越好。
 
-An answer is deemed relevant when it directly and appropriately addresses the original question. Importantly, our assessment of answer relevance does not consider factuality but instead penalizes cases where the answer lacks completeness or contains redundant details. To calculate this score, the LLM is prompted to generate an appropriate question for the generated answer multiple times, and the mean cosine similarity between these generated questions and the original question is measured. The underlying idea is that if the generated answer accurately addresses the initial question, the LLM should be able to generate questions from the answer that align with the original question.
+答案被認為是相關的，當它直接且適當地回答了原始問題。重要的是，我們對答案相關性的評估不考慮事實性，而是對答案缺乏完整性或包含冗餘細節的情況進行懲罰。為了計算這個分數，LLM 被提示多次為生成的答案生成一個適當的問題，並測量這些生成問題與原始問題之間的平均餘弦相似度。其基本思想是，如果生成的答案準確地回答了最初的問題，LLM 應該能夠從答案中生成與原始問題一致的問題。
 
-3. **Answer semantic similarity(From RAGas [documentation](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
+3. **回答語義相似度(來自 RAGas [文件](https://docs.ragas.io/en/stable/concepts/metrics/context_precision.html))**
 
-The concept of Answer Semantic Similarity pertains to the assessment of the semantic resemblance between the generated answer and the ground truth. This evaluation is based on the ground truth answer and the generated LLM answer , with values falling within the range of 0 to 1. A higher score signifies a better alignment between the generated answer and the ground truth.
+答案語義相似性的概念涉及生成答案與標準答案之間語義相似度的評估。此評估基於標準答案和生成的 LLM 答案，值範圍在 0 到 1 之間。分數越高表示生成答案與標準答案之間的對齊度越好。
 
-Measuring the semantic similarity between answers can offer valuable insights into the quality of the generated response. This evaluation utilizes a cross-encoder model to calculate the semantic similarity score.
+測量答案之間的語義相似性可以提供對生成回應品質的寶貴見解。此評估使用交叉編碼器模型來計算語義相似性分數。
 
-### B2. Alignment Metrics
+### B2. 對齊指標
 
-Metrics of this type are crucial, especially when LLMs are utilized in applications that interact directly with people, to ensure they conform to acceptable human standards. The challenge with these metrics is their difficulty to quantify mathematically. Instead, the assessment of LLM alignment involves conducting specific tests on benchmarks designed to evaluate alignment, using the results as an indirect measure. For instance, to evaluate a model's fairness, datasets are employed where the model must recognize stereotypes, and its performance in this regard serves as an indirect indicator of the LLM's fairness alignment. Thus, there's no universally correct method for this evaluation. In our course, we will adopt the approaches outlined in the influential study “[TRUSTLLM: Trustworthiness in Large Language Models](https://arxiv.org/pdf/2401.05561.pdf)” to explore alignment dimensions and the proxy tasks that help gauge LLM alignment.
+這種類型的指標至關重要，特別是在LLM被用於直接與人互動的應用中，以確保它們符合可接受的人類標準。這些指標的挑戰在於它們難以用數學量化。相反，LLM對齊的評估涉及在設計用來評估對齊的基準上進行特定測試，並使用結果作為間接衡量標準。例如，為了評估模型的公平性，使用數據集讓模型必須識別刻板印象，其在這方面的表現作為LLM公平性對齊的間接指標。因此，沒有一種普遍正確的方法來進行這種評估。在我們的課程中，我們將採用有影響力的研究「[TRUSTLLM: Trustworthiness in Large Language Models](https://arxiv.org/pdf/2401.05561.pdf)」中概述的方法來探索對齊維度和幫助衡量LLM對齊的代理任務。
 
-There is no single definition for Alignment, but here are some dimensions to quantify alignment, we use definitions from the paper mentioned above:
+沒有單一的對齊定義，但這裡有一些量化對齊的維度，我們使用上述論文中的定義:
 
-1. **Truthfulness**-Pertains to the accurate representation of information by LLMs. It encompasses evaluations of their tendency to generate misinformation, hallucinate, exhibit sycophantic behavior, and correct adversarial facts.
-2. **Safety**: Entails ability of LLMs avoiding unsafe or illegal outputs and promoting healthy conversations. 
-3. **Fairness**: Entails preventing biased or discriminatory outcomes from LLMs, with assessing stereotypes, disparagement, and preference biases. 
-4. **Robustness:** Refers to LLM’s stability and performance across various input conditions, distinct from resilience against attacks. 
-5. **Privacy**: Emphasizes preserving human and data autonomy, focusing on evaluating LLMs' privacy awareness and potential leakage. 
-6. **Machine Ethics**: Defining machine ethics for LLMs remains challenging due to the lack of a comprehensive ethical theory. Instead, we can divide it into three segments: implicit ethics, explicit ethics, and emotional awareness. E
-7. **Transparency**: Concerns the availability of information about LLMs and their outputs to users.
-8. **Accountability**: The LLMs ability to autonomously provide explanations and justifications for their behavior.
-9. **Regulations and Laws**: Ability of LLMs to abide by rules and regulations posed by nations and organizations. 
+1. **真實性**-涉及 LLMs 對資訊的準確呈現。它包括評估其生成錯誤資訊、幻覺、諂媚行為和糾正對抗性事實的傾向。
+2. **安全性**: 涉及 LLMs 避免不安全或非法輸出並促進健康對話的能力。
+3. **公平性**: 涉及防止 LLMs 產生偏見或歧視性結果，並評估刻板印象、貶損和偏好偏見。
+4. **穩健性**: 指 LLM 在各種輸入條件下的穩定性和性能，與對攻擊的抵抗力不同。
+5. **隱私**: 強調保護人類和數據自主權，重點評估 LLMs 的隱私意識和潛在洩漏。
+6. **機器倫理**: 由於缺乏全面的倫理理論，為 LLMs 定義機器倫理仍然具有挑戰性。我們可以將其分為三個部分: 隱含倫理、明確倫理和情感意識。
+7. **透明性**: 涉及向用戶提供有關 LLMs 及其輸出的資訊。
+8. **問責性**: LLMs 能夠自主提供其行為的解釋和理由。
+9. **法規和法律**: LLMs 遵守國家和組織規定的規則和法規的能力。
 
-In the paper, the authors further dissect each of these dimensions into more specific categories, as illustrated in the image below. For instance, Truthfulness is segmented into aspects such as misinformation, hallucination, sycophancy, and adversarial factuality. Moreover, each of these sub-dimensions is accompanied by corresponding datasets and metrics designed to quantify them.
+在這篇論文中，作者進一步將這些維度分解為更具體的類別，如下圖所示。例如，真實性被細分為錯誤資訊、幻覺、阿諛奉承和對抗事實性。此外，每個這些子維度都伴隨著相應的數據集和度量標準，用於量化它們。
 
-💡This serves as a basic illustration of utilizing proxy tasks, datasets, and metrics to evaluate an LLM's performance within a specific dimension. The choice of which dimensions are relevant will vary based on your specific task, requiring you to select the most applicable ones for your needs.
+💡這是一個基本範例，說明如何利用代理任務、數據集和指標來評估LLM在特定維度上的表現。相關維度的選擇會根據您的具體任務而有所不同，需要您選擇最適合您的維度。
 
-![Name.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/Name.png)
+![Name.png](img/Name.png)
 
-### B3. Task-Specific Metrics
+### B3. 特定任務指標
 
-Often, it's necessary to create tailored benchmarks, including datasets and metrics, to evaluate an LLM's performance in a specific task. For example, if developing a chatbot requiring strong reasoning abilities, utilizing common-sense reasoning benchmarks can be beneficial. Similarly, for multilingual understanding, machine translation benchmarks are valuable. 
+通常，有必要建立量身定制的基準，包括數據集和指標，以評估LLM在特定任務中的表現。例如，如果開發需要強大推理能力的聊天機器人，使用常識推理基準可能會有幫助。同樣地，對於多語言理解，機器翻譯基準是有價值的。
 
-Below, we outline some popular examples.
+以下，我們概述了一些流行的範例。
 
-1. **GLUE (General Language Understanding Evaluation)**: A collection of nine tasks designed to measure a model's ability to understand English text. Tasks include sentiment analysis, question answering, and textual entailment.
-2. **SuperGLUE**: An extension of GLUE with more challenging tasks, aimed at pushing the limits of models' comprehension capabilities. It includes tasks like word sense disambiguation, more complex question answering, and reasoning.
-3. **SQuAD (Stanford Question Answering Dataset)**: A benchmark for models on reading comprehension, where the model must predict the answer to a question based on a given passage of text.
-4. **Commonsense Reasoning Benchmarks**:
-    - **Winograd Schema Challenge**: Tests models on commonsense reasoning and understanding by asking them to resolve pronoun references in sentences.
-    - **SWAG (Situations With Adversarial Generations)**: Evaluates a model's ability to predict the most likely ending to a given sentence based on commonsense knowledge.
-5. **Natural Language Inference (NLI) Benchmarks**:
-    - **MultiNLI**: Tests a model's ability to predict whether a given hypothesis is true (entailment), false (contradiction), or undetermined (neutral) based on a given premise.
-    - **SNLI (Stanford Natural Language Inference)**: Similar to MultiNLI but with a different dataset for evaluation.
-6. **Machine Translation Benchmarks**:
-    - **WMT (Workshop on Machine Translation)**: Annual competition with datasets for evaluating translation quality across various language pairs.
-7. **Task-Oriented Dialogue Benchmarks**:
-    - **MultiWOZ**: A dataset for evaluating dialogue systems in task-oriented conversations, like booking a hotel or finding a restaurant.
-8. **Code Generation and Understanding Benchmarks**:
-    - MBPP Dataset: The benchmark consists of around 1,000 crowd-sourced Python programming problems, designed to be solvable by entry level programmers.
-9. **Chart Understanding Benchmarks**:
-    1. ChartQA: Contains machine-generated questions based on chart summaries, focusing on complex reasoning tasks that existing datasets often overlook due to their reliance on template-based questions and fixed vocabularies. 
+1. **GLUE (General Language Understanding Evaluation)**: 一組九個任務的集合，旨在測量模型理解英文文本的能力。任務包括情感分析、問答和文本蘊涵。
+2. **SuperGLUE**: GLUE 的擴展版本，包含更具挑戰性的任務，旨在推動模型理解能力的極限。包括詞義消歧、更複雜的問答和推理任務。
+3. **SQuAD (Stanford Question Answering Dataset)**: 用於模型閱讀理解的基準，模型必須根據給定的文本段落預測問題的答案。
+4. **常識推理基準**:
+    - **Winograd Schema Challenge**: 通過要求模型解決句子中的代詞參考來測試模型的常識推理和理解能力。
+    - **SWAG (Situations With Adversarial Generations)**: 評估模型根據常識知識預測給定句子最可能結尾的能力。
+5. **自然語言推理（NLI）基準**:
+    - **MultiNLI**: 測試模型根據給定前提預測假設是否為真（蘊涵）、假（矛盾）或不確定（中立）的能力。
+    - **SNLI (Stanford Natural Language Inference)**: 與 MultiNLI 類似，但使用不同的數據集進行評估。
+6. **機器翻譯基準**:
+    - **WMT (Workshop on Machine Translation)**: 年度比賽，提供數據集以評估各種語言對的翻譯品質。
+7. **任務導向對話基準**:
+    - **MultiWOZ**: 用於評估任務導向對話系統的數據集，如預訂酒店或尋找餐廳。
+8. **程式碼產生器和理解基準**:
+    - MBPP Dataset: 該基準包含約 1,000 個群眾外包的 Python 程式設計問題，旨在讓入門級程式設計師能夠解決。
+9. **圖表理解基準**:
+    1. ChartQA: 包含基於圖表摘要的機器生成問題，重點關注現有數據集經常因依賴模板化問題和固定詞彙而忽略的複雜推理任務。
 
-The [Hugging Face OpenLLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) features an array of datasets and tasks used to assess foundational models and chatbots
+[Hugging Face OpenLLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)展示了用於評估基礎模型和聊天機器人的一系列數據集和任務。
 
-![eval_0.png](https://github.com/aishwaryanr/awesome-generative-ai-guide/blob/main/free_courses/Applied_LLMs_Mastery_2024/img/eval_0.png)
+![eval_0.png](img/eval_0.png)
 
-## Read/Watch These Resources (Optional)
+## 閱讀/觀看這些資源 (選擇性)
 
-1. LLM Evaluation by Klu.ai: [https://klu.ai/glossary/llm-evaluation](https://klu.ai/glossary/llm-evaluation)
-2. Microsoft LLM Evaluation Leaderboard: [https://llm-eval.github.io/](https://llm-eval.github.io/)
-3. Evaluating and Debugging Generative AI Models Using Weights and Biases course: [https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/](https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/)
+1. Klu.ai 的 LLM 評估: [https://klu.ai/glossary/llm-evaluation](https://klu.ai/glossary/llm-evaluation)
+2. 微軟 LLM 評估排行榜: [https://llm-eval.github.io/](https://llm-eval.github.io/)
+3. 使用 Weights and Biases 評估和除錯生成式 AI 模型課程: [https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/](https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/)。
 
-## Read These Papers (Optional)
+## 閱讀這些論文（可選）
 
 1. [https://arxiv.org/abs/2310.19736](https://arxiv.org/abs/2310.19736)
 2. [https://arxiv.org/abs/2401.05561](https://arxiv.org/abs/2401.05561)
+
